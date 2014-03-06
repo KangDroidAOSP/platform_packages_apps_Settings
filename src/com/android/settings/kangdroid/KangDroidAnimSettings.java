@@ -78,21 +78,48 @@ import cyanogenmod.providers.CMSettings;
 public class KangDroidAnimSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {
 		
-	private static final String TAG = "KangDroidOtherSettings";
+	private static final String TAG = "KangDroidAnimSettings";
+	private static final String KEY_TOAST_ANIMATION = "toast_animation";
+	
+	private Context mContext;
+	private ListPreference mToastAnimation;
 	
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.kangdroid_anim_settings);
 		PreferenceScreen prefSet = getPreferenceScreen();
-        final Activity activity = getActivity();
-        final ContentResolver resolver = activity.getContentResolver();
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mContext = getActivity().getApplicationContext();
+
+        // Toast Animations
+        mToastAnimation = (ListPreference) findPreference(KEY_TOAST_ANIMATION);
+        mToastAnimation.setSummary(mToastAnimation.getEntry());
+        int CurrentToastAnimation = Settings.System.getInt(resolver,
+                Settings.System.TOAST_ANIMATION, 1);
+        mToastAnimation.setValueIndex(CurrentToastAnimation); //set to index of default value
+        mToastAnimation.setSummary(mToastAnimation.getEntries()[CurrentToastAnimation]);
+        mToastAnimation.setOnPreferenceChangeListener(this);
     }
 	
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-		return false;
-	}
+        final String key = preference.getKey();
+        if (preference == mToastAnimation) {
+            int index = mToastAnimation.findIndexOfValue((String) objValue);
+            Settings.System.putString(getContentResolver(), Settings.System.TOAST_ANIMATION, (String) objValue);
+            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
+            Toast.makeText(mContext, "Toast Test", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
+   }
+
 	
     @Override
     protected int getMetricsCategory() {
