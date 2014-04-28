@@ -22,5 +22,11 @@
          android:key="gesture_anywhere"
          android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
          android:title="@string/gesture_anywhere_title" />
+		 
+     <!-- App sidebar -->
+     <PreferenceScreen
+          android:key="app_sidebar"
+          android:fragment="com.android.settings.kangdroid.AppSidebar"
+          android:title="@string/app_sidebar_title"/>
 
 </PreferenceScreen>
