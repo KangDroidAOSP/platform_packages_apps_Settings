@@ -6,5 +6,9 @@
     <string name="kdp_version_title">KDP ROM Version</string>
     <!-- Do NOT translate this -->
    <string name="kdp_versoin_default">Alpha - 0</string>
+   
+   <!-- Changelog -->
+   <string name="changelog_temasek_title">Changelog</string>
+   <string name="changelog_temasek_error">Unable to load changelog</string>
 
 </resources>
