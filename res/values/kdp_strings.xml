@@ -10,5 +10,9 @@
    <!-- Changelog -->
    <string name="changelog_temasek_title">Changelog</string>
    <string name="changelog_temasek_error">Unable to load changelog</string>
+   
+   <!-- About device screen, CPU and RAM info. -->
+   <string name="cpu_info">CPU</string>
+   <string name="mem_info">RAM</string>
 
 </resources>
