@@ -30,6 +30,9 @@
     <string name="reset_message">Reset all entries to default?</string>
     <string name="attention">Attention</string>
     <string name="reset">Reset</string>
+    <string name="add">Add</string>
+    <string name="enabled">Enabled</string>
+    <string name="choose_app">Choose application</string>
 	
 	<!-- Customization - Recents Settings -->
 	<string name="kangdroid_recents_settings_title">Recents</string>
