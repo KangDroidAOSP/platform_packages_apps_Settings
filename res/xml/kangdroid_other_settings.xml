@@ -28,5 +28,11 @@
           android:key="app_sidebar"
           android:fragment="com.android.settings.kangdroid.AppSidebar"
           android:title="@string/app_sidebar_title"/>
+		  
+    <!-- App circle bar -->
+    <PreferenceScreen
+         android:key="app_circle_bar"
+         android:fragment="com.android.settings.kangdroid.AppCircleBar"
+         android:title="@string/app_circle_bar_title"/>
 
 </PreferenceScreen>
