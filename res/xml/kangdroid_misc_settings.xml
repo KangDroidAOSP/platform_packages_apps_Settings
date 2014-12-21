@@ -26,6 +26,12 @@
             android:fragment="com.android.settings.rr.AppSidebar"
             android:title="@string/app_sidebar_title" />
 			
+   <!-- Circle app bar -->
+    <PreferenceScreen
+        android:key="app_circle_bar"
+        android:fragment="com.android.settings.crdroid.AppCircleBar"
+        android:title="@string/app_circle_bar_title"/>
+			
         <!-- Weather Settings -->
        <Preference
            android:id="@+id/weather_settings"
