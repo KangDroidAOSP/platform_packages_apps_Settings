@@ -32,4 +32,10 @@
         android:entryValues="@array/toast_animation_values"
         android:persistent="false" />
 		 
+	<!-- AOKP Animation Settings -->
+    <PreferenceScreen
+        android:key="aokp_animation"
+        android:title="@string/aokp_animation_title"
+        android:summary="@string/aokp_animation_summary"
+        android:fragment="com.android.settings.crdroid.fragments.AnimationControls" />
 </PreferenceScreen>
