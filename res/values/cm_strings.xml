@@ -24,6 +24,11 @@
     <string name="show_dev_on_cm">You have enabled development settings!</string>
     <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already_cm">No need, you have already enabled development settings.</string>
+	
+
+    <!-- Qucik unlock -->
+    <string name="unlock_quick_unlock_control_title">Quick unlock</string>
+    <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
 
     <!-- Launch Dev Tools -->
     <string name="development_tools_title">Development tools</string>
@@ -752,6 +757,7 @@
     <string name="select_custom_app_title">Select custom app</string>
     <string name="select_custom_activity_title">Select custom activity</string>
 
+
     <!-- Blacklist preferences -->
     <string name="blacklist_title">Blocked caller list</string>
     <string name="blacklist_edit_dialog_title">Edit blocked phone number</string>
@@ -849,4 +855,6 @@
         <![CDATA[<b>Total contributors:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
                  <b>Total commits:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
                  <b>Last update:</b> <xliff:g id="date">%3$s</xliff:g>]]></string>
+</resources>
+
 </resources>
