@@ -67,6 +67,10 @@
     <string name="qs_main_tiles_title">Enlarge first row</string>
     <string name="qs_main_tiles_summary_on">Two main tiles on the first row</string>
     <string name="qs_main_tiles_summary_off">Three or four tiles on each row</string>
+	<!-- Quick Settings Customize Colors -->
+    <string name="background_title">Background</string>
+    <string name="icon_title">Icon</string>
+	<string name="qs_colors_title">Custom Color Options</string>
 	
     <!-- Lockscreen blur/see through -->
     <string name="lockscreen_see_through_title">Blur</string>
