@@ -42,6 +42,11 @@
 	<PreferenceCategory
 		android:key="misc_notification_settings"
 		android:title="@string/kdp_other_notification_title">
+		
+ 		<PreferenceScreen
+			android:key="qs_colors"
+			android:title="@string/qs_colors_title"
+			android:fragment="com.android.settings.kangdroid.QSColors" />
 
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"
