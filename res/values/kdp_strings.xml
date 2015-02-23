@@ -50,6 +50,7 @@
     <string name="reset_android_title">Android default</string>
     <string name="reset_darkkat_title">DarkKat default</string>
 	<string name="default_string">Default</string>
+	<string name="colors_title">Colors</string>
 	
 	<!-- Default strings -->
     <string name="help">Help</string>
@@ -60,6 +61,7 @@
     <string name="enabled">Enabled</string>
     <string name="choose_app">Choose application</string>
 	<string name="cancel">Cancel</string>
+	<string name="reset_android"
 	
 	<!-- Customization - Lockscreen Settings -->
 	<!-- Lock screen settings -->
@@ -306,6 +308,15 @@
     <string name="status_bar_temperature_location_summary">Select where the weather temperature is shown on the statusbar</string>
     <string name="status_bar_temperature_location_right">Show on right</string>
     <string name="status_bar_temperature_location_left">Show on left</string>
+	
+	<!-- Quick Settings Customize Colors -->
+    <string name="background_title">Background</string>
+    <string name="icon_title">Icon</string>
+	<string name="text_title">Text</string>
+	<string name="qs_colors_title">Custom Color Options</string>
+	<string name="qs_transparent_shade_title">Shade alpha</string>
+    <string name="qs_transparent_shade_summary">Ability to apply color alpha value and make notification shade transparent.</string>
+	<string name="qs_color_switch_title">Custom color switch</string>
 	
 	<!-- Customization - KDP Animation Settings -->
     <!-- AOKP custom system animations -->
