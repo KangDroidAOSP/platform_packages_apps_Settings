@@ -71,6 +71,8 @@
     <string name="background_title">Background</string>
     <string name="icon_title">Icon</string>
 	<string name="qs_colors_title">Custom Color Options</string>
+	<string name="qs_transparent_shade_title">Shade alpha</string>
+    <string name="qs_transparent_shade_summary">Ability to apply color alpha value and make notification shade transparent.</string> 	
 	
     <!-- Lockscreen blur/see through -->
     <string name="lockscreen_see_through_title">Blur</string>
