@@ -177,5 +177,10 @@
         android:title="@string/battery_low_notif_title"
         android:summary="@string/battery_low_notif_summary"
         android:defaultValue="true" />
+		
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="force_expanded_notifications"
+        android:title="@string/force_expanded_notifications_title"
+        android:summary="@string/force_expanded_notifications_summary" />
 
 </PreferenceScreen>
