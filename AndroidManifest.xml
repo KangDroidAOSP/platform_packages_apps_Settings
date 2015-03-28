@@ -2648,6 +2648,9 @@
                        android:resource="@id/wireless_settings" />
         </activity>
 
+        <activity android:name=".crdroid.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".crdroid.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"
             android:authorities="com.android.settings"

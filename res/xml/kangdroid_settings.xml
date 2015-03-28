@@ -41,15 +41,21 @@
 	   android:fragment="com.android.settings.kangdroid.KangDroidRecentsSettings" />
 	   
    <!-- Circle app bar -->
-    <PreferenceScreen
-        android:key="app_circle_bar"
-        android:fragment="com.android.settings.crdroid.AppCircleBar"
-        android:title="@string/app_circle_bar_title"/>
+   <PreferenceScreen
+       android:key="app_circle_bar"
+       android:fragment="com.android.settings.crdroid.AppCircleBar"
+       android:title="@string/app_circle_bar_title"/>
 	
     <!-- KDP Animation Settings -->
      <PreferenceScreen
-         android:key="kdp_animations"
-         android:fragment="com.android.settings.kangdroid.KangDroidAnimationSettings"
-         android:title="@string/kdp_animations_title"/>
+       android:key="kdp_animations"
+       android:fragment="com.android.settings.kangdroid.KangDroidAnimationSettings"
+       android:title="@string/kdp_animations_title"/>
+		 
+	<!-- KDP Misc Settings -->
+	<PreferenceScreen
+		android:key="kdp_misc"
+		android:fragment="com.android.settings.kangdroid.KangDroidMiscSettings"
+		android:title="@string/kdp_misc_settings_title" />
 		 
 </PreferenceScreen>
