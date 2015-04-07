@@ -1929,6 +1929,9 @@
         </activity>
 
 
+        <activity android:name=".rr.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".rr.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
+
         <!-- Development settings -->
 
         <!-- DeviceInfo adds the user's requested build to stats upload.  -->
