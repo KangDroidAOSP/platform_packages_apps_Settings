@@ -815,4 +815,8 @@
     <string name="volume_steps_7">7</string>
     <string name="volume_steps_5">5</string>
 
+    <!-- Task Manager -->
+    <string name="enable_task_manager_title">Task Manager</string>
+    <string name="enable_task_manager_summary">Enable/Disable action for the task manager button in the expanded statusbar area.</string>
+
 </resources>
