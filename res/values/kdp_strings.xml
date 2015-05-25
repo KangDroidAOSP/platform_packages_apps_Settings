@@ -1118,5 +1118,9 @@
     <string name="dashboard_tileview_double_lines_title">Dashboard tile view title</string>
     <string name="dashboard_tileview_double_lines_summary_on">Show dashboard tile titles in 1 line</string>
     <string name="dashboard_tileview_double_lines_summary_off">Show dashboard tile titles in 2 lines</string>
+	
+    <!-- Task Manager -->
+    <string name="enable_task_manager_title">Task Manager</string>
+    <string name="enable_task_manager_summary">Enable/Disable action for the task manager button in the expanded statusbar area.</string>
 
 </resources>

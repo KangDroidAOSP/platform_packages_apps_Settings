@@ -69,12 +69,14 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 	private static final String PREF_QS_TRANSPARENT_HEADER = "qs_transparent_header";
 	private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 	private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
+	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
 	
     private ListPreference mCustomHeaderDefault;
     private SeekBarPreference mQSShadeAlpha;
 	private SeekBarPreference mQSHeaderAlpha;
     private SwitchPreference mBlockOnSecureKeyguard;
 	private ListPreference mQuickPulldown;
+	private SwitchPreference mEnableTaskManager;
 
     private static final int MY_USER_ID = UserHandle.myUserId();
 
@@ -120,6 +122,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         updatePulldownSummary(quickPulldown);
         mQuickPulldown.setOnPreferenceChangeListener(this);
 		
+        // Task manager
+        mEnableTaskManager = (SwitchPreference) prefSet.findPreference(PREF_ENABLE_TASK_MANAGER);
+        mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
+		
 		updateCustomHeaderforKDP();
     }
 	
@@ -136,6 +143,16 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
     @Override
     protected int getMetricsCategory() {
         return MetricsLogger.APPLICATION;
+    }
+	
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+       if  (preference == mEnableTaskManager) {
+            boolean enabled = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.ENABLE_TASK_MANAGER, enabled ? 1:0);
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 	
     @Override
