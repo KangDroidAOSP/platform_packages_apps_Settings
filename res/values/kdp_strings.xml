@@ -40,6 +40,13 @@
     <string name="choose_app">Choose application</string>
 	<string name="cancel">Cancel</string>
 	
+	<!-- Customization - Lockscreen Settings -->
+	<!-- Lock screen settings -->
+    <string name="lockscreen_settings_title">Lockscreen wallpaper</string>
+    <string name="lockscreen_wallpaper_title">Wallpaper</string>
+    <string name="lockscreen_wallpaper_set_title">Set lock screen wallpaper</string>
+    <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
+	
 	<!-- Customization - Recents Settings -->
 	<string name="kangdroid_recents_settings_title">Recents</string>
     <string name="recents_panel_category">Recents panel</string>
