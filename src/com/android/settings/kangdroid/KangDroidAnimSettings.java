@@ -79,15 +79,20 @@ public class KangDroidAnimSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {
 		
 	private static final String TAG = "KangDroidAnimSettings";
+	
 	private static final String KEY_TOAST_ANIMATION = "toast_animation";
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
+    private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
+    private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
+    private static final String SCROLLINGCACHE_DEFAULT = "1";
 	
 	private Context mContext;
-	private ListPreference mToastAnimation;
 	
+	private ListPreference mToastAnimation;
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
+	private ListPreference mScrollingCachePref;
 	
     @Override
     public void onCreate(Bundle icicle) {
@@ -122,6 +127,12 @@ public class KangDroidAnimSettings extends SettingsPreferenceFragment
         mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
         mListViewInterpolator.setOnPreferenceChangeListener(this);
         mListViewInterpolator.setEnabled(listviewanimation > 0);
+		
+        // Scrolling cache
+        mScrollingCachePref = (ListPreference) prefSet.findPreference(SCROLLINGCACHE_PREF);
+        mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
+                SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
+        mScrollingCachePref.setOnPreferenceChangeListener(this);
     }
 	
     @Override
@@ -154,6 +165,12 @@ public class KangDroidAnimSettings extends SettingsPreferenceFragment
                     Settings.System.LISTVIEW_INTERPOLATOR,
                     value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
+        }
+        if (preference == mScrollingCachePref) {
+            if (objValue != null) {
+                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String)objValue);
+            return true;
+            }
         }
         return false;
    }
