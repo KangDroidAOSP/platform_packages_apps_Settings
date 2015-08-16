@@ -789,5 +789,10 @@
     <string name="nav_bar_title">Navigation bar</string>
     <string name="navbar_enable_bar_title">Navigation bar buttons</string>
     <string name="navbar_enable_bar_summary">Enable on-screen nav bar buttons</string>
+	
+    <!-- Time-context headers in notification header -->
+    <string name="status_bar_custom_header_title">Custom header image</string>
+    <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
+	
 
 </resources>
