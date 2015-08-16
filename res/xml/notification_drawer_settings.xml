@@ -17,13 +17,6 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-
-	<PreferenceCategory
-		android:key="kdp_custom_time_header"
-		android:title="@string/kdp_custom_time_header_title">
-
-		
-	</PreferenceCategory>
 	
 	<PreferenceCategory
 		android:key="misc_notification_settings"
