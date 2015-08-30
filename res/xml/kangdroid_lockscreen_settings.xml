@@ -90,6 +90,11 @@
 	<PreferenceCategory
 		android:key="kdp_lockscreen_category"
 		android:title="@string/kdp_lockscreen_category_misc_title">
+		
+    <PreferenceScreen
+        android:key="lockscreen_colors"
+        android:title="@string/lockscreen_colors"
+        android:fragment="com.android.settings.rr.LockscreenColors" />
 	
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="double_tap_sleep_lock_screen"
