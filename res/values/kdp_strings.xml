@@ -62,4 +62,9 @@
     <string name="qs_main_tiles_title">Enlarge first row</string>
     <string name="qs_main_tiles_summary_on">Two main tiles on the first row</string>
     <string name="qs_main_tiles_summary_off">Three or four tiles on each row</string>
+	
+    <!-- Lockscreen blur/see through -->
+    <string name="lockscreen_see_through_title">Blur</string>
+    <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen</string>
+    <string name="lockscreen_blur_radius">Blur effect intensity</string>
 </resources>

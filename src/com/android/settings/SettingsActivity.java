@@ -132,6 +132,7 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.kangdroid.KangDroidSettings;
+import com.android.settings.kangdroid.KangDroidLockscreenSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -368,7 +369,8 @@ public class SettingsActivity extends Activity
             LiveDisplay.class.getName(),
             com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             BlacklistSettings.class.getName(),
-			KangDroidSettings.class.getName()
+			KangDroidSettings.class.getName(),
+			KangDroidLockscreenSettings.class.getName()
     };
 
 

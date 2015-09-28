@@ -28,6 +28,12 @@
        android:key="notification_drawer_settings"
        android:title="@string/notification_drawer_settings" />
 	   
+   <!-- Lockscreen Settings -->
+   <PreferenceScreen
+	   android:key="lockscreen_settings_kangdroid"
+	   android:title="@string/kangdroid_lockscreen_settings_title"
+	   android:fragment="com.android.settings.kangdroid.KangDroidLockscreenSettings" />
+	   
    <!-- Recents Settings -->
    <PreferenceScreen
 	   android:key="kangdroid_recents_settings"
