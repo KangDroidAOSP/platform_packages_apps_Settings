@@ -48,6 +48,9 @@
     <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
 	<!-- CM Lockscreen shortcuts -->
     <string name="lockscreen_targets_message">Bottom shortcuts</string>
+	<!-- Media art -->
+    <string name="media_art_title">Media cover art</string>
+    <string name="media_art_summary">Enable media cover art on the lockscreen</string>
 	
 	<!-- Customization - Recents Settings -->
 	<string name="kangdroid_recents_settings_title">Recents</string>
