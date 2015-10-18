@@ -64,8 +64,16 @@
             android:dialogTitle="@string/navigation_bar_recents_title"
             android:title="@string/navigation_bar_recents_title"
             android:persistent="false" />
+			
+	        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+	            android:key="double_tap_sleep_navbar"
+	            android:title="@string/double_tap_sleep_nav_bar_title"
+	            android:summary="@string/double_tap_sleep_nav_bar_summary"
+	            android:defaultValue="false"
+				android:dependency="disable_nav_keys" />
 
     </PreferenceCategory>
+
 
     <PreferenceCategory
         android:key="power_key"
