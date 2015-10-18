@@ -37,7 +37,9 @@
     <!--Time Contexual Header -->
     <string name="status_bar_custom_header_title">Time Contextual Header</string>
     <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
-	
+	<!--Notification Drawer-->
+    <string name="notification_drawer_title">Notification Drawer</string>
+
 	<!-- Customization - KDP Animation Settings -->
     <!-- AOKP custom system animations -->
     <string name="animation_title">Animations</string>  
