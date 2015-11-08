@@ -46,6 +46,8 @@
     <string name="lockscreen_wallpaper_title">Wallpaper</string>
     <string name="lockscreen_wallpaper_set_title">Set lock screen wallpaper</string>
     <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
+	<!-- CM Lockscreen shortcuts -->
+    <string name="lockscreen_targets_message">Bottom shortcuts</string>
 	
 	<!-- Customization - Recents Settings -->
 	<string name="kangdroid_recents_settings_title">Recents</string>
