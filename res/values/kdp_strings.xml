@@ -66,6 +66,8 @@
     <!--Time Contexual Header -->
     <string name="status_bar_custom_header_title">Time Contextual Header</string>
     <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
+	<string name="status_bar_custom_header_default_title">Use poly HD images</string>
+    <string name="status_bar_custom_header_default_summary">Enable for poly hd images. Disable for original images.</string>
 	<!--Notification Drawer-->
     <string name="notification_drawer_title">Notification Drawer</string>
     <!-- Network traffic -->
@@ -138,6 +140,9 @@
     <string name="show_carrier_keyguard">Keyguard carrier</string>
     <string name="show_carrier_statusbar">Status bar carrier</string>
     <string name="show_carrier_enabled">Enabled</string>
+	
+    <!-- Navigation bar button color -->
+    <string name="navbar_button_tint_title">Button color</string>
 	
 	<string name="weather_settings_title">Weather</string> 
 
