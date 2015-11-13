@@ -16,6 +16,16 @@
 	<string name="category_kangdroid">Customizations</string>
 	<string name="kangdroid_main_title">KangDroid Settings</string>
 	
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Set</string>
+    <string name="color_default">Default</string>
+	
 	<!-- Customization - Recents -->
     <string name="recents_settings_title">Recents</string>
     <string name="recents_panel_category">Recents panel</string>
@@ -33,19 +43,14 @@
     <string name="recents_searchbar_title">Search bar</string>
     <string name="recents_searchbar_summary">Show Google search bar in the recents screen</string>
 	
+	<!-- Customization - StatusBar Settings -->
+    <!--Time Contexual Header -->
+    <string name="status_bar_custom_header_title">Time Contextual Header</string>
+    <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
+	
     <!-- Notification Drawer -->
     <string name="notification_drawer_settings">Notification Drawer</string>
     <string name="qs_brightness_slider_title_eos">Brightness slider</string>
     <string name="qs_brightness_slider_summary">Show a brightness slider in the quick settings panel</string>
 	<string name="qs_four_columns_title">Show four tiles per row</string>
-	
-    <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on color below to apply</string>
-    <string name="arrow_right">→</string>
-    <string name="arrow_down">↓</string>
-    <string name="hex">Hex:</string>
-    <string name="hex_hint">#ff000000</string>
-    <string name="set">Set</string>
-    <string name="color_default">Default</string>
 </resources>
