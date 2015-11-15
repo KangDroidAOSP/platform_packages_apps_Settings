@@ -57,6 +57,9 @@
      <string name="network_traffic_autohide">Auto hide</string>
      <string name="network_traffic_autohide_summary">Hide the traffic monitor when there is no activity</string>
      <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
+     <!-- Force expanded notifications -->
+     <string name="force_expanded_notifications_title">Force Expanded</string>
+     <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
 
 	<!-- Customization - KDP Animation Settings -->
     <!-- AOKP custom system animations -->
@@ -183,8 +186,12 @@
     <string name="select_custom_activity_title">Select custom activity</string>
     <string name="profile_applist_title">Applications</string>
 	
-    <!-- Force expanded notifications -->
-    <string name="force_expanded_notifications_title">Force Expanded</string>
-    <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
+    <!-- Option to enable/disable scrolling cache -->
+    <string name="pref_scrollingcache_title">Scrolling cache</string>
+    <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
+    <string name="pref_scrollingcache_force_enable">Force enable</string>
+    <string name="pref_scrollingcache_default_enable">Default enable</string>
+    <string name="pref_scrollingcache_default_disable">Default disable</string>
+    <string name="pref_scrollingcache_force_disable">Force disable</string>
 
 </resources>
