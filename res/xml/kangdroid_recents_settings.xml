@@ -59,4 +59,17 @@
                 android:summaryOff="@string/recents_fullscreen_summary_disabled"
                 android:defaultValue="false"
                 android:dependency="show_clear_all_recents" />
+				
+    <PreferenceCategory
+        android:key="omni_recents_panel"
+        android:title="@string/omniswitch_category" >
+
+        <!-- OmniSwitch -->
+        <PreferenceScreen
+            android:key="omniswitch"
+            android:id="@+id/omniswitch"
+            android:title="@string/omniswitch_settings_title"
+            android:fragment="com.android.settings.rr.OmniSwitch" />
+
+    </PreferenceCategory>
 </PreferenceScreen>
