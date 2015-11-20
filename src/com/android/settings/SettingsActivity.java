@@ -133,6 +133,7 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.kangdroid.KangDroidSettings;
 import com.android.settings.kangdroid.KangDroidLockscreenSettings;
+import com.android.settings.kangdroid.KangDroidNotificationSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -370,7 +371,8 @@ public class SettingsActivity extends Activity
             com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             BlacklistSettings.class.getName(),
 			KangDroidSettings.class.getName(),
-			KangDroidLockscreenSettings.class.getName()
+			KangDroidLockscreenSettings.class.getName(),
+			KangDroidNotificationSettings.class.getName()
     };
 
 
