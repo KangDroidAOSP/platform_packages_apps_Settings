@@ -52,6 +52,7 @@ import com.android.settings.users.UserSettings;
 import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
+import com.android.settings.kangdroid.KangDroidSettings;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -294,6 +295,13 @@ public final class SearchIndexableResources {
                         R.xml.wifi_calling_settings,
                         WifiCallingSettings.class.getName(),
                         R.drawable.ic_settings_wireless));
+		
+        sResMap.put(KangDroidSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(KangDroidSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        KangDroidSettings.class.getName(),
+                        R.drawable.ic_settings_more));
     }
 
     private SearchIndexableResources() {

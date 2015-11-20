@@ -131,6 +131,7 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
+import com.android.settings.kangdroid.KangDroidSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -288,7 +289,8 @@ public class SettingsActivity extends Activity
             R.id.nfc_payment_settings,
             R.id.home_settings,
             R.id.dashboard,
-            R.id.privacy_settings_cyanogenmod
+            R.id.privacy_settings_cyanogenmod,
+			R.id.kangdroid_settings_dashboard
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -365,7 +367,8 @@ public class SettingsActivity extends Activity
             WriteSettingsDetails.class.getName(),
             LiveDisplay.class.getName(),
             com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
-            BlacklistSettings.class.getName()
+            BlacklistSettings.class.getName(),
+			KangDroidSettings.class.getName()
     };
 
 
