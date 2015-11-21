@@ -39,12 +39,6 @@
 	   android:key="kangdroid_recents_settings"
 	   android:title="@string/recents_settings_title"
 	   android:fragment="com.android.settings.kangdroid.KangDroidRecentsSettings" />
-	   
-   <!-- Circle app bar -->
-   <PreferenceScreen
-       android:key="app_circle_bar"
-       android:fragment="com.android.settings.crdroid.AppCircleBar"
-       android:title="@string/app_circle_bar_title"/>
 	
     <!-- KDP Animation Settings -->
      <PreferenceScreen
