@@ -26,6 +26,7 @@
 	   
    <PreferenceScreen
        android:key="notification_drawer_settings"
+	   android:fragment="com.android.settings.kangdroid.KangDroidNotificationSettings"
        android:title="@string/notification_drawer_settings" />
 	   
    <!-- Lockscreen Settings -->
