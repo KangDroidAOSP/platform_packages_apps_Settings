@@ -23,5 +23,13 @@
         android:key="listview"
         android:fragment="com.android.settings.kangdroid.Listview"
         android:title="@string/listview_category" />
+		
+    <!-- Toast Animation -->
+     <ListPreference
+        android:key="toast_animation"
+        android:title="@string/toast_animation_title"
+        android:entries="@array/toast_animation_entries"
+        android:entryValues="@array/toast_animation_values"
+        android:persistent="false" />
 		 
 </PreferenceScreen>
