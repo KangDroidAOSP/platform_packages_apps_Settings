@@ -46,4 +46,10 @@
         android:fragment="com.android.settings.crdroid.AppCircleBar"
         android:title="@string/app_circle_bar_title"/>
 	
+    <!-- KDP Animation Settings -->
+     <PreferenceScreen
+         android:key="kdp_animations"
+         android:fragment="com.android.settings.kangdroid.KangDroidAnimationSettings"
+         android:title="@string/kdp_animations_title"/>
+		 
 </PreferenceScreen>
