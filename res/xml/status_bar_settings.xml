@@ -153,5 +153,10 @@
         android:key="status_bar_temperature_style"
         android:title="@string/status_bar_temperature_title"
         android:fragment="com.android.settings.kangdroid.StatusBarWeather" />
+		
+    <PreferenceScreen
+        android:key="carrierlabel"
+        android:fragment="com.android.settings.kangdroid.CarrierLabel"
+        android:title="@string/carrier_options" />
 
 </PreferenceScreen>
