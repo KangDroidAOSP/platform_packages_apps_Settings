@@ -48,11 +48,12 @@ import java.util.ArrayList;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.temasek.SeekBarPreference;
+import com.android.settings.crdroid.SeekBarPreference;
 import com.android.settings.Utils;
 import com.android.settings.util.CMDProcessor;
 import com.android.settings.util.Helpers;
 import com.android.settings.util.AppMultiSelectListPreference;
+import com.android.internal.logging.MetricsLogger;
 
 import java.io.File;
 import java.lang.Thread;
@@ -180,5 +181,10 @@ public class AppCircleBar extends SettingsPreferenceFragment implements
         super.onResume();
         Settings.System.putInt(getContentResolver(),
                 Settings.System.APP_CIRCLE_BAR_SHOW_TRIGGER, 1);
+    }
+	
+    protected int getMetricsCategory()
+    {
+	return MetricsLogger.APPLICATION;
     }
 }

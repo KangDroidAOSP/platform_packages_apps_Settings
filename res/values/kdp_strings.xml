@@ -16,6 +16,17 @@
 	<string name="category_kangdroid">Customizations</string>
 	<string name="kangdroid_main_title">KangDroid Settings</string>
 	<string name="kdp_misc_settings_title">Miscellaneous</string>
+	<string name="lockscreen_transparecy_title">Lockscreen Blur Settings</string>
+	<string name="colors_title">Colors</string>
+	<string name="text_title">Text</string>
+	<string name="kangdroid_lockscreen_settings_title">Lockscreen Settings</string>
+	<string name="notification_drawer_title">Notification Drawer Settings</string>
+	
+	<!-- Default Strings -->
+    <string name="reset_android">Android</string>
+    <string name="reset_kangdroid">KangDroid</string>
+	<string name="reset">Reset</string>
+	<string name="reset_message">Reset all entries to default?</string>
 	
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>

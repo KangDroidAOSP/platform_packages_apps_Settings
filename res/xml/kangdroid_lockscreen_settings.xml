@@ -15,7 +15,6 @@
     android:title="@string/power_menu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-
     <PreferenceCategory
 		android:key="kangdroid_lockscreen_trans"
         android:title="@string/lockscreen_transparecy_title" >

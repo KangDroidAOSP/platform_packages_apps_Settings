@@ -32,7 +32,8 @@ import android.view.MenuItem;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.cyanogenmod.qs.QSTiles;
+//import com.android.settings.cyanogenmod.qs.QSTiles;
+import com.android.internal.logging.MetricsLogger;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -242,5 +243,10 @@ public class QSColors extends SettingsPreferenceFragment implements
         public void onCancel(DialogInterface dialog) {
 
         }
+    }
+	
+    protected int getMetricsCategory()
+    {
+	return MetricsLogger.APPLICATION;
     }
 }
