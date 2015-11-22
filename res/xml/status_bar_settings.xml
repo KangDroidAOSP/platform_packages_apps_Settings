@@ -91,7 +91,7 @@
             android:defaultValue="false"/>
 			
       <PreferenceScreen
-           android:key="carrier_options"
+           android:key="carrierlabel"
            android:fragment="com.android.settings.rr.CarrierLabel"
            android:title="@string/carrier_options" />
 </PreferenceScreen>
