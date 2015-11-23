@@ -15,9 +15,6 @@
  */
 package com.android.settings.cyanogenmod;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +27,6 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.text.Spannable;
 import android.text.format.DateFormat;
 import android.view.View;
 
@@ -66,7 +62,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
-	private static final String KEY_STATUS_BAR_GREETING = "status_bar_greeting";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -75,8 +70,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarAmPm;
     private ListPreference mStatusBarBattery;
     private ListPreference mStatusBarBatteryShowPercent;
-	private SwitchPreference mStatusBarGreeting;
-	private String mCustomGreetingText = "";    
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -120,10 +113,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
-        mStatusBarGreeting = (SwitchPreference) findPreference(KEY_STATUS_BAR_GREETING);
-        mCustomGreetingText = Settings.System.getString(resolver, Settings.System.STATUS_BAR_GREETING);
-        boolean greeting = mCustomGreetingText != null && !TextUtils.isEmpty(mCustomGreetingText);
-        mStatusBarGreeting.setChecked(greeting); 
     }
 
     @Override
@@ -143,48 +132,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                 mStatusBarClock.setSummary(mStatusBarClock.getEntry());
         }
     }
-	
-     @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-	final ContentResolver resolver = getActivity().getContentResolver();
-       if (preference == mStatusBarGreeting) {
-         boolean enabled = mStatusBarGreeting.isChecked();
-         if (enabled) {
-              AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-
-              alert.setTitle(R.string.status_bar_greeting_title);
-              alert.setMessage(R.string.status_bar_greeting_dialog);
-
-              // Set an EditText view to get user input
-              final EditText input = new EditText(getActivity());
-              input.setText(mCustomGreetingText != null ? mCustomGreetingText : "Welcome to Bliss");
-              alert.setView(input);
-              alert.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
-                  public void onClick(DialogInterface dialog, int whichButton) {
-                      String value = ((Spannable) input.getText()).toString();
-                      Settings.System.putString(getActivity().getContentResolver(),
-                              Settings.System.STATUS_BAR_GREETING, value);
-                      updateCheckState(value);
-                  }
-              });
-              alert.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                  public void onClick(DialogInterface dialog, int whichButton) {
-                      // Canceled.
-                  }
-              });
-
-              alert.show();
-          } else {
-              Settings.System.putString(getActivity().getContentResolver(),
-                              Settings.System.STATUS_BAR_GREETING, "");
-          }
-   }
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
-   }
-   
-    private void updateCheckState(String value) {
-		if (value == null || TextUtils.isEmpty(value)) mStatusBarGreeting.setChecked(false);
-	}    
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
