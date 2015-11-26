@@ -90,7 +90,8 @@
             android:summary="@string/status_bar_custom_header_summary"
             android:defaultValue="false"/>
 			
-      <Preference
-           android:key="carrierlabel"
-           android:title="@string/carrier_options" />
+    <PreferenceScreen
+       android:key="carrierlabel"
+       android:title="@string/carrier_options"
+	   android:fragment="com.android.settings.rr.CarrierLabel"  />
 </PreferenceScreen>
