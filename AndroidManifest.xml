@@ -2797,6 +2797,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".CarrierLabel"
+            android:label="@string/carrier_options">
+        </activity>
+
     </application>
 </manifest>
 
