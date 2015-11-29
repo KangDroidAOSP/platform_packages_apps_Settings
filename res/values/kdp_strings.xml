@@ -56,6 +56,11 @@
     <string name="recents_show_membar_title">Memory bar</string>
     <string name="recents_show_membar_summary">Show a bar with the device\'s available memory</string>	
 	
+    <!-- Recents Fullscreen -->
+    <string name="recents_show_fullscreen">Recents in fullscreen</string>
+    <string name="recents_fullscreen_summary_enabled">Recents in fullscreen is enabled</string>
+    <string name="recents_fullscreen_summary_disabled">Recents in fullscreen is disabled</string>
+	
     <!-- OmniSwitch -->
     <string name="omniswitch_category">OmniSwitch</string>
     <string name="recents_use_omniswitch_title">Use for recents</string>
