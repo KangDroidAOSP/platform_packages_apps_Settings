@@ -2,9 +2,12 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- About phone screen, KDP version -->
-    <string name="kdp_version_title">KDP ROM Version</string>
-    <!-- Do NOT translate this -->
+	<!-- Customization - Recents Settings -->
+	<string name="kangdroid_recents_settings_title">Recents</string>
+
+   <!-- About phone screen, KDP version -->
+   <string name="kdp_version_title">KDP ROM Version</string>
+   <!-- Do NOT translate this -->
    <string name="kdp_versoin_default">Alpha - 0</string>
    
    <!-- Changelog -->
