@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 	
+	<!-- Start of KangDroidProject -->
+	<string name="kangdroid_main_settings">Customization</string>
+	<string name="kangdroid_animation_main">Animation Settings</string>
+	
     <!-- Color picker -->
     <string name="dialog_color_picker_title">Color Picker</string>
     <string name="press_color_to_apply">Press on color below to apply</string>

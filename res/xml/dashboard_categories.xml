@@ -81,6 +81,20 @@
                 />
 
     </dashboard-category>
+	
+    <dashboard-category
+            android:id="@+id/kdp_main_category"
+            android:title="@string/kangdroid_main_settings" >
+	
+    <!-- KDP Main entry -->
+    <dashboard-tile
+            android:id="@+id/kangdroid_main_settings"
+            android:title="@string/kangdroid_main_settings"
+            android:fragment="com.android.settings.kangdroid.KangDroidMainSettings"
+            android:icon="@drawable/ic_settings_extdesk_hidenavbar"
+            />
+			
+	</dashboard-category>
 
     <!-- DEVICE -->
     <dashboard-category
@@ -211,14 +225,6 @@
                 android:fragment="com.android.settings.profiles.ProfilesSettings"
                 android:title="@string/profiles_settings_title"
                 android:icon="@drawable/ic_settings_profiles"
-                />
-
-        <!-- Status bar -->
-        <dashboard-tile
-                android:id="@+id/status_bar_settings"
-                android:title="@string/status_bar_title"
-                android:fragment="com.android.settings.cyanogenmod.StatusBarSettings"
-                android:icon="@drawable/ic_settings_extdesk_hidenavbar"
                 />
 
         <!-- Location -->
