@@ -41,9 +41,13 @@
     <string name="root_access_adb">ADB only</string>
     <string name="root_access_all">Apps and ADB</string>
 
+    <!-- NFC PreferenceCategory title -->
+    <string name="nfc_title_category">NFC</string>
+
     <!-- About phone screen, CyanogenMod version -->
     <string name="mod_version">CyanogenMod version</string>
     <string name="mod_version_default">Unknown</string>
+    <string name="model_name">Model name</string>
 
     <!-- About phone screen, CyanogenMod Api Level -->
     <string name="mod_api_level">CyanogenMod API level</string>
@@ -52,6 +56,9 @@
     <!-- About phone screen, build date -->
     <string name="build_date">Build date</string>
     <string name="build_date_default" translatable="false">2015-01-01-0000</string>
+
+    <!-- CM Updater -->
+    <string name="cmupdate_settings_title">CyanogenMod updates</string>
 
     <!-- Themes Settings -->
     <!-- Settings main menu entry -->
@@ -202,6 +209,13 @@
     <string name="toggle2g3g4g">2G/3G/4G</string>
     <string name="toggleWimax">WiMAX</string>
     <string name="toggleNfc">NFC</string>
+
+    <!-- Wi-Fi region code -->
+    <string name="wifi_setting_countrycode_title">Wi\u2011Fi region code</string>
+    <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+    <string name="wifi_setting_countrycode_summary">Specify the region code for Wi\u2011Fi</string>
+    <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+    <string name="wifi_setting_countrycode_error">There was a problem setting the region code.</string>
 
     <!-- Profiles -->
     <string name="profile_menu_delete_title">Delete</string>
@@ -441,9 +455,6 @@
     <string name="disable_navkeys_title">Enable on-screen nav bar</string>
     <string name="disable_navkeys_summary">Enable on-screen navigation bar and disable hardware buttons</string>
 
-    <string name="navigation_ring_title">Navigation ring targets</string>
-    <string name="navigation_ring_message">Tap the edit icon to open the navigation ring for editing.\n\nSelect a target to configure its behavior.\n\nTap the check mark icon to save your changes, or restore to reset the settings to defaults.</string>
-
     <!--- Advanced Settings -->
     <string name="advanced_settings">Advanced settings</string>
     <string name="advanced_settings_summary">Enable more settings options</string>
@@ -544,6 +555,13 @@
     <string name="high_touch_sensitivity_title">High touch sensitivity</string>
     <string name="high_touch_sensitivity_summary">Increase touchscreen sensitivity so it can be used while wearing gloves</string>
 
+    <!-- Display & Lights screen, setting options for LCD density -->
+    <string name="lcd_density">LCD density</string>
+    <string name="dialog_title_lcd_density">LCD density</string>
+    <string name="lcd_density_value_format">%d DPI</string>
+    <string name="lcd_density_default_value_format">%d DPI (default)</string>
+    <string name="restarting_ui">Restarting UI\u2026</string>
+
     <!-- Stylus Icon -->
     <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
     <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
@@ -587,8 +605,9 @@
     <string name="lto_download_data_wifi_only_on">Over any networks</string>
     <string name="lto_download_data_wifi_only_off">Only over Wi\u2011Fi networks</string>
 
-    <string name="volume_keys_control_ring_stream_title">Volume keys control ringtone volume</string>
-    <string name="volume_keys_control_ring_stream_summary">If on, volume keys control ringtone volume. If off, volume keys control media volume.</string>
+    <string name="volume_keys_control_ring_stream_title">Control ringtone volume</string>
+    <string name="volume_keys_control_ring_stream_summary_on">Volume keys control ringtone volume</string>
+    <string name="volume_keys_control_ring_stream_summary_off">Volume keys control media volume</string>
 
     <string name="category_calibration">Calibration</string>
     <string name="display_and_lights">Display &amp; lights</string>
@@ -768,5 +787,44 @@
     <string name="block_notifications_summary">Manage ignored notifications and filters</string>
     <string name="no_filters_title">No filters set</string>
     <string name="app_ops_ignored_count">Denied <xliff:g id="count" example="2 times">%s</xliff:g></string>
+
+    <!-- Anonymous Statistics #CM -->
+    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
+    <string name="anonymous_statistics_title">CyanogenMod statistics</string>
+    <string name="anonymous_statistics_summary">Help make CyanogenMod better by opting into anonymous statistics reporting</string>
+    <string name="anonymous_statistics_warning_title">About</string>
+    <string name="anonymous_statistics_warning">Opting into CyanogenMod Statistics will allow non-personal data to be submitted to the
+        developers of CyanogenMod to track unique installations across devices. The information submitted includes an unique identifier,
+        which does not compromise your privacy or personal data. The data is submitted during each boot.\n\nFor an example of the data that is submitted, tap on Preview Data.</string>
+    <string name="enable_reporting_title">Enable reporting</string>
+    <string name="preview_data_title">Preview data</string>
+    <string name="view_stats_title">View stats</string>
+    <string name="anonymous_learn_more">Learn more</string>
+
+    <!-- Anonymous Statistics - Preview -->
+    <string name="preview_id_title">Unique ID</string>
+    <string name="preview_device_title">Device</string>
+    <string name="preview_version_title">Version</string>
+    <string name="preview_country_title">Country</string>
+    <string name="preview_carrier_title">Carrier</string>
+    <string name="stats_collection_title">Stats collection</string>
+    <string name="stats_collection_summary">When enabled, allows metrics collection.</string>
+
+    <!-- Protected apps lockpattern reset button -->
+    <string name="lockpattern_reset_button">Reset pattern</string>
+    <string name="lockpattern_settings_reset_summary">Enter primary email account and associated password to reset pattern lock</string>
+
+    <!-- Protected Apps -->
+    <string name="menu_hidden_apps_delete">Reset</string>
+    <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
+    <string name="protected_apps">Protected apps</string>
+    <string name="saving_protected_components">Saving component state\u2026</string>
+    <string name="launch_app">Launch app</string>
+
+    <string name="pa_login_username_hint">Username (email)</string>
+    <string name="pa_login_password_hint">Password</string>
+    <string name="pa_login_submit_button">Sign in</string>
+    <string name="pa_login_checking_password">Checking account\u2026</string>
+    <string name="pa_login_incorrect_login">Login was incorrect</string>
 
 </resources>
