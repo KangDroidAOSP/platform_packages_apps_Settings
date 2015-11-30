@@ -19,6 +19,19 @@
 	<!-- Start of KangDroidProject -->
 	<string name="kangdroid_main_settings">Customization</string>
 	<string name="kangdroid_animation_main">Animation Settings</string>
+	<string name="kdp_status_bar_category_title">Status Bar</string>
+	<string name="kangdroid_recents_category_title">Recents Settings</string>
+	<string name="anim_settings_title">KangDroid Animation Settings</string>
+	<string name="kdp_misc_category">KangDroid Other Settings</string>
+	<string name="kdp_aokp_anim_category">AOKP Custom Animation Settings</string>
+	<string name="kdp_toast_category_title">Toast Animation Settings</string>
+	<string name="kdp_listview_category_title">ListView Animation Settings</string>
+	<string name="kdp_other_anim_category_title">KDP Other Animation Settings</string>
+	<string name="kdp_status_bar_clock_category_title">Status Bar Clock Settings</string>
+	<string name="kdp_status_bar_battery_category">Status Bar Battery Settings</string>
+	<string name="kdp_status_bar_main_category">Main Status Bar Settings</string>
+	<string name="kdp_misc_status_bar">Other Status Bar Settings</string>
+	<string name="kdp_custom_time_header_title">Custom Time Header Settings</string>
 	
     <!-- Color picker -->
     <string name="dialog_color_picker_title">Color Picker</string>
@@ -75,7 +88,8 @@
 	<string name="status_bar_custom_header_default_title">Use poly HD images</string>
     <string name="status_bar_custom_header_default_summary">Enable for poly hd images. Disable for original images.</string>
 	<!--Notification Drawer-->
-    <string name="notification_drawer_title">Notification Drawer</string>
+    <string name="notification_drawer_title_category">Notification Drawer</string>
+	<string name="kdp_notification_settings">Notification Drawer Settings</string>
     <!-- Network traffic -->
     <string name="network_traffic_title">Network traffic</string>
     <string name="show_network_traffic_state">Status bar traffic monitor</string>
