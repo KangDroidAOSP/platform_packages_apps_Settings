@@ -15,8 +15,7 @@
 -->
 
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/notification_drawer_title">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"

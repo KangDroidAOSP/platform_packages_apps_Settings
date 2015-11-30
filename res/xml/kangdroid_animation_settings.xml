@@ -16,13 +16,22 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/animation_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+	
+	<PreferenceCategory
+		android:key="kdp_aokp_anim"
+		android:title="@string/kdp_aokp_anim_category">
 
     <PreferenceScreen
         android:key="aokp_animation"
         android:title="@string/system_animation_title"
         android:fragment="com.android.settings.rr.animation.AnimationControls" />
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_toast_category"
+		android:title="@string/kdp_toast_category_title">
 
     <ListPreference
         android:key="toast_animation"
@@ -31,11 +40,17 @@
         android:entryValues="@array/toast_animation_values"
         android:persistent="false" />
 
-    <com.android.settings.preference.SystemSettingSwitchPreference
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="toast_icon"
         android:title="@string/toast_icon_title"
         android:summary="@string/toast_icon_summary"
         android:defaultValue="true" />
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_listview_category"
+		android:title="@string/kdp_listview_category_title">
 
     <ListPreference
         android:key="listview_animation"
@@ -52,6 +67,12 @@
         android:entries="@array/listview_interpolator_entries"
         android:entryValues="@array/listview_interpolator_values"
         android:defaultValue="0" />
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_other_anim_category"
+		android:title="@string/kdp_other_anim_category_title">
 
     <ListPreference
         android:key="pref_scrollingcache"
@@ -60,5 +81,7 @@
         android:summary="@string/pref_scrollingcache_summary"
         android:entries="@array/entries_scrollingcache"
         android:entryValues="@array/values_scrollingcache" />
+		
+	</PreferenceCategory>
 
 </PreferenceScreen>
