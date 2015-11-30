@@ -31,5 +31,11 @@
         android:key="kdp_animation_settings"
         android:title="@string/kangdroid_animation_main"
         android:fragment="com.android.settings.kangdroid.KangDroidAnimationSettings" />
+		
+	<!-- KDP Other Settings -->
+	<PreferenceScreen
+		android:key="kdp_misc_settings"
+		android:title="@string/kangdroid_misc_settings"
+		android:fragment="com.android.settings.kangdroid.KangDroidMiscSettings" />
 
 </PreferenceScreen>
