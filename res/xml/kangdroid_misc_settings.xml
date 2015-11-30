@@ -12,8 +12,7 @@
 -->
 
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/kangdroid_misc_settings">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 	
         <!-- Gesture anywhere -->
         <PreferenceScreen
