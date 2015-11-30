@@ -15,37 +15,53 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.android.settings.rr;
+package com.android.settings.kangdroid;
 
 import com.android.internal.logging.MetricsLogger;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.app.WallpaperManager;
 import android.content.Intent;
+import android.preference.ListPreference;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.os.UserHandle;
+import android.os.UserManager;
+import com.android.settings.rr.SeekBarPreference;
+import android.preference.Preference.OnPreferenceChangeListener;
+import android.provider.Settings;
+import android.preference.SwitchPreference;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class LockScreenSettings extends SettingsPreferenceFragment {
+public class KangDroidLockScreenSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     public static final int IMAGE_PICK = 1;
 
     private static final String KEY_WALLPAPER_SET = "lockscreen_wallpaper_set";
     private static final String KEY_WALLPAPER_CLEAR = "lockscreen_wallpaper_clear";
+	private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";	
 
     private Preference mSetWallpaper;
     private Preference mClearWallpaper;
+	private SeekBarPreference mBlurRadius;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.rr_lockscreen);
+        addPreferencesFromResource(R.xml.kangdroid_lockscreen_settings);
+		ContentResolver resolver = getActivity().getContentResolver();
 
         mSetWallpaper = (Preference) findPreference(KEY_WALLPAPER_SET);
         mClearWallpaper = (Preference) findPreference(KEY_WALLPAPER_CLEAR);
+		
+	mBlurRadius = (SeekBarPreference) findPreference(KEY_LOCKSCREEN_BLUR_RADIUS);
+            mBlurRadius.setValue(Settings.System.getInt(resolver,
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, 14));
+            mBlurRadius.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -91,4 +107,16 @@ public class LockScreenSettings extends SettingsPreferenceFragment {
         wallpaperManager = WallpaperManager.getInstance(getActivity());
         wallpaperManager.clearKeyguardWallpaper();
     }
+	
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+	ContentResolver resolver = getActivity().getContentResolver();
+	 if (preference == mBlurRadius) {
+                int width = ((Integer)newValue).intValue();
+                Settings.System.putInt(resolver,
+                        Settings.System.LOCKSCREEN_BLUR_RADIUS, width);
+                return true;
+			}
+			return false;
+		}
 }
