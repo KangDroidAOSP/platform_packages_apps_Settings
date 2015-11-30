@@ -1,4 +1,4 @@
-package com.android.settings.rr;
+package com.android.settings.kangdroid;
 
 import android.app.ActivityManager;
 import android.content.ContentResolver;
@@ -24,7 +24,7 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class BatteryBar extends SettingsPreferenceFragment implements
+public class KangDroidBatteryBarSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "BatteryBar";
 
@@ -49,7 +49,7 @@ public class BatteryBar extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.battery_bar);
+        addPreferencesFromResource(R.xml.kangdroid_battery_bar);
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
