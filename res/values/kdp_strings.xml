@@ -55,6 +55,8 @@
     <string name="recents_clear_all_dismiss_all_summary">Include foreground task when clearing all</string>
     <string name="recents_show_membar_title">Memory bar</string>
     <string name="recents_show_membar_summary">Show a bar with the device\'s available memory</string>	
+	<string name="recents_choose_button">Disable Recents Clear all Button</string>
+	<string name="recents_choose_button_summary">Disable Recents Clear All button with this.</string>
 	
     <!-- OmniSwitch -->
     <string name="omniswitch_category">OmniSwitch</string>
