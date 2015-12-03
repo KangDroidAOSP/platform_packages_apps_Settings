@@ -15,7 +15,7 @@
     android:title="@string/power_menu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceCategory
+<!--    <PreferenceCategory
         android:key="lockscreen_wallpaper"
         android:title="@string/lockscreen_wallpaper_title" >
 
@@ -29,6 +29,6 @@
             android:title="@string/lockscreen_wallpaper_clear_title"
             android:persistent="false"/>
 
-    </PreferenceCategory>
+    </PreferenceCategory> -->
 
 </PreferenceScreen>
