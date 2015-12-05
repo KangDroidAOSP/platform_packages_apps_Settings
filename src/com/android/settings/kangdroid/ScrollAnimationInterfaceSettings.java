@@ -40,7 +40,7 @@ import android.view.MenuItem;
 import android.util.Log;
 import android.text.TextUtils;
 
-import com.android.settings.liquid.SeekBarPreference;
+import com.android.settings.rr.SeekBarPreference;
 
 public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -201,6 +201,11 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
         }
 
         Settings.System.putInt(getActivity().getContentResolver(), mString, val);
+    }
+	
+    protected int getMetricsCategory()
+    {
+	return MetricsLogger.APPLICATION;
     }
 
 }
