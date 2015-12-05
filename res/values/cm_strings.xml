@@ -856,5 +856,3 @@
                  <b>Total commits:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
                  <b>Last update:</b> <xliff:g id="date">%3$s</xliff:g>]]></string>
 </resources>
-
-</resources>

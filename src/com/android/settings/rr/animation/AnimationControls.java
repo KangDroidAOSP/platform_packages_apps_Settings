@@ -31,6 +31,7 @@ import android.provider.Settings;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.rr.animation.AnimBarPreference;
 import com.android.settings.R;
+import com.android.internal.logging.MetricsLogger;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.util.benzo.AwesomeAnimationHelper;
@@ -252,5 +253,10 @@ public class AnimationControls extends SettingsPreferenceFragment implements OnP
 
         int mNum = Settings.System.getInt(mContentRes, mString, 0);
         return mAnimationsStrings[mNum];
+    }
+	
+    protected int getMetricsCategory()
+    {
+	return MetricsLogger.APPLICATION;
     }
 }
