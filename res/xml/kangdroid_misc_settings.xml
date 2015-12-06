@@ -20,6 +20,12 @@
              android:title="@string/pa_pie_control_title"
              android:fragment="com.android.settings.paranoid.PieControl"
              android:icon="@drawable/ic_rr_papie" />
+			 
+    <!-- System APP Remover -->
+    <PreferenceScreen
+            android:id="@+id/system_app_remover"
+            android:title="@string/system_app_remover"
+            android:fragment="com.android.settings.rr.fragments.SystemappRemover" />
 	
         <!-- Gesture anywhere -->
         <PreferenceScreen
