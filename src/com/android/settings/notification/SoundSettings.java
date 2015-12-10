@@ -175,14 +175,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                         com.android.internal.R.drawable.ic_audio_ring_notif_mute);
 
         if (mVoiceCapable) {
-            mVolumeLinkNotification = (SwitchPreference) mSoundCategory.findPreference(
+            mVolumeLinkNotification = (SwitchPreference) sounds.findPreference(
                     KEY_VOLUME_LINK_NOTIFICATION);
             mRingPreference =
                     initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING,
                             com.android.internal.R.drawable.ic_audio_ring_notif_mute);
         } else {
-            volumes.removePreference(mSoundCategory.findPreference(KEY_RING_VOLUME));
-            sounds.removePreference(mSoundCategory.findPreference(
+            volumes.removePreference(volumes.findPreference(KEY_RING_VOLUME));
+            sounds.removePreference(sounds.findPreference(
                     KEY_VOLUME_LINK_NOTIFICATION));
         }
 
@@ -513,9 +513,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
             updateRingPreference();
             if (!linkEnabled) {
-                mSoundCategory.addPreference(mNotificationPreference);
+                sounds.addPreference(mNotificationPreference);
             } else {
-                mSoundCategory.removePreference(mNotificationPreference);
+                sounds.removePreference(mNotificationPreference);
             }
             mVolumeLinkNotification.setChecked(linkEnabled);
             mVolumeLinkNotification.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
@@ -547,12 +547,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         if (!linkEnabled) {
             updateNotificationPreference();
             mNotificationPreference.onActivityResume();
-            mSoundCategory.addPreference(mNotificationPreference);
+            sounds.addPreference(mNotificationPreference);
             if (mRingPreference != null) {
                 mRingPreference.setTitle(R.string.ring_volume_option_title);
             }
         } else {
-            mSoundCategory.removePreference(mNotificationPreference);
+            sounds.removePreference(mNotificationPreference);
             if (mRingPreference != null) {
                 mRingPreference.setTitle(R.string.ring_notification_volume_option_title);
             }
