@@ -726,6 +726,7 @@
     <string name="pa_pie_button_color_title">Buttons Color</string>
 
     <string name="reset_paranoid">Paranoid</string>
+	<string name="reset_android">Android</string>
 
     <!-- SlimSizer  -->
     <string name="listsystem">list</string>
