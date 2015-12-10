@@ -157,9 +157,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private PreferenceCategory mNavigationPreferencesCat;
 
-
-    private PreferenceCategory mNavigationPreferencesCat;
-
     private Handler mHandler;
 
     @Override
