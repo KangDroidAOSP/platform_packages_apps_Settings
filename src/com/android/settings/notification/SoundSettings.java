@@ -175,14 +175,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                         com.android.internal.R.drawable.ic_audio_ring_notif_mute);
 
         if (mVoiceCapable) {
-            mVolumeLinkNotification = (SwitchPreference) mSoundCategory.findPreference(
+            mVolumeLinkNotification = (SwitchPreference) sounds.findPreference(
                     KEY_VOLUME_LINK_NOTIFICATION);
             mRingPreference =
                     initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING,
                             com.android.internal.R.drawable.ic_audio_ring_notif_mute);
         } else {
-            volumes.removePreference(mSoundCategory.findPreference(KEY_RING_VOLUME));
-            sounds.removePreference(mSoundCategory.findPreference(
+            volumes.removePreference(volumes.findPreference(KEY_RING_VOLUME));
+            sounds.removePreference(sounds.findPreference(
                     KEY_VOLUME_LINK_NOTIFICATION));
         }
 
@@ -299,6 +299,61 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             mNotificationPreference.setSuppressionText(text);
         }
         updateNotificationPreference();
+    }
+	
+    private void initVolumeLinkNotification() {
+		final PreferenceCategory sounds = (PreferenceCategory) findPreference(KEY_SOUND);
+        if (mVoiceCapable) {
+            final boolean linkEnabled = Settings.System.getInt(getContentResolver(),
+                    Settings.System.VOLUME_LINK_NOTIFICATION, 1) == 1;
+
+            updateRingPreference();
+            if (!linkEnabled) {
+                sounds.addPreference(mNotificationPreference);
+            } else {
+                sounds.removePreference(mNotificationPreference);
+            }
+            mVolumeLinkNotification.setChecked(linkEnabled);
+            mVolumeLinkNotification.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    final boolean val = (Boolean)newValue;
+                    if (val) {
+                        // set to same volume as ringer by default if link is enabled
+                        // otherwise notification volume will only change after next
+                        // change of ringer volume
+                        final int ringerVolume = mAudioManager.getStreamVolume(
+                                AudioSystem.STREAM_RING);
+                        mAudioManager.setStreamVolume(AudioSystem.STREAM_NOTIFICATION,
+                                ringerVolume, 0);
+                    }
+                    Settings.System.putInt(getContentResolver(),
+                            Settings.System.VOLUME_LINK_NOTIFICATION, val ? 1 : 0);
+                    updateSlidersAndMutedStates();
+                    return true;
+                }
+            });
+        }
+    }
+
+    private void updateSlidersAndMutedStates() {
+		final PreferenceCategory sounds = (PreferenceCategory) findPreference(KEY_SOUND);
+        final boolean linkEnabled = Settings.System.getInt(getContentResolver(),
+                Settings.System.VOLUME_LINK_NOTIFICATION, 1) == 1;
+        updateRingPreference();
+        if (!linkEnabled) {
+            updateNotificationPreference();
+            mNotificationPreference.onActivityResume();
+            sounds.addPreference(mNotificationPreference);
+            if (mRingPreference != null) {
+                mRingPreference.setTitle(R.string.ring_volume_option_title);
+            }
+        } else {
+            sounds.removePreference(mNotificationPreference);
+            if (mRingPreference != null) {
+                mRingPreference.setTitle(R.string.ring_notification_volume_option_title);
+            }
+        }
     }
 
     private String getSuppressorCaption(ComponentName suppressor) {
@@ -506,58 +561,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 & DevicePolicyManager.KEYGUARD_DISABLE_UNREDACTED_NOTIFICATIONS) != 0;
     }
 
-    private void initVolumeLinkNotification() {
-        if (mVoiceCapable) {
-            final boolean linkEnabled = Settings.System.getInt(getContentResolver(),
-                    Settings.System.VOLUME_LINK_NOTIFICATION, 1) == 1;
-
-            updateRingPreference();
-            if (!linkEnabled) {
-                mSoundCategory.addPreference(mNotificationPreference);
-            } else {
-                mSoundCategory.removePreference(mNotificationPreference);
-            }
-            mVolumeLinkNotification.setChecked(linkEnabled);
-            mVolumeLinkNotification.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    final boolean val = (Boolean)newValue;
-                    if (val) {
-                        // set to same volume as ringer by default if link is enabled
-                        // otherwise notification volume will only change after next
-                        // change of ringer volume
-                        final int ringerVolume = mAudioManager.getStreamVolume(
-                                AudioSystem.STREAM_RING);
-                        mAudioManager.setStreamVolume(AudioSystem.STREAM_NOTIFICATION,
-                                ringerVolume, 0);
-                    }
-                    Settings.System.putInt(getContentResolver(),
-                            Settings.System.VOLUME_LINK_NOTIFICATION, val ? 1 : 0);
-                    updateSlidersAndMutedStates();
-                    return true;
-                }
-            });
-        }
-    }
-
-    private void updateSlidersAndMutedStates() {
-        final boolean linkEnabled = Settings.System.getInt(getContentResolver(),
-                Settings.System.VOLUME_LINK_NOTIFICATION, 1) == 1;
-        updateRingPreference();
-        if (!linkEnabled) {
-            updateNotificationPreference();
-            mNotificationPreference.onActivityResume();
-            mSoundCategory.addPreference(mNotificationPreference);
-            if (mRingPreference != null) {
-                mRingPreference.setTitle(R.string.ring_volume_option_title);
-            }
-        } else {
-            mSoundCategory.removePreference(mNotificationPreference);
-            if (mRingPreference != null) {
-                mRingPreference.setTitle(R.string.ring_notification_volume_option_title);
-            }
-        }
-    }
     // === Notification listeners ===
 
     private void refreshNotificationListeners() {
