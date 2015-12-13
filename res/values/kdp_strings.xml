@@ -773,4 +773,8 @@
     <!-- On-The-Go -->
     <string name="power_menu_onthego_title">On-The-Go Mode</string>
 
+     <!-- Hold back to kill timeout -->
+    <string name="hold_back_to_kill_timeout_title">Kill app back button timeout</string>
+    <string name="default_string">Default</string>
+
 </resources>
