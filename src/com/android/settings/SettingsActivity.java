@@ -1181,6 +1181,11 @@ public class SettingsActivity extends Activity
                                     com.android.internal.R.styleable.PreferenceHeader_fragment);
                             sa.recycle();
 
+                            sa = context.obtainStyledAttributes(attrs, R.styleable.DashboardTile);
+                            tile.switchControl = sa.getString(
+                                    R.styleable.DashboardTile_switchClass);
+                            sa.recycle();
+
                             if (curBundle == null) {
                                 curBundle = new Bundle();
                             }
@@ -1260,7 +1265,8 @@ public class SettingsActivity extends Activity
                 boolean removeTile = false;
                 id = (int) tile.id;
                 if (id == R.id.operator_settings || id == R.id.manufacturer_settings
-                        || id == R.id.device_specific_gesture_settings) {
+                        || id == R.id.device_specific_gesture_settings
+                        || id == R.id.oclick) {
                     if (!Utils.updateTileToSpecificActivityFromMetaDataOrRemove(this, tile)) {
                         removeTile = true;
                     }
@@ -1373,7 +1379,8 @@ public class SettingsActivity extends Activity
                         activityInfo.packageName, activityInfo.name);
                 Utils.updateTileToSpecificActivityFromMetaDataOrRemove(this, tile);
 
-                if (category.externalIndex == -1) {
+                if (category.externalIndex == -1
+                        || category.externalIndex > category.getTilesCount()) {
                     // If no location for external tiles has been specified for this category,
                     // then just put them at the end.
                     category.addTile(tile);
