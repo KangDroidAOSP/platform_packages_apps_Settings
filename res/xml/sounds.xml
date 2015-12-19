@@ -77,13 +77,6 @@
                 android:key="increasing_ring_volume"
                 android:icon="@drawable/ring_notif_increasing"
                 android:dependency="increasing_ring"/>
-				
-        <!-- Link Volume Notification -->
-        <SwitchPreference
-                android:key="volume_link_notification"
-                android:title="@string/link_volume_option_title"
-                android:persistent = "false"
-                android:defaultValue = "true" />
 
         <!-- Other sounds -->
         <Preference
