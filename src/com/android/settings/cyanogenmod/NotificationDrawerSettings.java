@@ -68,10 +68,15 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment  impl
     private SwitchPreference mForceExpanded;
 	private SwitchPreference mEnableTaskManager;
     private ListPreference mCustomHeaderDefault;
+	private boolean mCheckPreferences;
     
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+		createCustomView();
+    }
+	private PreferenceScreen createCustomView() {
+		mCheckPreferences = false;
         addPreferencesFromResource(R.xml.notification_drawer_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
         final ContentResolver resolver = getActivity().getContentResolver();
@@ -90,7 +95,9 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment  impl
         mEnableTaskManager = (SwitchPreference) prefSet.findPreference(PREF_ENABLE_TASK_MANAGER);
         mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
-    }
+        mCheckPreferences = true;
+        return prefSet;
+	}
 
     @Override
     protected int getMetricsCategory() {
@@ -104,6 +111,9 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment  impl
 	
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (!mCheckPreferences) {
+            return false;
+        }
     	ContentResolver resolver = getActivity().getContentResolver();
 		if (preference == mCustomHeaderDefault) {
             int customHeaderDefault = Integer.valueOf((String) newValue);
