@@ -27,6 +27,7 @@ import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.livedisplay.DisplayGamma;
 import com.android.settings.location.LocationSettings;
+import com.android.settings.kangdroid.KangDroidNavigationSettings;
 
 public class BootReceiver extends BroadcastReceiver {
 
@@ -35,7 +36,7 @@ public class BootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context ctx, Intent intent) {
         /* Restore the hardware tunable values */
-        ButtonSettings.restoreKeyDisabler(ctx);
+        KangDroidNavigationSettings.restoreKeyDisabler(ctx);
         DisplayGamma.restore(ctx);
         VibratorIntensity.restore(ctx);
         InputMethodAndLanguageSettings.restore(ctx);

@@ -13,12 +13,6 @@
 
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
-	
-        <!-- Pie Control -->
-        <PreferenceScreen
-             android:key="pa_pie_control"
-             android:title="@string/pa_pie_control_title"
-             android:fragment="com.android.settings.paranoid.PieControl" />
 			 
     <!-- System APP Remover -->
     <PreferenceScreen
