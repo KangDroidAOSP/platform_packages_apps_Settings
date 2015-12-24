@@ -40,6 +40,10 @@
 	<string name="kdp_lockscreen_main_category">Lock Screen Settings</string>
 	<string name="kdp_clock_customization">Clock Settings</string>
 	<string name="kdp_date_customization">Date Settings</string>
+	<string name="kdp_task_manager_customization">Task Manager Settings</string>
+	<string name="recents_panel_location_kangdroid">Recent Clear Button Location</string>
+	<string name="recents_panel_misc_settings_title">Recent Panel Other Settings</string>
+	<string name="kdp_overscroll_category_title">OverScroll Animation Settings</string>
 	
     <!-- Color picker -->
     <string name="dialog_color_picker_title">Color Picker</string>
