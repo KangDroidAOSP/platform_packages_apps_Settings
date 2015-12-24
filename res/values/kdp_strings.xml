@@ -40,6 +40,20 @@
 	<string name="kdp_lockscreen_main_category">Lock Screen Settings</string>
 	<string name="kdp_clock_customization">Clock Settings</string>
 	<string name="kdp_date_customization">Date Settings</string>
+	<string name="kdp_task_manager_customization">Task Manager Settings</string>
+	<string name="recents_panel_location_kangdroid">Recent Clear Button Location</string>
+	<string name="recents_panel_misc_settings_title">Recent Panel Other Settings</string>
+	<string name="kdp_overscroll_category_title">OverScroll Animation Settings</string>
+	<string name="kdp_navigation_category_title">Navigation Bar Customization</string>
+	<string name="dim_navigation_bar_title">Navigation Bar dimming settings</string>
+	<string name="kdp_other_nav_category_title">Other Navigation Bar Settings</string>
+	<string name="kdp_other_sound_is_misc_actually">KDP Volume Settings</string>
+	<string name="kdp_app_bar_settings_title">App Bar Settings</string>
+	<string name="kdp_system_app_remover_title">System App Remover</string>
+	<string name="kdp_gesture_category_title">KDP Gesture Settings</string>
+	<string name="kdp_advanced_weather_title">Advanced Weather Settings</string>
+	<string name="kdp_pie_title">Pie Settings</string>
+	
 	
     <!-- Color picker -->
     <string name="dialog_color_picker_title">Color Picker</string>
