@@ -14,18 +14,11 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-
-    <PreferenceCategory
-        android:key="recents_panel"
-        android:title="@string/recents_panel_category" >
-
-
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-            android:key="systemui_recents_mem_display"
-            android:title="@string/recents_show_membar_title"
-            android:summary="@string/recents_show_membar_summary"
-            android:defaultValue="false" />
-
+	
+	<PreferenceCategory
+		android:key="recents_panel_location"
+		android:title="@string/recents_panel_location_kangdroid">
+		
         <SwitchPreference
             android:key="show_clear_all_recents"
             android:title="@string/show_clear_all_recents_button_title"
@@ -46,6 +39,18 @@
             android:entryValues="@array/recents_clear_all_location_values"
             android:defaultValue="3"
             android:dependency="show_clear_all_recents" />
+			
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="recents_panel_misc_settings"
+		android:title="@string/recents_panel_misc_settings_title">
+		
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="systemui_recents_mem_display"
+            android:title="@string/recents_show_membar_title"
+            android:summary="@string/recents_show_membar_summary"
+            android:defaultValue="false" />
 
        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
 	    android:key="recents_full_screen"
@@ -53,8 +58,9 @@
             android:summaryOn="@string/recents_fullscreen_summary_enabled"
             android:summaryOff="@string/recents_fullscreen_summary_disabled"
             android:defaultValue="false" />
+		
+	</PreferenceCategory>
 
-    </PreferenceCategory>
     <PreferenceCategory
         android:key="rr_slim_recents_panel"
         android:title="@string/rr_recent_slim_category" >
@@ -63,7 +69,7 @@
         <PreferenceScreen
             android:key="slim_recents"
             android:title="@string/slim_recents_panel"
-	    android:fragment="com.android.settings.rr.Slimrecents" />
+	    	android:fragment="com.android.settings.rr.Slimrecents" />
 
  </PreferenceCategory>
     <PreferenceCategory
