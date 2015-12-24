@@ -63,10 +63,8 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 public class NotificationDrawerSettings extends SettingsPreferenceFragment  implements OnPreferenceChangeListener{
     private static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
-	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
 
     private SwitchPreference mForceExpanded;
-	private SwitchPreference mEnableTaskManager;
     private ListPreference mCustomHeaderDefault;
 	private boolean mCheckPreferences;
     
@@ -91,10 +89,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment  impl
                 .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0);
         mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
         mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntry());
-        // Task manager
-        mEnableTaskManager = (SwitchPreference) prefSet.findPreference(PREF_ENABLE_TASK_MANAGER);
-        mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
         mCheckPreferences = true;
         return prefSet;
 	}
@@ -134,10 +128,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment  impl
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.FORCE_EXPANDED_NOTIFICATIONS, checked ? 1:0);
             return true;
-        } else if  (preference == mEnableTaskManager) {
-            boolean enabled = ((SwitchPreference)preference).isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.ENABLE_TASK_MANAGER, enabled ? 1:0);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
