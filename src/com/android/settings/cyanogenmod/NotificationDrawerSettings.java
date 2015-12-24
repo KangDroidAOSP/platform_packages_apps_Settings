@@ -63,6 +63,7 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 public class NotificationDrawerSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     private static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
+	private static final String TAG = "NotificationDrawerSettings";
 
     private SwitchPreference mForceExpanded;
     private boolean mCheckPreferences;
