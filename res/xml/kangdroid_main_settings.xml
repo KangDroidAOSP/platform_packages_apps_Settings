@@ -39,6 +39,18 @@
 	</PreferenceCategory>
 	
 	<PreferenceCategory
+		android:key="kdp_navigation_category"
+		android:title="@string/kdp_navigation_category_title">
+		
+	<!-- KDP Notification Drawer Settings -->
+	<PreferenceScreen
+		android:key="kdp_navigation"
+		android:title="@string/kdp_navigation_category_title"
+		android:fragment="com.android.settings.kangdroid.KangDroidNavigationSettings" />
+
+	</PreferenceCategory>
+	
+	<PreferenceCategory
 		android:key="kangdroid_recents_activity_category"
 		android:title="@string/kangdroid_recents_settings_title">
 		
