@@ -100,13 +100,17 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment  impl
     public boolean onPreferenceChange(Preference preference, Object newValue) {
     	ContentResolver resolver = getActivity().getContentResolver();
 		if (preference == mCustomHeaderDefault) {
-            int customHeaderDefault = Integer.valueOf((String) newValue);
-            int index = mCustomHeaderDefault.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(), 
-                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeaderDefault);
-            mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
-            createCustomView();
-            return true;
+		           int customHeaderDefault = Integer.valueOf((String) newValue);
+		            Settings.System.putIntForUser(getContentResolver(), 
+		                    Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT,
+		                    customHeaderDefault, UserHandle.USER_CURRENT);
+		            Settings.System.putInt(getContentResolver(),
+		                    Settings.System.STATUS_BAR_CUSTOM_HEADER,
+		                    0);
+		            Settings.System.putInt(getContentResolver(),
+		                    Settings.System.STATUS_BAR_CUSTOM_HEADER,
+		                    1);
+		            return true;
 		}
     	return false;
     }
