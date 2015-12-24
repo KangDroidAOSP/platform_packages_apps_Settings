@@ -14,17 +14,39 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 	
-        <!-- Pie Control -->
-        <PreferenceScreen
-             android:key="pa_pie_control"
-             android:title="@string/pa_pie_control_title"
-             android:fragment="com.android.settings.paranoid.PieControl" />
-			 
-    <!-- System APP Remover -->
+	<PreferenceCategory
+		android:key="kdp_app_bar_settings"
+		android:title="@string/kdp_app_bar_settings_title">
+
+    <!-- App sidebar -->
     <PreferenceScreen
-            android:id="@+id/system_app_remover"
-            android:title="@string/system_app_remover"
-            android:fragment="com.android.settings.rr.fragments.SystemappRemover" />
+         android:key="app_sidebar"
+         android:fragment="com.android.settings.rr.AppSidebar"
+         android:title="@string/app_sidebar_title" />
+			
+    <!-- Circle app bar -->
+     <PreferenceScreen
+         android:key="app_circle_bar"
+         android:fragment="com.android.settings.crdroid.AppCircleBar"
+         android:title="@string/app_circle_bar_title"/>
+		 
+	 </PreferenceCategory>
+	 
+	 <PreferenceCategory
+		 android:key="kdp_system_remover"
+		 android:key="@string/kdp_system_app_remover_title">
+			 
+     <!-- System APP Remover -->
+     <PreferenceScreen
+         android:id="@+id/system_app_remover"
+         android:title="@string/system_app_remover"
+         android:fragment="com.android.settings.rr.fragments.SystemappRemover" />
+		 
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_gesture_category"
+		android:title="@string/kdp_gesture_category_title">
 	
         <!-- Gesture anywhere -->
         <PreferenceScreen
@@ -32,17 +54,11 @@
             android:fragment="com.android.settings.rr.gestureanywhere.GestureAnywhereSettings"
             android:title="@string/gesture_anywhere_title" />
 			
-       <!-- App sidebar -->
-        <PreferenceScreen
-            android:key="app_sidebar"
-            android:fragment="com.android.settings.rr.AppSidebar"
-            android:title="@string/app_sidebar_title" />
-			
-   <!-- Circle app bar -->
-    <PreferenceScreen
-        android:key="app_circle_bar"
-        android:fragment="com.android.settings.crdroid.AppCircleBar"
-        android:title="@string/app_circle_bar_title"/>
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_advance_weather"
+		android:title="@string/kdp_advanced_weather_title">
 			
         <!-- Weather Settings -->
        <Preference
@@ -56,5 +72,7 @@
                    android:value="com.cyanogenmod.lockclock.preference.WeatherPreferences" />
            </intent>
        </Preference>
+	   
+   </PreferenceCategory>
 
 </PreferenceScreen>
