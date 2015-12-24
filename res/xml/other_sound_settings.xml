@@ -18,6 +18,19 @@
         android:title="@string/other_sound_settings"
         android:key="other_sound_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+	
+<!--	<PreferenceCategory
+		android:key="kdp_other_sound_is_misc_actually"
+		android:title="@string/kdp_other_sound_is_misc_actually"> -->
+		
+        <!-- Volume Steps -->
+<!--        <PreferenceScreen
+                android:key="volume_steps"
+                android:title="@string/volume_steps_title"
+                android:fragment="com.android.settings.temasek.VolumeSteps" />
+		
+	</PreferenceCategory>
+-->
 
     <!-- Dial pad tones -->
     <SwitchPreference
