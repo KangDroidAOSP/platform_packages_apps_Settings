@@ -60,6 +60,7 @@ import android.os.UserManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
@@ -94,7 +95,8 @@ import java.util.List;
  */
 public class DevelopmentSettings extends SettingsPreferenceFragment
         implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener,
-                OnPreferenceChangeListener, SwitchBar.OnSwitchChangeListener, Indexable {
+                OnPreferenceChangeListener, SwitchBar.OnSwitchChangeListener, Indexable,
+                OnPreferenceClickListener {
     private static final String TAG = "DevelopmentSettings";
 
     /**
@@ -173,6 +175,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private static final String ROOT_ACCESS_KEY = "root_access";
     private static final String ROOT_ACCESS_PROPERTY = "persist.sys.root_access";
+
+    private static final String UPDATE_RECOVERY_KEY = "update_recovery";
+    private static final String UPDATE_RECOVERY_PROPERTY = "persist.sys.recovery_update";
 
     private static final String IMMEDIATELY_DESTROY_ACTIVITIES_KEY
             = "immediately_destroy_activities";
@@ -262,9 +267,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private ListPreference mUsbConfiguration;
     private ListPreference mTrackFrameTime;
     private ListPreference mShowNonRectClip;
-    private ListPreference mWindowAnimationScale;
-    private ListPreference mTransitionAnimationScale;
-    private ListPreference mAnimatorDurationScale;
+    private AnimationScalePreference mWindowAnimationScale;
+    private AnimationScalePreference mTransitionAnimationScale;
+    private AnimationScalePreference mAnimatorDurationScale;
     private ListPreference mOverlayDisplayDevices;
     private ListPreference mOpenGLTraces;
 
@@ -285,6 +290,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private SwitchPreference mAdvancedReboot;
 
+    private SwitchPreference mUpdateRecovery;
+
     private SwitchPreference mDevelopmentShortcut;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
@@ -301,6 +308,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private Dialog mAdbKeysDialog;
     private boolean mUnavailable;
     private Dialog mRootDialog;
+    private Dialog mUpdateRecoveryDialog;
 
     @Override
     protected int getMetricsCategory() {
@@ -332,7 +340,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 findPreference(DEBUG_DEBUGGING_CATEGORY_KEY);
         mEnableAdb = findAndInitSwitchPref(ENABLE_ADB);
 
-        mAdbNotify = findAndInitSwitchPref(ADB_NOTIFY);
+        mAdbNotify = (SwitchPreference) findPreference(ADB_NOTIFY);
         mAllPrefs.add(mAdbNotify);
         mAdbOverNetwork = findAndInitSwitchPref(ADB_TCPIP);
 
@@ -365,7 +373,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
         mAdvancedReboot = findAndInitSwitchPref(ADVANCED_REBOOT_KEY);
-
+        mUpdateRecovery = findAndInitSwitchPref(UPDATE_RECOVERY_KEY);
         mDevelopmentShortcut = findAndInitSwitchPref(DEVELOPMENT_SHORTCUT_KEY);
 
 
@@ -375,6 +383,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
             disableForUser(mAdvancedReboot);
+            disableForUser(mUpdateRecovery);
             disableForUser(mDevelopmentShortcut);
         }
 
@@ -385,7 +394,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mMockLocationAppPref = findPreference(MOCK_LOCATION_APP_KEY);
         mAllPrefs.add(mMockLocationAppPref);
 
-        mVerifyAppsOverUsb = findAndInitSwitchPref(VERIFY_APPS_OVER_USB_KEY);
+        mVerifyAppsOverUsb = (SwitchPreference) findPreference(VERIFY_APPS_OVER_USB_KEY);
+        mAllPrefs.add(mVerifyAppsOverUsb);
         if (!showVerifierSetting()) {
             if (debugDebuggingCategory != null) {
                 debugDebuggingCategory.removePreference(mVerifyAppsOverUsb);
@@ -417,9 +427,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mLogdSize = addListPreference(SELECT_LOGD_SIZE_KEY);
         mUsbConfiguration = addListPreference(USB_CONFIGURATION_KEY);
 
-        mWindowAnimationScale = addListPreference(WINDOW_ANIMATION_SCALE_KEY);
-        mTransitionAnimationScale = addListPreference(TRANSITION_ANIMATION_SCALE_KEY);
-        mAnimatorDurationScale = addListPreference(ANIMATOR_DURATION_SCALE_KEY);
+        mWindowAnimationScale = findAndInitAnimationScalePreference(WINDOW_ANIMATION_SCALE_KEY);
+        mTransitionAnimationScale = findAndInitAnimationScalePreference(TRANSITION_ANIMATION_SCALE_KEY);
+        mAnimatorDurationScale = findAndInitAnimationScalePreference(ANIMATOR_DURATION_SCALE_KEY);
         mOverlayDisplayDevices = addListPreference(OVERLAY_DISPLAY_DEVICES_KEY);
         mEnableMultiWindow = findAndInitSwitchPref(ENABLE_MULTI_WINDOW_KEY);
         if (!showEnableMultiWindowPreference()) {
@@ -489,6 +499,14 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             pref.setEnabled(false);
             mDisabledPrefs.add(pref);
         }
+    }
+
+    private AnimationScalePreference findAndInitAnimationScalePreference(String key) {
+        AnimationScalePreference pref = (AnimationScalePreference) findPreference(key);
+        pref.setOnPreferenceChangeListener(this);
+        pref.setOnPreferenceClickListener(this);
+        mAllPrefs.add(pref);
+        return pref;
     }
 
     private SwitchPreference findAndInitSwitchPref(String key) {
@@ -702,6 +720,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateRootAccessOptions();
         updateAdvancedRebootOptions();
         updateDevelopmentShortcutOptions();
+        updateUpdateRecoveryOptions();
     }
 
     private void writeAdvancedRebootOptions() {
@@ -771,7 +790,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         resetDebuggerOptions();
         writeLogdSizeOption(null);
         resetRootAccessOptions();
+        resetAdbNotifyOptions();
+        resetVerifyAppsOverUsbOptions();
         resetDevelopmentShortcutOptions();
+        resetUpdateRecoveryOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -826,6 +848,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                     Settings.Secure.ADB_ENABLED, 1);
         }
         updateRootAccessOptions();
+    }
+
+    private void resetAdbNotifyOptions() {
+        CMSettings.Secure.putInt(getActivity().getContentResolver(),
+                CMSettings.Secure.ADB_NOTIFY, 1);
     }
 
     private void updateStayAwakeOptions() {
@@ -1012,6 +1039,11 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private void writeVerifyAppsOverUsbOptions() {
         Settings.Global.putInt(getActivity().getContentResolver(),
               Settings.Global.PACKAGE_VERIFIER_INCLUDE_ADB, mVerifyAppsOverUsb.isChecked() ? 1 : 0);
+    }
+
+    private void resetVerifyAppsOverUsbOptions() {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+              Settings.Global.PACKAGE_VERIFIER_INCLUDE_ADB, 1);
     }
 
     private boolean enableVerifierSetting() {
@@ -1578,23 +1610,13 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 getActivity().getContentResolver(), Settings.Global.ALWAYS_FINISH_ACTIVITIES, 0) != 0);
     }
 
-    private void updateAnimationScaleValue(int which, ListPreference pref) {
+    private void updateAnimationScaleValue(int which, AnimationScalePreference pref) {
         try {
             float scale = mWindowManager.getAnimationScale(which);
             if (scale != 1) {
                 mHaveDebugSettings = true;
             }
-            CharSequence[] values = pref.getEntryValues();
-            for (int i=0; i<values.length; i++) {
-                float val = Float.parseFloat(values[i].toString());
-                if (scale <= val) {
-                    pref.setValueIndex(i);
-                    pref.setSummary(pref.getEntries()[i]);
-                    return;
-                }
-            }
-            pref.setValueIndex(values.length-1);
-            pref.setSummary(pref.getEntries()[0]);
+            pref.setScale(scale);
         } catch (RemoteException e) {
         }
     }
@@ -1605,7 +1627,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateAnimationScaleValue(2, mAnimatorDurationScale);
     }
 
-    private void writeAnimationScaleOption(int which, ListPreference pref, Object newValue) {
+    private void writeAnimationScaleOption(int which, AnimationScalePreference pref,
+            Object newValue) {
         try {
             float scale = newValue != null ? Float.parseFloat(newValue.toString()) : 1;
             mWindowManager.setAnimationScale(which, scale);
@@ -1740,6 +1763,24 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 .show();
     }
 
+    private void updateUpdateRecoveryOptions() {
+        updateSwitchPreference(mUpdateRecovery, SystemProperties.getBoolean(
+                UPDATE_RECOVERY_PROPERTY, false));
+    }
+
+    private void writeUpdateRecoveryOptions() {
+        SystemProperties.set(UPDATE_RECOVERY_PROPERTY,
+                mUpdateRecovery.isChecked() ? "true" : "false");
+        pokeSystemProperties();
+    }
+
+    private void resetUpdateRecoveryOptions() {
+        // User builds should update recovery by default
+        if ("user".equals(Build.TYPE)) {
+            SystemProperties.set(UPDATE_RECOVERY_PROPERTY, "true");
+        }
+    }
+
     @Override
     public void onSwitchChanged(Switch switchView, boolean isChecked) {
         if (switchView != mSwitchBar.getSwitch()) {
@@ -1799,6 +1840,16 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        if (preference == mWindowAnimationScale ||
+                preference == mTransitionAnimationScale ||
+                preference == mAnimatorDurationScale) {
+            ((AnimationScalePreference) preference).click();
+        }
+        return false;
     }
 
     @Override
@@ -1949,6 +2000,28 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             writeDevelopmentShortcutOptions();
         } else if (preference == mKillAppLongpressBack) {
             writeKillAppLongpressBackOptions();
+        } else if (preference == mUpdateRecovery) {
+            if (mSwitchBar.isChecked()) {
+                if (mUpdateRecoveryDialog != null) {
+                    dismissDialogs();
+                }
+                if (mUpdateRecovery.isChecked()) {
+                    mUpdateRecoveryDialog = new AlertDialog.Builder(getActivity()).setMessage(
+                            getResources().getString(R.string.update_recovery_on_warning))
+                            .setTitle(R.string.update_recovery_title)
+                            .setPositiveButton(android.R.string.yes, this)
+                            .setNegativeButton(android.R.string.no, this)
+                            .show();
+                } else {
+                    mUpdateRecoveryDialog = new AlertDialog.Builder(getActivity()).setMessage(
+                            getResources().getString(R.string.update_recovery_off_warning))
+                            .setTitle(R.string.update_recovery_title)
+                            .setPositiveButton(android.R.string.yes, this)
+                            .setNegativeButton(android.R.string.no, this)
+                            .show();
+                }
+                mUpdateRecoveryDialog.setOnDismissListener(this);
+            }
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
@@ -2056,6 +2129,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             mRootDialog.dismiss();
             mRootDialog = null;
         }
+        if (mUpdateRecoveryDialog != null) {
+            mUpdateRecoveryDialog.dismiss();
+            mUpdateRecoveryDialog = null;
+        }
     }
 
     public void onClick(DialogInterface dialog, int which) {
@@ -2105,6 +2182,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 // Reset the option
                 writeRootAccessOptions("0");
             }
+        } else if (dialog == mUpdateRecoveryDialog) {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                writeUpdateRecoveryOptions();
+            }
         }
     }
 
@@ -2126,6 +2207,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         } else if (dialog == mRootDialog) {
             updateRootAccessOptions();
             mRootDialog = null;
+        } else if (dialog == mUpdateRecoveryDialog) {
+            updateUpdateRecoveryOptions();
+            mUpdateRecoveryDialog = null;
         }
     }
 

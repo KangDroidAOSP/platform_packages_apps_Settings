@@ -44,12 +44,6 @@
         <item>DEFAULT</item>
     </string-array>
 
-    <!-- Profile mode options. -->
-    <string-array name="profile_connection_entries">
-        <item>Disable</item>
-        <item>Enable</item>
-    </string-array>
-
     <!-- Profile 2G-3G and 4G mode options. -->
     <string-array name="profile_networkmode_entries_4g" translatable="false">
         <item>@string/profile_networkmode_2g</item>
@@ -60,46 +54,39 @@
         <item>@string/profile_action_none</item>
     </string-array>
 
-    <!-- Profile 2G-3G mode options. -->
-    <string-array name="profile_networkmode_entries" translatable="false">
-        <item>@string/profile_networkmode_2g</item>
-        <item>@string/profile_networkmode_3g</item>
-        <item>@string/profile_networkmode_2g3g</item>
-    </string-array>
-
-    <!-- Values for profile connections. Do not translate. -->
-    <string-array name="profile_connection_values" translatable="false">
+    <!-- Profile 2G-3G and 4G mode values. -->
+    <string-array name="profile_networkmode_values_4g" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
-    <!--  Values for profile trigger types -->
-    <string-array name="profile_trigger_filters" translatable="false">
-        <item>@string/profile_trigger_filter_all</item>
-        <item>@string/profile_trigger_filter_wifi</item>
-        <item>@string/profile_trigger_filter_bluetooth</item>
+    <!-- Profile 2G-3G and 4G mode options. -->
+    <string-array name="profile_networkmode_entries_no_2g" translatable="false">
+        <item>@string/profile_networkmode_3g</item>
+        <item>@string/profile_networkmode_4g</item>
+        <item>@string/profile_networkmode_2g3g</item>
+        <item>@string/profile_networkmode_2g3g4g</item>
+        <item>@string/profile_action_none</item>
     </string-array>
 
-    <!-- Profile lock mode options. Do not translate. -->
-    <string-array name="profile_lockmode_entries" translatable="false">
-        <item>@string/profile_lockmode_default</item>
-        <item>@string/profile_lockmode_insecure</item>
-        <item>@string/profile_lockmode_disabled</item>
+    <!-- Profile 2G-3G and 4G mode values. -->
+    <string-array name="profile_networkmode_values_no_2g" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
     <!-- Profile lock mode summaries. Do not translate. -->
-    <string-array name="profile_lockmode_summaries" translatable="false">
-        <item>@string/profile_lockmode_default_summary</item>
+    <string-array name="profile_lockmode_entries" translatable="false">
+        <item>@string/profile_action_system</item>
         <item>@string/profile_lockmode_insecure_summary</item>
         <item>@string/profile_lockmode_disabled_summary</item>
-    </string-array>
-
-    <!-- Values for profile lock mode. Do not translate. -->
-    <string-array name="profile_lockmode_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
     </string-array>
 
     <!-- Ring mode options. -->
@@ -107,7 +94,7 @@
         <item>@string/ring_mode_normal</item>
         <item>@string/ring_mode_vibrate</item>
         <item>@string/ring_mode_mute</item>
-        <item>@string/ring_mode_unchanged</item>
+        <item>@string/profile_action_none</item>
     </string-array>
 
     <!-- Values for Ring mode. Do not translate. -->
@@ -415,13 +402,19 @@
 
     <!-- Sms security limit -->
     <string-array name="sms_security_check_limit_entries" translatable="false">
-        <item>@string/sms_security_check_limit_default</item>
+        <item>@string/sms_security_check_limit_none</item>
+        <item>5</item>
+        <item>10</item>
+        <item>30</item>
         <item>50</item>
         <item>100</item>
         <item>200</item>
     </string-array>
 
     <string-array name="sms_security_check_limit_values" translatable="false">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
         <item>30</item>
         <item>50</item>
         <item>100</item>
@@ -458,4 +451,5 @@
         <item>BR</item>
         <item>IN</item>
     </string-array>
+
 </resources>

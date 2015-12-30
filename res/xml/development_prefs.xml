@@ -86,6 +86,11 @@
         android:entries="@array/root_access_entries"
         android:entryValues="@array/root_access_values" />
 
+    <SwitchPreference
+        android:key="update_recovery"
+        android:title="@string/update_recovery_title"
+        android:summary="@string/update_recovery_summary" />
+
     <com.android.settings.ColorModePreference
         android:key="color_mode"
         android:title="@string/picture_color_mode"
@@ -229,7 +234,7 @@
             android:title="@string/pointer_location"
             android:summary="@string/pointer_location_summary"/>
 
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
             android:key="edge_service_for_gestures"
             android:title="@string/edge_gesture_service_title"
             android:summary="@string/edge_gesture_service_summary"
@@ -255,26 +260,23 @@
             android:title="@string/force_rtl_layout_all_locales"
             android:summary="@string/force_rtl_layout_all_locales_summary"/>
 
-        <ListPreference
+        <com.android.settings.AnimationScalePreference
             android:key="window_animation_scale"
             android:title="@string/window_animation_scale_title"
-            android:persistent="false"
-            android:entries="@array/window_animation_scale_entries"
-            android:entryValues="@array/window_animation_scale_values" />
+            android:dialogTitle="@string/window_animation_scale_title"
+            android:persistent="false" />
 
-        <ListPreference
+        <com.android.settings.AnimationScalePreference
             android:key="transition_animation_scale"
             android:title="@string/transition_animation_scale_title"
-            android:persistent="false"
-            android:entries="@array/transition_animation_scale_entries"
-            android:entryValues="@array/transition_animation_scale_values" />
+            android:dialogTitle="@string/transition_animation_scale_title"
+            android:persistent="false" />
 
-        <ListPreference
+        <com.android.settings.AnimationScalePreference
             android:key="animator_duration_scale"
             android:title="@string/animator_duration_scale_title"
-            android:persistent="false"
-            android:entries="@array/animator_duration_scale_entries"
-            android:entryValues="@array/animator_duration_scale_values" />
+            android:dialogTitle="@string/animator_duration_scale_title"
+            android:persistent="false" />
 
         <ListPreference
             android:key="overlay_display_devices"
