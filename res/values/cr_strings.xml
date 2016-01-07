@@ -2,42 +2,33 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- About phone screen, Temasek version -->
-    <string name="temasek_version_title">Temasek unofficial version</string>
+    <!-- About phone screen, KDP version -->
+    <string name="kdp_version_title">KDP ROM Version</string>
     <!-- Do NOT translate this -->
-   <string name="temasek_version_default">Build V0-PREVIEW 1</string>
-
-    <!-- Changelog -->
-    <string name="changelog_temasek_title">Changelog</string>
-    <string name="changelog_temasek_error">Unable to load changelog</string>
-
-    <!-- About device screen, CPU and RAM info. -->
-    <string name="cpu_info">CPU</string>
-    <string name="mem_info">RAM</string>
-
-    <!-- SuperSU -->
-    <string name="supersu_title">SuperSU</string>
-
-    <!-- Viper4Android -->
-    <string name="viper_title">Viper4Android</string>
-
-    <!-- OTA update -->
-    <string name="ota_title">OTA update</string>
-
-    <!-- Superuser indicator on status bar -->
-    <string name="su_indicator">Superuser indicator</string>
-    <string name="su_indicator_summary_on">Superuser indicator is visible when a session is active</string>
-    <string name="su_indicator_summary_off">Toggle to show superuser indicator when a session is active</string>
-
-    <!-- long press back to kill configurable timeout -->
-    <string name="kill_app_longpress_timeout_title">Long press back button timeout</string>
-    <string name="timeout_2000">2 seconds (default)</string>
-    <string name="timeout_1500">1,5 seconds</string>
-    <string name="timeout_1000">1 second</string>
-    <string name="timeout_500">0,5 second</string>
-
-    <!-- Battery saver color -->
-    <string name="battery_saver_color_title">Warning color</string>
-    <string name="battery_saver_color_summary">Enable orange status and navigation bars when battery saver is activated</string>
+   <string name="kdp_versoin_default">Alpha - 0</string>
+   
+   <!-- Changelog -->
+   <string name="changelog_temasek_title">Changelog</string>
+   <string name="changelog_temasek_error">Unable to load changelog</string>
+   
+   <!-- About device screen, CPU and RAM info. -->
+   <string name="cpu_info">CPU</string>
+   <string name="mem_info">RAM</string>
+   
+   <!-- Superuser indicator on status bar -->
+   <string name="su_indicator">Superuser indicator</string>
+   <string name="su_indicator_summary_on">Superuser indicator is visible when a session is active</string>
+   <string name="su_indicator_summary_off">Toggle to show superuser indicator when a session is active</string>
+   
+   <!-- long press back to kill configurable timeout -->
+   <string name="kill_app_longpress_timeout_title">Long press back button timeout</string>
+   <string name="timeout_2000">2 seconds (default)</string>
+   <string name="timeout_1500">1,5 seconds</string>
+   <string name="timeout_1000">1 second</string>
+   <string name="timeout_500">0,5 second</string>
+   
+   <!-- Battery saver color -->
+   <string name="battery_saver_color_title">Warning color</string>
+   <string name="battery_saver_color_summary">Enable orange status and navigation bars when battery saver is activated</string>
 
 </resources>
