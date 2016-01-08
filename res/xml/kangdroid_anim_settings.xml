@@ -17,6 +17,29 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 		
+	<PreferenceCategory
+		android:key="kdp_aokp_system_category"
+		android:title="@string/kdp_aokp_system_category_title">
+		
+    <!-- AOKP custom animations -->
+    <PreferenceScreen
+         android:key="aokp_animation"
+         android:title="@string/aokp_animation_title"
+         android:summary="@string/aokp_animation_summary"
+         android:fragment="com.android.settings.kangdroid.fragments.AnimationControls" />
+		 
+	 </PreferenceCategory>
+		
+	<PreferenceCategory
+		android:key="kdp_toast_category"
+		android:title="@string/kdp_toast_category_title">
+		
+    <!-- Toast Icons -->
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="toast_icon"
+        android:title="@string/toast_icon_title"
+        android:defaultValue="true" />
+		
     <ListPreference
         android:key="toast_animation"
         android:title="@string/toast_animation_title"
@@ -24,11 +47,11 @@
         android:entryValues="@array/toast_animation_values"
         android:persistent="false" />
 		
-        <!-- Toast Icons -->
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-                android:key="toast_icon"
-                android:title="@string/toast_icon_title"
-                android:defaultValue="true" />
+	</PreferenceCategory>
+		
+	<PreferenceCategory
+		android:key="kdp_listview_category"
+		android:title="@string/kdp_listview_category">
 		
     <!-- List view animation -->
     <ListPreference
@@ -55,12 +78,6 @@
         android:entries="@array/entries_scrollingcache"
         android:entryValues="@array/values_scrollingcache" />
 		
-    <!-- AOKP custom animations -->
-    <PreferenceScreen
-         android:key="aokp_animation"
-         android:title="@string/aokp_animation_title"
-         android:summary="@string/aokp_animation_summary"
-         android:fragment="com.android.settings.kangdroid.fragments.AnimationControls" />
-
+	</PreferenceCategory>
 
 </PreferenceScreen>

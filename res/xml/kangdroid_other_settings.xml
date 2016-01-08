@@ -17,18 +17,21 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 		
-    <!-- Three-fingers-swipe to screenshot -->
-    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-        android:key="three_finger_gesture"
-        android:title="@string/three_finger_gesture"
-        android:summary="@string/three_finger_gesture_summary"
-        android:defaultValue="false" />
+	<PreferenceCategory
+		android:key="gesture_anywhere_category_kdp"
+		android:title="@string/gesture_anywhere_category_kdp_title">
 		
     <!-- Gesture anywhere -->
     <PreferenceScreen
          android:key="gesture_anywhere"
          android:fragment="com.android.settings.kangdroid.gestureanywhere.GestureAnywhereSettings"
          android:title="@string/gesture_anywhere_title" />
+		 
+	 </PreferenceCategory>
+	 
+	 <PreferenceCategory
+		 android:key="kdp_app_bar"
+		 android:title="@string/kdp_app_bar_title">
 		 
      <!-- App sidebar -->
      <PreferenceScreen
@@ -41,5 +44,7 @@
          android:key="app_circle_bar"
          android:fragment="com.android.settings.kangdroid.AppCircleBar"
          android:title="@string/app_circle_bar_title"/>
+		 
+	 </PreferenceCategory>
 
 </PreferenceScreen>
