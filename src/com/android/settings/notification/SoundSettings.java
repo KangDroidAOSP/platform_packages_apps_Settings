@@ -181,7 +181,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
         CMHardwareManager hardware = CMHardwareManager.getInstance(mContext);
         if (!hardware.isSupported(CMHardwareManager.FEATURE_VIBRATOR)) {
-            mVibrateCategory.removePreference(mVibrateCategory.findPreference(KEY_VIBRATION_INTENSITY));
+            vibrate.removePreference(vibrate.findPreference(KEY_VIBRATION_INTENSITY));
         }
 
         initRingtones(sounds);
