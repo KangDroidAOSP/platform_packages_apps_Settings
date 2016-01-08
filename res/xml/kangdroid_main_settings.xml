@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2015 Benzo Rom
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<PrefereceCategory
+		android:key="kdp_category_status_bar"
+		android:title="@string/kdp_category_status_bar_title">
+	
+    <!-- Status bar -->
+    <PreferenceScreen
+        android:key="status_bar_settings"
+        android:title="@string/status_bar_title"
+        android:fragment="com.android.settings.cyanogenmod.StatusBarSettings" />
+		
+	<PreferenceCategory>
+		
+	<PrefereceCategory
+		android:key="kdp_category_notification_drawer"
+		android:title="@string/kdp_category_notification_drawer_title">
+		
+    <!-- Notification Drawer -->
+    <PreferenceScreen
+        android:key="notification_drawer"
+        android:title="@string/notification_drawer_title"
+        android:fragment="com.android.settings.cyanogenmod.NotificationDrawerSettings" />
+		
+	</PreferenceCategory>
+	
+	<PrefereceCategory
+		android:key="kdp_category_recents"
+		android:title="@string/kdp_category_recents_title">
+	
+    <!-- KDP Recents Settings -->
+    <PreferenceScreen
+        android:key="recents_kangdroid"
+        android:title="@string/kangdroid_recents_settings_title"
+        android:fragment="com.android.settings.kangdroid.KangDroidRecentsSettings" />
+		
+	</PrefereceCategory>
+	
+	<PrefereceCategory
+		android:key="kdp_category_animation"
+		android:title="@string/kdp_category_animation_title">
+		
+    <!-- KDP Animation Settings -->
+    <PreferenceScreen
+        android:key="kdp_animation_settings"
+        android:title="@string/kangdroid_animation_main"
+        android:fragment="com.android.settings.kangdroid.KangDroidAnimSettings" />
+		
+	</PreferenceCategory>
+	
+	<PrefereceCategory
+		android:key="kdp_category_nav_bar"
+		android:title="@string/kdp_category_nav_bar_title">
+		
+	<PreferenceScreen
+		android:key="kdp_nav_bar"
+		android:title="@string/kangdroid_nav_bar_title"
+		android:fragment="com.android.settings.kangdroid.KangDroidNavBarSettings" />
+		
+	</PreferenceCategory>
+	
+	<PrefereceCategory
+		android:key="kdp_category_lockscreen"
+		android:title="@string/kdp_category_lockscreen_title">
+		
+	<PreferenceScreen
+		android:key="kdp_lockscreen"
+		android:title="@string/kangdroid_lockscreen_settings"
+		android:fragment="com.android.settings.kangdroid.KangDroidLockScreenSettings" />
+		
+	</PreferenceCategory>
+	
+	<PrefereceCategory
+		android:key="kdp_category_other_settings"
+		android:title="@string/kdp_category_other_settings_title">
+		
+	<PreferenceScreen
+		android:key="kdp_other_settings"
+		android:title="@string/kangdroid_other"
+		android:fragment="com.android.settings.kangdroid.KangDroidOtherSettings" />
+		
+	</PreferenceCategory>
+
+</PreferenceScreen>
