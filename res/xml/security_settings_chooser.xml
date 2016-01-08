@@ -46,14 +46,6 @@
             android:fragment="com.android.settings.kangdroid.LockscreenWallpaper">
         </PreferenceScreen>
 
-        <PreferenceScreen
-            android:key="lockscreen_shortcuts_settings"
-            android:title="@string/lockscreen_targets_message" >
-            <intent
-                android:targetPackage="com.android.systemui"
-                android:targetClass="com.android.systemui.cm.LockscreenShortcutsActivity" />
-        </PreferenceScreen>
-
         <com.android.settings.cyanogenmod.CMSecureSettingSwitchPreference
             android:key="lockscreen_visualizer"
             android:title="@string/lockscreen_visualizer_title"
@@ -64,11 +56,6 @@
             android:title="@string/media_art_title"
             android:summary="@string/media_art_summary"
             android:defaultValue="true" />
-			
-   <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_anywhere"
-        android:title="@string/double_tap_sleep_anywhere_title"
-        android:summary="@string/double_tap_sleep_anywhere_summary" />
 
     </PreferenceCategory>
 
