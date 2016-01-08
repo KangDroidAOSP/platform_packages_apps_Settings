@@ -24,6 +24,12 @@
         android:entryValues="@array/toast_animation_values"
         android:persistent="false" />
 		
+        <!-- Toast Icons -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="toast_icon"
+                android:title="@string/toast_icon_title"
+                android:defaultValue="true" />
+		
     <!-- List view animation -->
     <ListPreference
         android:key="listview_animation"

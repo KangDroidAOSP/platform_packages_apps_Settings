@@ -136,12 +136,6 @@
                     android:title="@string/power_menu_expanded_desktop"
                     android:fragment="com.android.settings.applications.ExpandedDesktopPreferenceFragment" />
 
-            <!-- Toast Icons -->
-            <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-                    android:key="toast_icon"
-                    android:title="@string/toast_icon_title"
-                    android:defaultValue="true" />
-
             <com.android.settings.FontDialogPreference
                     android:key="font_size"
                     android:title="@string/title_font_size"
