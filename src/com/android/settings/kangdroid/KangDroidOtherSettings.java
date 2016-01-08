@@ -17,63 +17,23 @@ package com.android.settings.kangdroid;
 
 import com.android.internal.logging.MetricsLogger;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.preference.CheckBoxPreference;
-
-import android.os.UserHandle;
-import android.view.Display;
-import android.view.IWindowManager;
-import android.view.WindowManager;
-import android.view.WindowManagerGlobal;
-import android.view.WindowManagerImpl;
-import android.widget.Toast;
-import com.android.internal.view.RotationPolicy;
-import com.android.settings.DropDownPreference.Callback;
-import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settings.search.Indexable;
-
 import android.app.Activity;
-import android.app.ActivityManagerNative;
-import android.app.Dialog;
-import android.app.IActivityManager;
-import android.app.ProgressDialog;
-import android.app.UiModeManager;
-import android.app.admin.DevicePolicyManager;
+import android.os.Bundle;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.database.ContentObserver;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
-import android.preference.Preference.OnPreferenceClickListener;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceManager;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
-import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.util.Log;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-import com.android.settings.Utils;
-import cyanogenmod.providers.CMSettings;
+import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.R;
+
+import com.android.internal.logging.MetricsLogger;
 
 public class KangDroidOtherSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {
