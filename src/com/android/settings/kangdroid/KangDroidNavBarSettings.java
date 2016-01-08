@@ -49,7 +49,6 @@ import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.ButtonBacklightBrightness;
 
 import cyanogenmod.providers.CMSettings;
-import org.cyanogenmod.hardware.KeyDisabler;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -62,7 +61,7 @@ import com.android.internal.util.temasek.TemasekUtils;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class KangDroidNavBarSettings extends SettingsPreferenceFragment
-            implements OnPreferenceChangeListener  {
+            implements Preference.OnPreferenceChangeListener  {
 				
 	private static final String NAVIGATION_BAR_TINT = "navigation_bar_tint";
 	
@@ -71,7 +70,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.kangdroid_nav_navbar_settings);
+        addPreferencesFromResource(R.xml.kangdroid_nav_bar_settings);
 		
         // Navigation bar button color
         mNavbarButtonTint = (ColorPickerPreference) findPreference(NAVIGATION_BAR_TINT);
