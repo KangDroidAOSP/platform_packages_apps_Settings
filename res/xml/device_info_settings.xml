@@ -127,7 +127,7 @@
                 android:title="@string/baseband_version"
                 android:summary="@string/device_info_default"/>
 				
-	<!-- KDP ROM version -->
+		<!-- KDP ROM version -->
         <Preference android:key="kdp_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/kdp_version_title"

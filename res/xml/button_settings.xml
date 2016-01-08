@@ -18,101 +18,6 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory
-        android:key="nav_cat"
-        android:title="@string/nav_bar_title" >
-
-        <SwitchPreference
-            android:key="enable_nav_bar"
-            android:title="@string/navbar_enable_bar_title"
-            android:summary="@string/navbar_enable_bar_summary"
-            android:defaultValue="false" />
-
-        <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
-            android:key="navigation_bar_left"
-            android:title="@string/navigation_bar_left_title"
-            android:summary="@string/navigation_bar_left_summary"
-            android:defaultValue="false"
-            android:dependency="enable_nav_bar" />
-
-        <PreferenceScreen
-            android:key="navbar_dimensions"
-            android:fragment="com.android.settings.temasek.NavBarDimensions"
-            android:title="@string/navbar_style_dimen_title"
-            android:dependency="enable_nav_bar" />
-
-        <PreferenceScreen
-            android:key="navigation_bar"
-            android:fragment="com.android.settings.cyanogenmod.NavBar"
-            android:title="@string/navigation_bar_title"
-            android:dependency="enable_nav_bar" />
-
-        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-            android:key="double_tap_sleep_navbar"
-            android:title="@string/double_tap_sleep_nav_bar_title"
-            android:summary="@string/double_tap_sleep_nav_bar_summary"
-            android:defaultValue="false"
-            android:dependency="enable_nav_bar" />
-
-        <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
-            android:key="navigation_bar_menu_arrow_keys"
-            android:title="@string/navigation_bar_arrow_keys_title"
-            android:summary="@string/navigation_bar_arrow_keys_summary"
-            android:defaultValue="false"
-            android:dependency="enable_nav_bar" />
-
-        <ListPreference
-            android:key="navigation_recents_long_press"
-            android:dialogTitle="@string/navigation_bar_recents_title"
-            android:title="@string/navigation_bar_recents_title"
-            android:persistent="false"
-            android:dependency="enable_nav_bar" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="dim_nav_buttons_cat"
-        android:title="@string/dim_nav_buttons_category">
-
-        <SwitchPreference
-            android:key="dim_nav_buttons"
-            android:title="@string/dim_nav_buttons_title"
-            android:dependency="enable_nav_bar"
-            android:summary="@string/dim_nav_buttons_summary" />
-
-        <SwitchPreference
-            android:key="dim_nav_buttons_touch_anywhere"
-            android:dependency="dim_nav_buttons"
-            android:title="@string/dim_nav_buttons_touch_anywhere_title"
-            android:summaryOn="@string/dim_nav_buttons_touch_anywhere_summary_on"
-            android:summaryOff="@string/dim_nav_buttons_touch_anywhere_summary_off" />
-
-        <SlimSeekBarPreference
-            android:key="dim_nav_buttons_timeout"
-            android:dependency="dim_nav_buttons"
-            android:title="@string/dim_nav_buttons_timeout_title"
-            android:summary="@string/dim_nav_buttons_timeout_summary" />
-
-        <SlimSeekBarPreference
-            android:key="dim_nav_buttons_alpha"
-            android:dependency="dim_nav_buttons"
-            android:title="@string/dim_nav_buttons_alpha_title"
-            android:summary="@string/dim_nav_buttons_alpha_summary" />
-
-        <SwitchPreference
-            android:key="dim_nav_buttons_animate"
-            android:dependency="dim_nav_buttons"
-            android:title="@string/dim_nav_buttons_animate_title"
-            android:summary="@string/dim_nav_buttons_animate_summary" />
-
-        <SlimSeekBarPreference
-            android:key="dim_nav_buttons_animate_duration"
-            android:dependency="dim_nav_buttons_animate"
-            android:title="@string/dim_nav_buttons_animate_duration_title"
-            android:summary="@string/dim_nav_buttons_animate_duration_summary" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="hw_keys"
         android:title="@string/hw_keys_title">
 
@@ -123,12 +28,6 @@
             android:defaultValue="true"/>
 
     </PreferenceCategory>
-
-    <!-- Pie Control -->
-    <PreferenceScreen
-         android:key="pa_pie_control"
-         android:title="@string/pa_pie_control_title"
-         android:fragment="com.android.settings.temasek.PieControl" />
 
     <com.android.settings.cyanogenmod.ButtonBacklightBrightness
         android:key="button_backlight"
