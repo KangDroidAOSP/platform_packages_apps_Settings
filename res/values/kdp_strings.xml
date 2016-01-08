@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+	
+	<!-- KangDroid Project Default strings -->
+	<string name="kangdroid_other">Other KDP Settings</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
@@ -30,7 +33,7 @@
    <!-- About phone screen, KDP version -->
    <string name="kdp_version_title">KDP ROM Version</string>
    <!-- Do NOT translate this -->
-   <string name="kdp_versoin_default">Alpha - 0</string>
+   <string name="kdp_version_default">Alpha - 0</string>
    
    <!-- Changelog -->
    <string name="changelog_temasek_title">Changelog</string>
@@ -60,6 +63,9 @@
    <string name="recents_show_membar_title">RAM memory bar</string>
    <string name="recents_show_membar_summary_on">Available RAM memory bar will be displayed on recents view</string>
    <string name="recents_show_membar_summary_off">Toggle to display available RAM memory bar on recents view</string>
+   
+    <!-- Toast Icons -->
+   <string name="toast_icon_title">Toast icon</string>
    
    <!-- Recents panel settings -->
    <string name="recents_panel_title">Recents panel</string>
