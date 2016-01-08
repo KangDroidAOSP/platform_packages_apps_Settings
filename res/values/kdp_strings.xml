@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+	
+	<!-- KangDroid Project Default strings -->
+	<string name="kangdroid_other">Other KDP Settings</string>
+	<string name="kangdroid_animation_main">Animation Settings</string>
+	<string name="kangdroid_nav_bar_title">Navigation Settings</string>
+	<string name="kangdroid_lockscreen_settings">Lockscreen Settings</string>
+	<string name="kdp_clock_date_settings_title">Clock &amp; Date Settings</string>
+	<string name="kdp_status_clock_title">Clock Customization</string>
+	<string name="kdp_date_customization_title">Date Customization</string>
+	<string name="kdp_clock_category_title">KDP Clock Customization</string>
+	<string name="kdp_battery_customization_title">Battery Customization</string>
+	<string name="kdp_main_status_title">Main StatusBar Customization</string>
+	<string name="notification_drawer_title">Notification Drawer</string>
+	<string name="kdp_notification_main_title">Main Notification Drawer Settings</string>
+	<string name="kdp_time_contextual_title">Time Contextual Header Settings</string>
+	<string name="kdp_other_status_bar_title">Other StatusBar Customization</string>
+	<string name="kdp_toast_category_title">Toast Animation Settings</string>
+	<string name="kdp_listview_category">ListView Animation Settings</string>
+	<string name="kdp_aokp_system_category_title">AOKP System Animation Settings</string>
+	<string name="kdp_lock_weather_main_title">Main Lockscreen Weather Settings</string>
+	<string name="kdp_lockscreen_ability">Lockscreen Blur Settings</string>
+	<string name="kdp_lockscreen_shortcuts_title">KDP Combined Lockscreen Shortcut Settings</string>
+	<string name="kdp_main_lockscreen_really">Main KDP Custom Lockscreen Settings</string>
+	<string name="aosp_defaults_recents_kdp_title">AOSP Recents Customization</string>
+	<string name="kdp_slim_recents_title">Slim Recents Settings</string>
+	<string name="kdp_aosp_recents_default_title">AOSP Other Recents Customization</string>
+	<string name="kdp_slim_recents_title">Slim Recents</string>
+	<string name="kdp_category_status_bar_title">KDP StatusBar Customization</string>
+	<string name="kdp_category_notification_drawer_title">KDP Notification Drawer Customization</string>
+	<string name="kdp_category_recents_title">KDP Recents Customization</string>
+	<string name="kdp_category_animation_title">KDP Animation Customization</string>
+	<string name="kdp_category_nav_bar_title">KDP Navigation Customization</string>
+	<string name="kdp_category_lockscreen">KDP Lockscreen Customization</string>
+	<string name="kdp_category_other_settings_title">KDP Other Customization</string>
+	<string name="gesture_anywhere_category_kdp_title">Gesture Anywhere</string>
+	<string name="kdp_app_bar_title">App Bar Settings</string>
+	<string name="kangdroid_main_settings">Customization</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
@@ -30,7 +67,7 @@
    <!-- About phone screen, KDP version -->
    <string name="kdp_version_title">KDP ROM Version</string>
    <!-- Do NOT translate this -->
-   <string name="kdp_versoin_default">Alpha - 0</string>
+   <string name="kdp_version_default">Alpha - 0</string>
    
    <!-- Changelog -->
    <string name="changelog_temasek_title">Changelog</string>
@@ -60,6 +97,9 @@
    <string name="recents_show_membar_title">RAM memory bar</string>
    <string name="recents_show_membar_summary_on">Available RAM memory bar will be displayed on recents view</string>
    <string name="recents_show_membar_summary_off">Toggle to display available RAM memory bar on recents view</string>
+   
+    <!-- Toast Icons -->
+   <string name="toast_icon_title">Toast icon</string>
    
    <!-- Recents panel settings -->
    <string name="recents_panel_title">Recents panel</string>
