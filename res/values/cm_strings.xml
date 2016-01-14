@@ -859,6 +859,11 @@
     <!-- lock screen visualizer -->
     <string name="lockscreen_visualizer_title">Display music visualizer</string>
 
+    <!-- lock screen disabled by QS tile warning -->
+    <string name="lockscreen_disabled_by_qs_tile_title">Disabled by quick settings tile</string>
+    <string name="lockscreen_disabled_by_qs_tile_summary">Tap to enable the lock screen</string>
+    <string name="lockscreen_disabled_by_qs_tile_summary_enabled">Lock screen enabled!</string>
+
     <!-- Battery saver -->
     <string name="battery_saver_threshold">Battery saver threshold</string>
     <string name="battery_saver_summary">Reduce performance and limit background data</string>
@@ -902,6 +907,7 @@
     <string name="voice_wakeup_retrain_title">Retrain your voice</string>
     <string name="voice_wakeup_activity_title">Activity to launch</string>
     <string name="voice_wakeup_default_activity">Google Now</string>
+    <string name="voice_wakeup_needs_dial_permission_warning">Voice Wakeup needs to have phone call permissions to select a Direct Dial contact.</string>
 
     <string name="picker_activities">Activities</string>
     <string name="select_custom_app_title">Select custom app</string>
@@ -1032,4 +1038,17 @@
     <string name="zen_mode_summary_selected_callers">selected callers</string>
     <!-- [CHAR LIMIT=50] Like zen_mode_summary_selected_messages, but part of a list, so lower case if needed -->
     <string name="zen_mode_summary_selected_messages">selected messages</string>
+
+    <!-- About phone settings screen, setting option dialog title to show regulatory information [CHAR LIMIT=25] -->
+    <string name="regulatory_information_dialog_title" translatable="false">@string/regulatory_information</string>
+
+    <!-- SAR information -->
+    <string name="maximum_head_level">Head: %1$s W/kg</string>
+    <string name="maximum_body_level">Body: %1$s W/kg</string>
+
+    <!-- IC Codes -->
+    <string name="ic_code_model">Model: %1$s</string>
+    <string name="ic_code_full">IC: %1$s</string>
+
+    <string name="sim_ringtone_title">SIM %d ringtone</string>
 </resources>
