@@ -1029,4 +1029,7 @@
     <string name="notification_color_mode_always_title">Always</string>
     <string name="notification_drawer_clear_all_icon_color_title">Clear all icon</string>
 
+    <!-- QS shade transparency -->
+    <string name="qs_transparent_shade">QS shade transparency</string>
+
 </resources>
