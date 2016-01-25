@@ -22,12 +22,6 @@
 	<PreferenceCategory
 		android:key="kdp_notification_main"
 		android:title="@string/kdp_notification_main_title">
-		
-    <com.android.settings.cyanogenmod.CMSystemSettingSwitchPreference
-        android:key="qs_quick_pulldown"
-        android:title="@string/status_bar_quick_qs_pulldown_title"
-        android:summary="@string/status_bar_quick_qs_pulldown_summary"
-        android:defaultValue="true" />
 	
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"
@@ -45,12 +39,18 @@
 		android:key="kdp_qs_settings_category"
 		android:title="@string/kdp_qs_settings">
 		
-        <SwitchPreference
-            android:key="block_on_secure_keyguard"
-            android:title="@string/block_on_secure_keyguard_title"
-            android:summary="@string/block_on_secure_keyguard_summary"
-            android:persistent="false"
-            android:defaultValue="true"/>
+    <SwitchPreference
+        android:key="block_on_secure_keyguard"
+        android:title="@string/block_on_secure_keyguard_title"
+        android:summary="@string/block_on_secure_keyguard_summary"
+        android:persistent="false"
+        android:defaultValue="true"/>
+			
+    <ListPreference
+		android:key="qs_quick_pulldown"
+		android:title="@string/status_bar_quick_qs_pulldown_title"
+        android:entries="@array/status_bar_quick_qs_pulldown_entries"
+        android:entryValues="@array/status_bar_quick_qs_pulldown_values" />
 		
     <com.android.settings.kangdroid.SeekBarPreference
         android:key="qs_transparent_shade"

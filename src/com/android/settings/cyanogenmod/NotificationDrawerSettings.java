@@ -67,10 +67,12 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
     private static final String PREF_QS_TRANSPARENT_SHADE = "qs_transparent_shade";
 	private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
+	private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
 	
     private ListPreference mCustomHeaderDefault;
     private SeekBarPreference mQSShadeAlpha;
     private SwitchPreference mBlockOnSecureKeyguard;
+	private ListPreference mQuickPulldown;
 
     private static final int MY_USER_ID = UserHandle.myUserId();
 
@@ -99,6 +101,14 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         } else if (mBlockOnSecureKeyguard != null) {
             getPreferenceScreen().removePreference(mBlockOnSecureKeyguard);
         }
+		
+		// Quick Pulldown Preferences
+		mQuickPulldown = (ListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
+        int quickPulldown = CMSettings.System.getInt(resolver,
+                CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 1);
+        mQuickPulldown.setValue(String.valueOf(quickPulldown));
+        updatePulldownSummary(quickPulldown);
+        mQuickPulldown.setOnPreferenceChangeListener(this);
 		
 		updateCustomHeaderforKDP();
     }
@@ -139,7 +149,27 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
                     Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
                     (Boolean) newValue ? 1 : 0);
             return true;
+        } else if (preference == mQuickPulldown) {
+            int quickPulldown = Integer.valueOf((String) newValue);
+            CMSettings.System.putInt(
+                    resolver, CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, quickPulldown);
+            updatePulldownSummary(quickPulldown);
+            return true;
 	}
 		return false;
 	}
+	
+    private void updatePulldownSummary(int value) {
+        Resources res = getResources();
+
+        if (value == 0) {
+            // quick pulldown deactivated
+            mQuickPulldown.setSummary(res.getString(R.string.status_bar_quick_qs_pulldown_off));
+        } else {
+            String direction = res.getString(value == 2
+                    ? R.string.status_bar_quick_qs_pulldown_summary_left
+                    : R.string.status_bar_quick_qs_pulldown_summary_right);
+            mQuickPulldown.setSummary(res.getString(R.string.status_bar_quick_qs_pulldown_summary, direction));
+        }
+    }
 }
