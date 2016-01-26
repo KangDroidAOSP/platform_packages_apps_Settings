@@ -96,7 +96,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 		
         // QS header alpha
         mQSHeaderAlpha =
-               (SeekBarPreference) prefSet.findPreference(PREF_QS_TRANSPARENT_HEADER);
+               (SeekBarPreference) findPreference(PREF_QS_TRANSPARENT_HEADER);
         int qSHeaderAlpha = Settings.System.getInt(resolver,
                 Settings.System.QS_TRANSPARENT_HEADER, 255);
         mQSHeaderAlpha.setValue(qSHeaderAlpha / 1);
