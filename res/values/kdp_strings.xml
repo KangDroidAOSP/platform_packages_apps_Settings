@@ -41,6 +41,8 @@
 	<string name="kdp_category_main_nav_bar_title">Main Navigation Customization</string>
 	<string name="kdp_misc_nav_bar_title">Other Navigation Customization</string>
 	<string name="kdp_qs_settings">QS Customization</string>
+	<string name="kdp_device_info_title">KangDroid-Project Info</string>
+	<string name="kdp_device_info_summary">See information if KangDroid-Project</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
