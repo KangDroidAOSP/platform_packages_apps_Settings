@@ -45,6 +45,11 @@
 	<string name="kdp_misc_sounds">Other KDP Sound Customization</string>
 	<string name="kdp_pulldown_entry">QS Pulldown Settings</string>
 	<string name="cancel">Cancel</string>
+	<string name="kdp_device_info_title">KangDroid-Project Info</string>
+	<string name="kdp_device_info_summary">See information if KangDroid-Project</string>
+	<string name="kdp_cyanogenmod_title">CyanogenMod Information</string>
+	<string name="kdp_kangdroid_title">KangDroid-Project Information</string>
+	<string name="kdp_device_hardware_info_title">Device Hardware Information</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
