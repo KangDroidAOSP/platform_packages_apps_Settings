@@ -32,7 +32,7 @@ import java.io.InputStreamReader;
 
 public class Changelog extends Fragment {
 
-    private static final String CHANGELOG_PATH = "/system/etc/Changelog.txt";
+    private static final String CHANGELOG_PATH = "/system/etc/ChangeLog-KDP.txt";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
