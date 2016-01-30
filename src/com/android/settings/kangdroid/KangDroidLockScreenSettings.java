@@ -63,7 +63,7 @@ public class KangDroidLockScreenSettings extends SettingsPreferenceFragment impl
 		
         mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
         mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
-                resolver, Settings.System.LOCK_CLOCK_FONTS, 0)));
+                resolver, Settings.System.LOCK_CLOCK_FONTS, 4)));
         mLockClockFonts.setSummary(mLockClockFonts.getEntry());
         mLockClockFonts.setOnPreferenceChangeListener(this);
     }
