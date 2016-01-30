@@ -18,6 +18,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/sound_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+	
+	<PreferenceCategory
+		android:key="kdp_sounds_disable"
+		android:title="@string/kdp_sounds_disable_title">
 
     <SwitchPreference
         android:key="camera_sounds"
@@ -31,6 +35,18 @@
         android:title="@string/screenshot_sound_title"
         android:summary="@string/screenshot_sound_summary"
         android:defaultValue="true" />
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:key="kdp_misc_sounds"
+		android:title="@string/kdp_misc_sounds">
+
+    <!-- Volume Steps -->
+    <PreferenceScreen
+        android:key="volume_steps"
+        android:title="@string/volume_steps_title"
+        android:fragment="com.android.settings.temasek.VolumeSteps" />
 
     <SwitchPreference
         android:key="safe_headset_volume"
@@ -46,5 +62,7 @@
         android:entries="@array/less_notification_sounds_entries"
         android:entryValues="@array/less_notification_sounds_values"
         android:persistent="false" />
+		
+	</PreferenceCategory>
 
 </PreferenceScreen>

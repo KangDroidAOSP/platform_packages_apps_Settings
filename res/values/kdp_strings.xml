@@ -41,6 +41,8 @@
 	<string name="kdp_category_main_nav_bar_title">Main Navigation Customization</string>
 	<string name="kdp_misc_nav_bar_title">Other Navigation Customization</string>
 	<string name="kdp_qs_settings">QS Customization</string>
+	<string name="kdp_sounds_disable_title">Disabling Sounds</string>
+	<string name="kdp_misc_sounds">Other KDP Sound Customization</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
@@ -1045,7 +1047,7 @@
     <string name="ok_string">Ok</string>
 	
     <!-- Sound settings -->
-    <string name="advanced_sound_title">Advanced options</string>
+    <string name="advanced_sound_title">Advanced KDP Sound Settingss</string>
     <string name="sound_title">Sound</string>
 
     <!-- Camera sound switch -->
