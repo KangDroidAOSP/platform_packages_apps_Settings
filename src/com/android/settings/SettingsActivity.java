@@ -140,6 +140,8 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
+import com.android.settings.rr.FlingSettings;
+import com.android.settings.rr.SmartbarSettings;
 
 import cyanogenmod.app.CMContextConstants;
 import org.xmlpull.v1.XmlPullParser;
@@ -384,7 +386,9 @@ public class SettingsActivity extends Activity
             NotificationManagerSettings.class.getName(),
             LiveLockScreenSettings.class.getName(),
             WeatherServiceSettings.class.getName(),
-            HeadsUpSettings.class.getName()
+            HeadsUpSettings.class.getName(),
+            FlingSettings.class.getName(),
+            SmartbarSettings.class.getName()
     };
 
 

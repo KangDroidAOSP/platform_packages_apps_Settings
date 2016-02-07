@@ -130,4 +130,6 @@ public class Settings extends SettingsActivity {
     public static class WeatherProviderServicesActivity extends SettingsActivity { /* empty */ }
     public static class HeadsUpSettingsActivity extends SettingsActivity { /* empty */ }
     public static class FloatingWindowActivity extends SettingsActivity { /* empty */ }
+    public static class FlingSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class SmartbarSettingsActivity extends SettingsActivity { /* empty */ }
 }
