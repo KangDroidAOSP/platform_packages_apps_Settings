@@ -70,12 +70,14 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 	private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 	private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
 	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
+	private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 	
     private ListPreference mCustomHeaderDefault;
     private SeekBarPreference mQSShadeAlpha;
 	private SeekBarPreference mQSHeaderAlpha;
     private SwitchPreference mBlockOnSecureKeyguard;
 	private ListPreference mQuickPulldown;
+	private ListPreference mSmartPulldown;
 	private SwitchPreference mEnableTaskManager;
 
     private static final int MY_USER_ID = UserHandle.myUserId();
@@ -126,6 +128,14 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         mEnableTaskManager = (SwitchPreference) findPreference(PREF_ENABLE_TASK_MANAGER);
         mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
+		
+        // Smart pulldown
+        mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
+        mSmartPulldown.setOnPreferenceChangeListener(this);
+        int smartPulldown = Settings.System.getInt(resolver,
+                Settings.System.QS_SMART_PULLDOWN, 0);
+        mSmartPulldown.setValue(String.valueOf(smartPulldown));
+        updateSmartPulldownSummary(smartPulldown);
 		
 		updateCustomHeaderforKDP();
     }
@@ -187,9 +197,39 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
                 resolver, CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, quickPulldown);
         updatePulldownSummary(quickPulldown);
         return true;
+        } else if (preference == mSmartPulldown) {
+            int smartPulldown = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
+            updateSmartPulldownSummary(smartPulldown);
+            return true;
 	}
 		return false;
 	}
+	
+    private void updateSmartPulldownSummary(int value) {
+        Resources res = getResources();
+
+        if (value == 0) {
+            // Smart pulldown deactivated
+            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_off));
+        } else {
+            String type = null;
+            switch (value) {
+                case 1:
+                    type = res.getString(R.string.smart_pulldown_dismissable);
+                    break;
+                case 2:
+                    type = res.getString(R.string.smart_pulldown_persistent);
+                    break;
+                default:
+                    type = res.getString(R.string.smart_pulldown_all);
+                    break;
+            }
+            // Remove title capitalized formatting
+            type = type.toLowerCase();
+            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_summary, type));
+        }
+    }
 	
     private void updatePulldownSummary(int value) {
         Resources res = getResources();
