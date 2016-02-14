@@ -139,8 +139,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     Settings.System.KEY_VOICEMAIL_BREATH, 0) == 1);
             mVoicemailBreath.setOnPreferenceChangeListener(this);
         } else {
-            removePreference(mMissedCallBreath);
-            removePreference(mVoicemailBreath);
+            getPreferenceScreen().removePreference(mMissedCallBreath);
+            getPreferenceScreen().removePreference(mVoicemailBreath);
         }
 
         mCheckPreferences = true;
