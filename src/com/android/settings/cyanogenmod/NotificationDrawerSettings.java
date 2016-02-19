@@ -80,6 +80,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 	private ListPreference mSmartPulldown;
 	private SwitchPreference mEnableTaskManager;
 	private ListPreference mNumColumns;
+	private ListPreference mNumRows;
 
     private static final int MY_USER_ID = UserHandle.myUserId();
 
@@ -141,11 +142,20 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         // Number of QS Columns 3,4,5
         mNumColumns = (ListPreference) findPreference("sysui_qs_num_columns");
         int numColumns = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColums(),
+                Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColumns(),
                 UserHandle.USER_CURRENT);
         mNumColumns.setValue(String.valueOf(numColumns));
         updateNumColumnsSummary(numColumns);
         mNumColumns.setOnPreferenceChangeListener(this);
+		
+        // Number of QS Rows 3,4
+        mNumRows = (ListPreference) findPreference("sysui_qs_num_rows");
+        int numRows = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_NUM_TILE_ROWS, getDefaultNumRows(),
+                UserHandle.USER_CURRENT);
+        mNumRows.setValue(String.valueOf(numRows));
+        updateNumRowsSummary(numRows);
+        mNumRows.setOnPreferenceChangeListener(this);
 		
 		updateCustomHeaderforKDP();
     }
@@ -218,6 +228,12 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
                 numColumns, UserHandle.USER_CURRENT);
         updateNumColumnsSummary(numColumns);
         return true;
+    } else if (preference == mNumRows) {
+        int numRows = Integer.valueOf((String) newValue);
+        Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_ROWS,
+                numRows, UserHandle.USER_CURRENT);
+        updateNumRowsSummary(numRows);
+        return true;
 	}
 		return false;
 	}
@@ -261,13 +277,32 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         }
     }
 	
+    private void updateNumRowsSummary(int numRows) {
+        String prefix = (String) mNumRows.getEntries()[mNumRows.findIndexOfValue(String
+                .valueOf(numRows))];
+        mNumRows.setSummary(getResources().getString(R.string.qs_num_rows_showing, prefix));
+    }
+	
     private void updateNumColumnsSummary(int numColumns) {
         String prefix = (String) mNumColumns.getEntries()[mNumColumns.findIndexOfValue(String
                 .valueOf(numColumns))];
         mNumColumns.setSummary(getResources().getString(R.string.qs_num_columns_showing, prefix));
     }
+	
+    private int getDefaultNumRows() {
+        try {
+            Resources res = getActivity().getPackageManager()
+                    .getResourcesForApplication("com.android.systemui");
+            int val = res.getInteger(res.getIdentifier("quick_settings_num_rows", "integer",
+                    "com.android.systemui")); // better not be larger than 4, that's as high as the
+                                              // list goes atm
+            return Math.max(1, val);
+        } catch (Exception e) {
+            return 3;
+        }
+    }
 
-    private int getDefaultNumColums() {
+    private int getDefaultNumColumns() {
         try {
             Resources res = getActivity().getPackageManager()
                     .getResourcesForApplication("com.android.systemui");
