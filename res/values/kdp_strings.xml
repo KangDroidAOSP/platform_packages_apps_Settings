@@ -43,6 +43,7 @@
 	<string name="kdp_qs_settings">QS Customization</string>
 	<string name="kdp_sounds_disable_title">Disabling Sounds</string>
 	<string name="kdp_misc_sounds">Other KDP Sound Customization</string>
+	<string name="kdp_pulldown_entry">QS Pulldown Settings</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
