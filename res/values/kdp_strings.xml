@@ -44,6 +44,7 @@
 	<string name="kdp_sounds_disable_title">Disabling Sounds</string>
 	<string name="kdp_misc_sounds">Other KDP Sound Customization</string>
 	<string name="kdp_pulldown_entry">QS Pulldown Settings</string>
+	<string name="cancel">Cancel</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
@@ -1154,5 +1155,15 @@
     <!-- QS Tiles Rows -->
     <string name="qs_num_rows_title">Number of QS rows</string>
     <string name="qs_num_rows_showing">%1$s rows are shown</string>
+	
+    <!-- Lockscreen Colors -->
+    <string name="lockscreen_colors_title">Lockscreen colors</string>
+    <string name="lockscreen_owner_info_color">Owner info</string>
+    <string name="lockscreen_alarm_color">Alarm</string>
+    <string name="lockscreen_clock_color">Clock</string>
+    <string name="lockscreen_clock_date_color">Date</string>
+    <string name="lockscreen_colors_reset_title">Reset lockscreen colors</string>
+    <string name="lockscreen_colors_reset_message">Are you sure you want to reset these colors to default?</string>
+    <string name="yes">YES</string>
 
 </resources>
