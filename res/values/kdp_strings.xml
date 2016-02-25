@@ -61,6 +61,9 @@
     <string name="cat_colors_title">Customize notification colors</string>
     <string name="background_title">Background</string>
     <string name="icon_title">Icon</string>
+	<string name="reset_option_message">Reset values to\nAndroid- or Settings default?</string>   
+    <string name="reset_kangdroid">KangDroid</string>
+    <string name="more_string">More</string>
 	
     <!-- Color picker -->
     <string name="dialog_color_picker_title">Color Picker</string>
@@ -1104,12 +1107,6 @@
     <string name="notification_color_mode_always_title">Always</string>
     <string name="notification_drawer_clear_all_icon_color_title">Clear all icon</string>
 
-    <!-- QS shade transparency -->
-    <string name="qs_transparent_shade">QS shade transparency</string>
-
-    <!-- QS header transparency -->
-    <string name="qs_transparent_header">QS header transparency</string>
-
     <!-- Safe headset volume restore checkbox -->
     <string name="safe_headset_volume_title">Safe headset volume</string>
     <string name="safe_headset_volume_summary">Prevent loud volume levels when headset is first plugged in</string>
@@ -1170,5 +1167,13 @@
     <string name="hide_lockscreen_items_title">Lockscreen items</string>
     <string name="hide_lockscreen_clock_title">Show lockscreen clock</string>
     <string name="hide_lockscreen_date_title">Show lockscreen date</string>
+	
+    <!-- Status bar Header -->
+    <string name="status_bar_expanded_header_settings_title">Status bar Header</string>
+    <string name="expanded_header_show_weather_title">Show weather</string>
+    <string name="expanded_header_show_weather_summary">Enable to show the weather</string>
+    <string name="expanded_header_show_weather_location_title">Show location</string>
+    <string name="expanded_header_show_weather_location_summary">Enable to show the location</string
+	<string name="qs_colors_title">Custom Color Options</string>
 
 </resources>
