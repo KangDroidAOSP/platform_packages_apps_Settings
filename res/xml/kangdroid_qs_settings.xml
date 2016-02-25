@@ -58,6 +58,18 @@
 	</PreferenceCategory>
 	
 	<PreferenceCategory
+		android:key="kdp_qs_colors"
+		android:title="@string/kdp_qs_colors_title">
+		
+    <!-- Qs Colors -->
+    <PreferenceScreen
+            android:id="@+id/qs_colors"
+            android:title="@string/quick_settings_colors"
+  	        android:summary="@string/qs_colors_summary"	
+            android:fragment="com.android.settings.rr.QsColors" />
+	</PreferenceCategory>
+	
+	<PreferenceCategory
 		android:key="qs_animation_kdp"
 		android:title="@string/qs_animation_title_kdp" >
 		
