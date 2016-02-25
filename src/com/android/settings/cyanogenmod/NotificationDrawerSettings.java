@@ -64,17 +64,11 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class NotificationDrawerSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 	
-    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
-    private static final String PREF_QS_TRANSPARENT_SHADE = "qs_transparent_shade";
-	private static final String PREF_QS_TRANSPARENT_HEADER = "qs_transparent_header";
 	private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 	private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
 	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
 	private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 	
-    private ListPreference mCustomHeaderDefault;
-    private SeekBarPreference mQSShadeAlpha;
-	private SeekBarPreference mQSHeaderAlpha;
     private SwitchPreference mBlockOnSecureKeyguard;
 	private ListPreference mQuickPulldown;
 	private ListPreference mSmartPulldown;
@@ -92,21 +86,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 		final CmLockPatternUtils lockPatternUtils = new CmLockPatternUtils(getActivity());
 		
         addPreferencesFromResource(R.xml.notification_drawer_settings);
-		
-        // QS shade alpha
-        mQSShadeAlpha = (SeekBarPreference) findPreference(PREF_QS_TRANSPARENT_SHADE);
-        int qSShadeAlpha = Settings.System.getInt(resolver,
-                Settings.System.QS_TRANSPARENT_SHADE, 255);
-        mQSShadeAlpha.setValue(qSShadeAlpha / 1);
-        mQSShadeAlpha.setOnPreferenceChangeListener(this);
-		
-        // QS header alpha
-        mQSHeaderAlpha =
-               (SeekBarPreference) findPreference(PREF_QS_TRANSPARENT_HEADER);
-        int qSHeaderAlpha = Settings.System.getInt(resolver,
-                Settings.System.QS_TRANSPARENT_HEADER, 255);
-        mQSHeaderAlpha.setValue(qSHeaderAlpha / 1);
-        mQSHeaderAlpha.setOnPreferenceChangeListener(this);
 		
         // Block QS on secure LockScreen
         mBlockOnSecureKeyguard = (SwitchPreference) findPreference(PREF_BLOCK_ON_SECURE_KEYGUARD);
@@ -157,18 +136,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         updateNumRowsSummary(numRows);
         mNumRows.setOnPreferenceChangeListener(this);
 		
-		updateCustomHeaderforKDP();
     }
-	
-	public void updateCustomHeaderforKDP() {
-        // Status bar custom header default
-        mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
-        mCustomHeaderDefault.setOnPreferenceChangeListener(this);
-        int customHeaderDefault = Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0);
-        mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
-        mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntry());
-	}
 
     @Override
     protected int getMetricsCategory() {
@@ -188,25 +156,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 		ContentResolver resolver = getActivity().getContentResolver();
-	if (preference == mCustomHeaderDefault) {
-        int customHeaderDefault = Integer.valueOf((String) newValue);
-        int index = mCustomHeaderDefault.findIndexOfValue((String) newValue);
-        Settings.System.putInt(getActivity().getContentResolver(), 
-            Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeaderDefault);
-        mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
-        updateCustomHeaderforKDP();
-        return true;
-    } else if (preference == mQSShadeAlpha) {
-        int alpha = (Integer) newValue;
-        Settings.System.putInt(resolver,
-                Settings.System.QS_TRANSPARENT_SHADE, alpha * 1);
-        return true;
-    } else if (preference == mQSHeaderAlpha) {
-        int alpha = (Integer) newValue;
-        Settings.System.putInt(resolver,
-                Settings.System.QS_TRANSPARENT_HEADER, alpha * 1);
-        return true;
-    } else if (preference == mBlockOnSecureKeyguard) {
+		if (preference == mBlockOnSecureKeyguard) {
         Settings.Secure.putInt(resolver,
                 Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
                  (Boolean) newValue ? 1 : 0);
