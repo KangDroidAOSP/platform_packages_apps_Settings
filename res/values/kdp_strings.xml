@@ -59,6 +59,7 @@
 	<string name="kdp_qs_settings_transparency">QS Transparency</string>
 	<string name="qs_transparent_header">QS Transparent Header</string>
 	<string name="qs_transparent_shade">QS Transparent shade</string>
+	<string name="kangdroid_qs_vib">QS Vibration Settings</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
@@ -1260,5 +1261,18 @@
 	
 	<!-- Volume dialog transparency -->
    <string name="volume_dialog_transparency">Volume dialog transparency</string>
+   
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_vibrate">QS Vibrations</string>	
+    <string name="quick_settings_vibrate_title">Vibrate on touch</string>
+    <string name="quick_settings_vibrate_summary">Vibrate when touching tiles</string>
+
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_icon_vibrate_title">Vibrate Settings Icon </string>
+    <string name="quick_settings_icon_vibrate_summary">Vibrate when touching Settings Icon</string>
+
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_sp_vibrate_title">Vibrate on Single Press </string>
+    <string name="quick_settings_sp_vibrate_summary">Vibrate when touching SinglePressing Tiles</string>
 
 </resources>

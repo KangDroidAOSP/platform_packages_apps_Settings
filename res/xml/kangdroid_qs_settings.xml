@@ -85,6 +85,18 @@
 	</PreferenceCategory>
 	
 	<PreferenceCategory
+		android:key="kangdroid_rr_qs_vib"
+		android:title="@string/kangdroid_qs_vib">
+		
+    <!-- Qs Vibrate Panel -->
+    <PreferenceScreen
+            android:id="@+id/qs_vib_customizations"
+            android:title="@string/quick_settings_vibrate"
+            android:fragment="com.android.settings.rr.QsVibrate" />
+			
+	</PreferenceCategory>
+	
+	<PreferenceCategory
 		android:key="kdp_advanced_qs"
 		android:title="@string/kdp_advanced_qs_title">
 		
