@@ -106,11 +106,19 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mBackgroundColor.setDefaultColors(DEFAULT_BG_COLOR, DEFAULT_BG_COLOR);
         mBackgroundColor.setOnPreferenceChangeListener(this);
 		mBackgroundColor.setAlphaSliderEnabled(true);
-		
 		updateCustomHeaderforKDP();
+		updatePreference();
 
         setHasOptionsMenu(true);
     }
+	
+    public void updatePreference() {
+        boolean customHeader = Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1;
+        if (customHeader) {
+            mBackgroundColor.setEnabled(false);
+		}
+	}
 	
 	public void updateCustomHeaderforKDP() {
         // Status bar custom header default
