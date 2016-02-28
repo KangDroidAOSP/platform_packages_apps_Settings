@@ -40,7 +40,7 @@
 	<string name="kangdroid_main_settings">Customization</string>
 	<string name="kdp_category_main_nav_bar_title">Main Navigation Customization</string>
 	<string name="kdp_misc_nav_bar_title">Other Navigation Customization</string>
-	<string name="kdp_qs_settings">QS Customization</string>
+	<string name="kdp_qs_settings_color">Custom QS Colors</string>
 	<string name="kdp_sounds_disable_title">Disabling Sounds</string>
 	<string name="kdp_misc_sounds">Other KDP Sound Customization</string>
 	<string name="kdp_pulldown_entry">QS Pulldown Settings</string>
@@ -50,6 +50,12 @@
 	<string name="kdp_cyanogenmod_title">CyanogenMod Information</string>
 	<string name="kdp_kangdroid_title">KangDroid-Project Information</string>
 	<string name="kdp_device_hardware_info_title">Device Hardware Information</string>
+	<string name="kdp_qs_customization_title">QS Customization</string>
+	<string name="kdp_qs_settings_title">Advanced QS Customization</string>
+	<string name="kdp_qs_lines_title">QS Line Settings</string>
+	<string name="kdp_advanced_qs_title">Other QS Customization</string>
+	<string name="kdp_header_for_time_yeah_title">Time Contextual Header Settings</string>
+	<string name="kdp_changelog_title">KDP ChangeLog</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>

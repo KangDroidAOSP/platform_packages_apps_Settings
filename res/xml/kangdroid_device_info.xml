@@ -15,10 +15,15 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<PreferenceCategory
+		android:key="kdp_changelog"
+		android:title="@string/kdp_changelog_title">
     <!-- Changelog -->
     <PreferenceScreen android:key="changelog"
             android:title="@string/changelog_temasek_title"
             android:fragment="com.android.settings.temasek.Changelog" />
+	</PreferenceCategory>
 			
 	<PreferenceCategory
 		android:key="kdp_cyanogenmod"
