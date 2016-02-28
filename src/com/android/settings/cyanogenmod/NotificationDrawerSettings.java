@@ -63,20 +63,10 @@ import org.cyanogenmod.internal.util.CmLockPatternUtils;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class NotificationDrawerSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
-	
-	private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
-	private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
-	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
-	private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
-	
-    private SwitchPreference mBlockOnSecureKeyguard;
-	private ListPreference mQuickPulldown;
-	private ListPreference mSmartPulldown;
-	private SwitchPreference mEnableTaskManager;
-	private ListPreference mNumColumns;
-	private ListPreference mNumRows;
 
-    private static final int MY_USER_ID = UserHandle.myUserId();
+	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
+	
+	private SwitchPreference mEnableTaskManager;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -87,54 +77,10 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 		
         addPreferencesFromResource(R.xml.notification_drawer_settings);
 		
-        // Block QS on secure LockScreen
-        mBlockOnSecureKeyguard = (SwitchPreference) findPreference(PREF_BLOCK_ON_SECURE_KEYGUARD);
-        if (lockPatternUtils.isSecure(MY_USER_ID)) {
-            mBlockOnSecureKeyguard.setChecked(Settings.Secure.getIntForUser(resolver,
-                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 1, UserHandle.USER_CURRENT) == 1);
-            mBlockOnSecureKeyguard.setOnPreferenceChangeListener(this);
-        } else if (mBlockOnSecureKeyguard != null) {
-            getPreferenceScreen().removePreference(mBlockOnSecureKeyguard);
-        }
-		
-		// Quick Pulldown Preferences
-		mQuickPulldown = (ListPreference) findPreference(STATUS_BAR_QUICK_QS_PULLDOWN);
-        int quickPulldown = CMSettings.System.getInt(resolver,
-                CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 1);
-        mQuickPulldown.setValue(String.valueOf(quickPulldown));
-        updatePulldownSummary(quickPulldown);
-        mQuickPulldown.setOnPreferenceChangeListener(this);
-		
         // Task manager
         mEnableTaskManager = (SwitchPreference) findPreference(PREF_ENABLE_TASK_MANAGER);
         mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
-		
-        // Smart pulldown
-        mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
-        mSmartPulldown.setOnPreferenceChangeListener(this);
-        int smartPulldown = Settings.System.getInt(resolver,
-                Settings.System.QS_SMART_PULLDOWN, 0);
-        mSmartPulldown.setValue(String.valueOf(smartPulldown));
-        updateSmartPulldownSummary(smartPulldown);
-		
-        // Number of QS Columns 3,4,5
-        mNumColumns = (ListPreference) findPreference("sysui_qs_num_columns");
-        int numColumns = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_NUM_TILE_COLUMNS, getDefaultNumColumns(),
-                UserHandle.USER_CURRENT);
-        mNumColumns.setValue(String.valueOf(numColumns));
-        updateNumColumnsSummary(numColumns);
-        mNumColumns.setOnPreferenceChangeListener(this);
-		
-        // Number of QS Rows 3,4
-        mNumRows = (ListPreference) findPreference("sysui_qs_num_rows");
-        int numRows = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_NUM_TILE_ROWS, getDefaultNumRows(),
-                UserHandle.USER_CURRENT);
-        mNumRows.setValue(String.valueOf(numRows));
-        updateNumRowsSummary(numRows);
-        mNumRows.setOnPreferenceChangeListener(this);
 		
     }
 
@@ -151,117 +97,5 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
                     Settings.System.ENABLE_TASK_MANAGER, enabled ? 1:0);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
-    }
-	
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-		ContentResolver resolver = getActivity().getContentResolver();
-		if (preference == mBlockOnSecureKeyguard) {
-        Settings.Secure.putInt(resolver,
-                Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
-                 (Boolean) newValue ? 1 : 0);
-        return true;
-    } else if (preference == mQuickPulldown) {
-        int quickPulldown = Integer.valueOf((String) newValue);
-        CMSettings.System.putInt(
-                resolver, CMSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN, quickPulldown);
-        updatePulldownSummary(quickPulldown);
-        return true;
-    } else if (preference == mSmartPulldown) {
-        int smartPulldown = Integer.valueOf((String) newValue);
-        Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
-        updateSmartPulldownSummary(smartPulldown);
-        return true;
-    } else if (preference == mNumColumns) {
-        int numColumns = Integer.valueOf((String) newValue);
-        Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_COLUMNS,
-                numColumns, UserHandle.USER_CURRENT);
-        updateNumColumnsSummary(numColumns);
-        return true;
-    } else if (preference == mNumRows) {
-        int numRows = Integer.valueOf((String) newValue);
-        Settings.System.putIntForUser(resolver, Settings.System.QS_NUM_TILE_ROWS,
-                numRows, UserHandle.USER_CURRENT);
-        updateNumRowsSummary(numRows);
-        return true;
-	}
-		return false;
-	}
-	
-    private void updateSmartPulldownSummary(int value) {
-        Resources res = getResources();
-
-        if (value == 0) {
-            // Smart pulldown deactivated
-            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_off));
-        } else {
-            String type = null;
-            switch (value) {
-                case 1:
-                    type = res.getString(R.string.smart_pulldown_dismissable);
-                    break;
-                case 2:
-                    type = res.getString(R.string.smart_pulldown_persistent);
-                    break;
-                default:
-                    type = res.getString(R.string.smart_pulldown_all);
-                    break;
-            }
-            // Remove title capitalized formatting
-            type = type.toLowerCase();
-            mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_summary, type));
-        }
-    }
-	
-    private void updatePulldownSummary(int value) {
-        Resources res = getResources();
-
-        if (value == 0) {
-            // quick pulldown deactivated
-            mQuickPulldown.setSummary(res.getString(R.string.status_bar_quick_qs_pulldown_off));
-        } else {
-            String direction = res.getString(value == 2
-                    ? R.string.status_bar_quick_qs_pulldown_summary_left
-                    : R.string.status_bar_quick_qs_pulldown_summary_right);
-            mQuickPulldown.setSummary(res.getString(R.string.status_bar_quick_qs_pulldown_summary, direction));
-        }
-    }
-	
-    private void updateNumRowsSummary(int numRows) {
-        String prefix = (String) mNumRows.getEntries()[mNumRows.findIndexOfValue(String
-                .valueOf(numRows))];
-        mNumRows.setSummary(getResources().getString(R.string.qs_num_rows_showing, prefix));
-    }
-	
-    private void updateNumColumnsSummary(int numColumns) {
-        String prefix = (String) mNumColumns.getEntries()[mNumColumns.findIndexOfValue(String
-                .valueOf(numColumns))];
-        mNumColumns.setSummary(getResources().getString(R.string.qs_num_columns_showing, prefix));
-    }
-	
-    private int getDefaultNumRows() {
-        try {
-            Resources res = getActivity().getPackageManager()
-                    .getResourcesForApplication("com.android.systemui");
-            int val = res.getInteger(res.getIdentifier("quick_settings_num_rows", "integer",
-                    "com.android.systemui")); // better not be larger than 4, that's as high as the
-                                              // list goes atm
-            return Math.max(1, val);
-        } catch (Exception e) {
-            return 3;
-        }
-    }
-
-    private int getDefaultNumColumns() {
-        try {
-            Resources res = getActivity().getPackageManager()
-                    .getResourcesForApplication("com.android.systemui");
-            int val = res.getInteger(res.getIdentifier("quick_settings_num_columns", "integer",
-                    "com.android.systemui")); // better not be larger than 5, that's as high as the
-                                              // list goes atm
-            return Math.max(1, val);
-        } catch (Exception e) {
-            return 3;
-        }
     }
 }
