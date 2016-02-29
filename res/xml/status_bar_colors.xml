@@ -22,6 +22,21 @@
 
 
     <PreferenceCategory
+        android:key="statusbar_color_enable"
+        android:title="@string/status_bar_color_enable">
+
+
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="statusbar_color_switch"
+        android:title="@string/statusbar_color_switch"
+        android:summary="@string/statusbar_color_switch_summary"
+        android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory
         android:key="notification_icons_colors"
         android:title="@string/status_bar_notification_icons">
 

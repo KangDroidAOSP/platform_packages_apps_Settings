@@ -53,6 +53,7 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
      private static final String PREF_STATUS =
              "network_status_icons_status_color";
  
+ 
      private static final int WHITE                  = 0xffffffff;
      private static final int HOLO_BLUE_LIGHT        = 0xff33b5e5;
      private static final int RED_500                = 0xfff44336;
@@ -119,7 +120,7 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
          mAirplaneMode.setSummary(hexColor);
          mAirplaneMode.setDefaultColors(WHITE, RED_500);
          mAirplaneMode.setOnPreferenceChangeListener(this);
- 
+
          mColor =
                  (ColorPickerPreference) findPreference(PREF_COLOR);
          intColor = Settings.System.getInt(mResolver,
@@ -198,7 +199,7 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
                      intHex);
              preference.setSummary(hex);
              return true;
-         }
+           }
          return false;
      }
   
