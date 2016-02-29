@@ -269,23 +269,6 @@ public class PowerUsageSummary extends PowerUsageBase
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private void resetStats() {
-        AlertDialog dialog = new AlertDialog.Builder(getActivity())
-            .setTitle(R.string.battery_stats_reset)
-            .setMessage(R.string.battery_stats_message)
-            .setPositiveButton(R.string.ok_string, new OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    mStatsHelper.resetStatistics();
-                    refreshStats();
-                    mHandler.removeMessages(MSG_REFRESH_STATS);
-                }
-            })
-            .setNegativeButton(R.string.cancel, null)
-            .create();
-        dialog.show();
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final SettingsActivity sa = (SettingsActivity) getActivity();
@@ -300,9 +283,6 @@ public class PowerUsageSummary extends PowerUsageBase
                     mStatsType = BatteryStats.STATS_SINCE_CHARGED;
                 }
                 refreshStats();
-                return true;
-            case MENU_STATS_RESET:
-                 resetStats();
                 return true;
             case MENU_BATTERY_SAVER:
                 Resources res = getResources();
