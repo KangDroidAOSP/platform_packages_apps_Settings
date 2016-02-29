@@ -43,8 +43,8 @@
 		android:key="kdp_header_for_time_yeah"
 		android:title="@string/kdp_header_for_time_yeah_title">
 	
-    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-        android:key="status_bar_custom_header"
+    <SwitchPreference
+        android:key="status_bar_custom_header_kdp_switch"
         android:title="@string/status_bar_custom_header_title"
         android:summary="@string/status_bar_custom_header_summary"
         android:defaultValue="false"/>
