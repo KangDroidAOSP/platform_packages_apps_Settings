@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -41,10 +42,12 @@ public class QSColors extends SettingsPreferenceFragment implements
 
     private static final String PREF_QS_BACKGROUND_COLOR =
             "qs_background_color";
-/*    private static final String PREF_QS_ICON_COLOR =
+    private static final String PREF_QS_ICON_COLOR =
             "qs_icon_color";
-    private static final String PREF_QS_TEXT_COLOR =
-            "qs_text_color"; */
+/*    private static final String PREF_QS_TEXT_COLOR =
+            "qs_text_color";  */
+	private static final String PREF_QS_TRANSPARENT_SHADE =
+            "qs_transparent_shade";
 
     private static final int DEFAULT_BACKGROUND_COLOR = 0xff263238;
     private static final int WHITE = 0xffffffff;
@@ -54,8 +57,9 @@ public class QSColors extends SettingsPreferenceFragment implements
     private static final int DLG_RESET = 0;
 
     private ColorPickerPreference mQSBackgroundColor;
-//    private ColorPickerPreference mQSIconColor;
+    private ColorPickerPreference mQSIconColor;
 //    private ColorPickerPreference mQSTextColor;
+	private SwitchPreference mQSShadeTransparency;
 
     private ContentResolver mResolver;
 
@@ -88,7 +92,7 @@ public class QSColors extends SettingsPreferenceFragment implements
         mQSBackgroundColor.setAlphaSliderEnabled(true);
         mQSBackgroundColor.setOnPreferenceChangeListener(this);
 
-/*        mQSIconColor =
+        mQSIconColor =
                 (ColorPickerPreference) findPreference(PREF_QS_ICON_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.QS_ICON_COLOR, WHITE); 
@@ -97,7 +101,7 @@ public class QSColors extends SettingsPreferenceFragment implements
         mQSIconColor.setSummary(hexColor);
         mQSIconColor.setOnPreferenceChangeListener(this);
 
-        mQSTextColor =
+/*        mQSTextColor =
                 (ColorPickerPreference) findPreference(PREF_QS_TEXT_COLOR);
         intColor = Settings.System.getInt(mResolver,
                 Settings.System.QS_TEXT_COLOR, WHITE); 
@@ -105,6 +109,10 @@ public class QSColors extends SettingsPreferenceFragment implements
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mQSTextColor.setSummary(hexColor);
         mQSTextColor.setOnPreferenceChangeListener(this); */
+		mQSShadeTransparency = (SwitchPreference) findPreference(PREF_QS_TRANSPARENT_SHADE);
+        mQSShadeTransparency.setChecked((Settings.System.getInt(mResolver,
+                Settings.System.QS_TRANSPARENT_SHADE, 0) == 1));
+        mQSShadeTransparency.setOnPreferenceChangeListener(this);
 
         setHasOptionsMenu(true);
     }
@@ -128,7 +136,6 @@ public class QSColors extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        boolean value;
         String hex;
         int intHex;
 
@@ -140,7 +147,12 @@ public class QSColors extends SettingsPreferenceFragment implements
                 Settings.System.QS_BACKGROUND_COLOR, intHex);
             preference.setSummary(hex);
             return true;
-/*        } else if (preference == mQSIconColor) {
+        } else if (preference == mQSShadeTransparency) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.QS_TRANSPARENT_SHADE, value ? 1 : 0);
+            return true;
+        } else if (preference == mQSIconColor) {
             hex = ColorPickerPreference.convertToARGB(
                 Integer.valueOf(String.valueOf(newValue)));
             intHex = ColorPickerPreference.convertToColorInt(hex);
@@ -148,7 +160,7 @@ public class QSColors extends SettingsPreferenceFragment implements
                 Settings.System.QS_ICON_COLOR, intHex);
             preference.setSummary(hex);
             return true;
-        } else if (preference == mQSTextColor) {
+/*        } else if (preference == mQSTextColor) {
             hex = ColorPickerPreference.convertToARGB(
                 Integer.valueOf(String.valueOf(newValue)));
             intHex = ColorPickerPreference.convertToColorInt(hex);
@@ -195,9 +207,11 @@ public class QSColors extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_BACKGROUND_COLOR,
                                     DEFAULT_BACKGROUND_COLOR);
-/*                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.QS_ICON_COLOR, WHITE);
+							Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_TRANSPARENT_SHADE, 0);
                             Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_ICON_COLOR, WHITE);
+/*                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_TEXT_COLOR, WHITE); */
                             getOwner().refreshSettings();
                         }
@@ -208,10 +222,12 @@ public class QSColors extends SettingsPreferenceFragment implements
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_BACKGROUND_COLOR,
                                     0xff1b1f23);
-/*                            Settings.System.putInt(getOwner().mResolver,
+							Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_TRANSPARENT_SHADE, 0);
+                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_ICON_COLOR,
                                     CYANIDE_BLUE);
-                            Settings.System.putInt(getOwner().mResolver,
+/*                            Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_TEXT_COLOR,
                                     CYANIDE_BLUE); */
                             getOwner().refreshSettings();
