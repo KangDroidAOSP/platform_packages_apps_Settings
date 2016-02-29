@@ -22,17 +22,23 @@
         android:key="qs_cat_colors"
         android:title="@string/colors_title">
 
+        <SwitchPreference
+            android:key="qs_transparent_shade"
+            android:title="@string/qs_transparent_shade_title"
+            android:summary="@string/qs_transparent_shade_summary"
+            android:defaultValue="false" />
+
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="qs_background_color"
             android:title="@string/background_title"
             android:defaultValue="0xff263238" />
 
-<!--        <net.margaritov.preference.colorpicker.ColorPickerPreference
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="qs_icon_color"
             android:title="@string/icon_title"
             android:defaultValue="0xffffffff" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
+<!--        <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:key="qs_text_color"
             android:title="@string/text_title"
             android:defaultValue="0xffffffff" /> -->

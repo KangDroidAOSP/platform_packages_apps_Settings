@@ -1179,6 +1179,8 @@
     <string name="expanded_header_show_weather_location_title">Show location</string>
     <string name="expanded_header_show_weather_location_summary">Enable to show the location</string>
 	<string name="qs_colors_title">Custom Color Options</string>
+	<string name="qs_transparent_shade_title">Shade alpha</string>
+    <string name="qs_transparent_shade_summary">Ability to apply color alpha value and make notification shade transparent.</string>
 
     <!-- Hide apps from recents -->
     <string name="hide_from_recents_add_app">Add App</string>
