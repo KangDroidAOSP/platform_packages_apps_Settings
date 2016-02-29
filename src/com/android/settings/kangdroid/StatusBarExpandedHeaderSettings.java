@@ -36,6 +36,7 @@ import android.view.MenuItem;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
+import com.android.settings.cyanogenmod.SystemSettingSwitchPreference;
 import com.android.internal.logging.MetricsLogger;
 
 public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment implements
@@ -45,6 +46,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private static final String PREF_ICON_COLOR = "expanded_header_icon_color";
 	private static final String PREF_BG_COLOR = "expanded_header_background_color";
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
+	private static final String PREF_CUSTOM_HEADER_SWITCH = "status_bar_custom_header_kdp_switch"
 
     private static final int DEFAULT_COLOR = 0xffffffff;
 	private static final int DEFAULT_BG_COLOR = 0xff384248;
@@ -56,6 +58,7 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
     private ColorPickerPreference mIconColor;
 	private ColorPickerPreference mBackgroundColor;
     private ListPreference mCustomHeaderDefault;
+	private SwitchPreference mSwitchofCustomHeader;
 
     private ContentResolver mResolver;
 
@@ -106,6 +109,12 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         mBackgroundColor.setDefaultColors(DEFAULT_BG_COLOR, DEFAULT_BG_COLOR);
         mBackgroundColor.setOnPreferenceChangeListener(this);
 		mBackgroundColor.setAlphaSliderEnabled(true);
+		
+		// Swtiches
+		mSwitchofCustomHeader = (SwitchPreference) findPreference(PREF_CUSTOM_HEADER_SWITCH);
+		mSwitchofCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1));
+		
 		updateCustomHeaderforKDP();
 		updatePreference();
 
@@ -184,6 +193,11 @@ public class StatusBarExpandedHeaderSettings extends SettingsPreferenceFragment 
         	mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
         	updateCustomHeaderforKDP();
         	return true;
+		} else if (preference == mSwitchofCustomHeader) {
+            boolean enabled = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER, enabled ? 1:0);
+			updatePreference();
         }
         return false;
     }
