@@ -1186,5 +1186,7 @@
     <string name="expanded_header_show_weather_location_title">Show location</string>
     <string name="expanded_header_show_weather_location_summary">Enable to show the location</string>
 	<string name="qs_colors_title">Custom Color Options</string>
+	<string name="status_bar_header_master_switch_title">StatusBar Header Master Switch</string>
+	<string name="status_bar_header_master_switch_summary">It enables to set color of StatusBar Header</string>
 
 </resources>
