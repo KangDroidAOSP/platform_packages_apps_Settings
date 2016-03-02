@@ -33,6 +33,12 @@
                 android:defaultValue="0"
                 android:dependency="show_clear_all_recents" />
 				
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="navbar_recents_switch"
+            android:title="@string/navbar_recents_switch"
+            android:summary="@string/navbar_recents_switch_summary"
+            android:defaultValue="false" />
+				
 	</PreferenceCategory>
 	
 	<PreferenceCategory
