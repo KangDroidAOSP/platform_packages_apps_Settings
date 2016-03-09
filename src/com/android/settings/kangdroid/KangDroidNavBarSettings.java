@@ -48,6 +48,11 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.ButtonBacklightBrightness;
+import com.android.internal.utils.du.ActionConstants;
+import com.android.internal.utils.du.Config;
+import com.android.internal.utils.du.DUActionUtils;
+import com.android.settings.cyanogenmod.SecureSettingSwitchPreference;
+import com.android.internal.utils.du.Config.ButtonConfig;
 
 import cyanogenmod.providers.CMSettings;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -56,6 +61,10 @@ import com.android.settings.search.Indexable;
 import cyanogenmod.hardware.CMHardwareManager;
 
 import java.util.List;
+import com.android.internal.util.slim.Action;
+import java.util.ArrayList;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.android.internal.util.temasek.TemasekUtils;
 
@@ -69,15 +78,31 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
 	private static final String NAVIGATION_BAR_TINT = "navigation_bar_tint";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_NAVIGATION_RECENTS_LONG_PRESS = "navigation_recents_long_press";
+	private static final String NAVBAR_VISIBILITY = "navbar_visibility";
+    private static final String KEY_NAVBAR_MODE = "navbar_mode";
+    private static final String KEY_AOSP_NAVBAR_SETTINGS = "aosp_navbar_settings";
+    private static final String KEY_FLING_NAVBAR_SETTINGS = "fling_settings";
+    private static final String KEY_SMARTBAR_SETTINGS = "smartbar_settings";
+    private static final String KEY_NAVIGATION_BAR_SIZE = "navigation_bar_size";
 	
 	private ColorPickerPreference mNavbarButtonTint;
     private SwitchPreference mNavigationBarLeftPref;
     private ListPreference mNavigationRecentsLongPressAction;
+    private SwitchPreference mNavbarVisibility;
+    private ListPreference mNavbarMode;
+    private PreferenceScreen mFlingSettings;
+    private PreferenceScreen mSmartbarSettings;
+	
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.kangdroid_nav_bar_settings);
+		
+		Activity activity = getActivity();
+		
+		ContentResolver resolver = getActivity().getContentResolver();
+		PreferenceScreen prefSet = getPreferenceScreen();
 		
         // Navigation bar button color
         mNavbarButtonTint = (ColorPickerPreference) findPreference(NAVIGATION_BAR_TINT);
@@ -97,6 +122,26 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
         // Navigation bar recents long press activity needs custom setup
         mNavigationRecentsLongPressAction =
                 initRecentsLongPressAction(KEY_NAVIGATION_RECENTS_LONG_PRESS);
+        mNavbarVisibility = (SwitchPreference) findPreference(NAVBAR_VISIBILITY);
+        mNavbarMode = (ListPreference) findPreference(KEY_NAVBAR_MODE);
+        mFlingSettings = (PreferenceScreen) findPreference(KEY_FLING_NAVBAR_SETTINGS);
+        mSmartbarSettings = (PreferenceScreen) findPreference(KEY_SMARTBAR_SETTINGS);
+
+        boolean showing = Settings.Secure.getInt(getContentResolver(),
+                Settings.Secure.DEV_FORCE_SHOW_NAVBAR,
+                DUActionUtils.hasNavbarByDefault(getActivity()) ? 1 : 0) != 0;
+        updateBarVisibleAndUpdatePrefs(showing);
+        mNavbarVisibility.setOnPreferenceChangeListener(this);
+
+        int mode = Settings.Secure.getInt(getContentResolver(), Settings.Secure.NAVIGATION_BAR_MODE,
+                0);
+
+        // Smartbar moved from 2 to 0, deprecating old navbar
+        if (mode == 2) {
+            mode = 0;
+        }
+        updateBarModeSettings(mode);
+        mNavbarMode.setOnPreferenceChangeListener(this);
      }
 
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -122,6 +167,18 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
             CMSettings.Secure.putString(getContentResolver(),
                     CMSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY, putString);
             return true;
+		} else if (preference == mNavbarMode) {
+	            int mode = Integer.parseInt(((String) newValue).toString());
+	            Settings.Secure.putInt(getContentResolver(),
+	                    Settings.Secure.NAVIGATION_BAR_MODE, mode);
+	            updateBarModeSettings(mode);
+	            return true;
+        } else if (preference == mNavbarVisibility) {
+	            boolean showing = ((Boolean)newValue);
+	            Settings.Secure.putInt(getContentResolver(), Settings.Secure.DEV_FORCE_SHOW_NAVBAR,
+	                    showing ? 1 : 0);
+	            updateBarVisibleAndUpdatePrefs(showing);
+	            return true;
 		}
 		return false;
 	}
@@ -194,5 +251,17 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
         list.setEntries(entries);
         list.setEntryValues(values);
         return list;
+    }
+	
+    private void updateBarModeSettings(int mode) {
+        mNavbarMode.setValue(String.valueOf(mode));
+        mSmartbarSettings.setEnabled(mode == 0);
+        mSmartbarSettings.setSelectable(mode == 0);
+        mFlingSettings.setEnabled(mode == 1);
+        mFlingSettings.setSelectable(mode == 1);
+    }
+
+    private void updateBarVisibleAndUpdatePrefs(boolean showing) {
+        mNavbarVisibility.setChecked(showing);
     }
 }
