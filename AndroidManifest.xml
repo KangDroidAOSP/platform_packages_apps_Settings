@@ -2674,6 +2674,16 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/sound_settings" />
         </activity>
+		
+       <!-- Icon picker proxy for gallery -->
+        <activity android:name="com.android.settings.rr.IconPickerGallery"
+            android:theme="@style/Theme.SettingsDialog"
+            android:label="@string/icon_pack_picker_dialog_title"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <!-- Show Manual (from settings item) -->
         <activity android:name="ManualDisplayActivity"
