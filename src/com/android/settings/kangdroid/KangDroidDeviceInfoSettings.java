@@ -89,7 +89,8 @@ public class KangDroidDeviceInfoSettings extends SettingsPreferenceFragment {
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.kangdroid_device_info);
-        setValueSummary(KEY_MOD_VERSION, cyanogenmod.os.Build.CYANOGENMOD_DISPLAY_VERSION);
+        findPreference(KEY_MOD_VERSION).setSummary(
+                cyanogenmod.os.Build.CYANOGENMOD_DISPLAY_VERSION);
         findPreference(KEY_MOD_VERSION).setEnabled(true);
         setExplicitValueSummary(KEY_MOD_API_LEVEL, constructApiLevelString());
         findPreference(KEY_MOD_API_LEVEL).setEnabled(true);
