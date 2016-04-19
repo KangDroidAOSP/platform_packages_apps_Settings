@@ -38,6 +38,12 @@
 	<PreferenceCategory
 		android:key="kdp_aosp_recents_default"
 		android:title="@string/kdp_aosp_recents_default_title">
+		
+        <!-- Hide Apps from Recents (HAFR) -->
+        <Preference
+            android:key="hide_app_from_recents"
+            android:title="@string/hide_apps_from_recents_title"
+            android:summary="@string/hide_apps_from_recents_summary" />
 				
             <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
                 android:key="recents_clear_all_dismiss_all"

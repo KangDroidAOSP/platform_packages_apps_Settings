@@ -21,6 +21,7 @@ import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
@@ -68,6 +69,14 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 	private static final String OMNISWITCH_RECENTS = "omniswitch";
 	private static final String SLIM_RECENTS = "slim_recents_for_kdp";
+	private static final String PREF_HIDDEN_RECENTS_APPS_START = "hide_app_from_recents";
+	
+    // Package name of the hidden recetns apps activity
+    public static final String HIDDEN_RECENTS_PACKAGE_NAME = "com.android.settings";
+    // Intent for launching the hidden recents actvity
+    public static Intent INTENT_HIDDEN_RECENTS_SETTINGS = new Intent(Intent.ACTION_MAIN)
+            .setClassName(HIDDEN_RECENTS_PACKAGE_NAME,
+            HIDDEN_RECENTS_PACKAGE_NAME + ".temasek.HAFRAppListActivity");
 
     private SwitchPreference mRecentsSearchBar;
     private SwitchPreference mRecentsMemBar;
@@ -77,6 +86,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
     private ListPreference mRecentsClearAllLocation;
 	private Preference mOmniSwitch;
 	private Preference mSlimRecentsKDP;
+	private Preference mHiddenRecentsApps;
 	
 	KangDroidSlimRecentsSettings mKDPSlimRecents;
 
@@ -105,6 +115,7 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
         mRecentsClearAllLocation.setValue(String.valueOf(location));
         mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntry());
         mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
+		mHiddenRecentsApps = (Preference) prefSet.findPreference(PREF_HIDDEN_RECENTS_APPS_START);
 		updatePreference();
 
     }
@@ -141,6 +152,15 @@ public class KangDroidRecentsSettings extends SettingsPreferenceFragment impleme
 	        mRecentsClearAllLocation.setEnabled(true);
 			mOmniSwitch.setEnabled(true);
 		}
+    }
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mHiddenRecentsApps) {
+            getActivity().startActivity(INTENT_HIDDEN_RECENTS_SETTINGS);
+        } else {
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }
+        return false;
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
