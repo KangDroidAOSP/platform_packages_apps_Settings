@@ -1465,5 +1465,7 @@
      <string name="smartbar_ime_action_none">None</string>
      <string name="smartbar_ime_action_arrows">Input arrows</string>
      <string name="smartbar_ime_action_switcher">Keyboard switcher</string>
+	<string name="navbar_tint_switch">Navigation Button Tint</string>
+	<string name="navbar_button_color">Navigation Bar Buttons</string>
 
 </resources>
