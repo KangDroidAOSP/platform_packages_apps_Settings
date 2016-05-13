@@ -15,6 +15,8 @@
 */
 package com.android.settings.kangdroid;
 
+import android.app.Activity;
+
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -127,8 +129,8 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
         mFlingSettings = (PreferenceScreen) findPreference(KEY_FLING_NAVBAR_SETTINGS);
         mSmartbarSettings = (PreferenceScreen) findPreference(KEY_SMARTBAR_SETTINGS);
 
-        boolean showing = Settings.Secure.getInt(getContentResolver(),
-                Settings.Secure.DEV_FORCE_SHOW_NAVBAR,
+        boolean showing = Settings.System.getInt(getContentResolver(),
+                Settings.System.DEV_FORCE_SHOW_NAVBAR,
                 DUActionUtils.hasNavbarByDefault(getActivity()) ? 1 : 0) != 0;
         updateBarVisibleAndUpdatePrefs(showing);
         mNavbarVisibility.setOnPreferenceChangeListener(this);
@@ -175,7 +177,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
 	            return true;
         } else if (preference == mNavbarVisibility) {
 	            boolean showing = ((Boolean)newValue);
-	            Settings.Secure.putInt(getContentResolver(), Settings.Secure.DEV_FORCE_SHOW_NAVBAR,
+	            Settings.System.putInt(getContentResolver(), Settings.System.DEV_FORCE_SHOW_NAVBAR,
 	                    showing ? 1 : 0);
 	            updateBarVisibleAndUpdatePrefs(showing);
 	            return true;
