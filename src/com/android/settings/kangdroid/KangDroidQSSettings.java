@@ -66,12 +66,16 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
 	private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 	private static final String STATUS_BAR_QUICK_QS_PULLDOWN = "qs_quick_pulldown";
 	private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
+    private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
+    private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
 	
     private SwitchPreference mBlockOnSecureKeyguard;
 	private ListPreference mQuickPulldown;
 	private ListPreference mSmartPulldown;
 	private ListPreference mNumColumns;
 	private ListPreference mNumRows;
+    private ListPreference mTileAnimationStyle;
+    private ListPreference mTileAnimationDuration;
 	
     private static final int MY_USER_ID = UserHandle.myUserId();
 	
@@ -127,6 +131,24 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
         mNumRows.setValue(String.valueOf(numRows));
         updateNumRowsSummary(numRows);
         mNumRows.setOnPreferenceChangeListener(this);
+		
+        // Add animations to quick settings
+        mTileAnimationStyle = (ListPreference) findPreference(PREF_TILE_ANIM_STYLE);
+        int tileAnimationStyle = Settings.System.getIntForUser(resolver,
+                Settings.System.ANIM_TILE_STYLE, 0,
+                UserHandle.USER_CURRENT);
+        mTileAnimationStyle.setValue(String.valueOf(tileAnimationStyle));
+        updateTileAnimationStyleSummary(tileAnimationStyle);
+        updateAnimTileDuration(tileAnimationStyle);
+        mTileAnimationStyle.setOnPreferenceChangeListener(this);
+
+        mTileAnimationDuration = (ListPreference) findPreference(PREF_TILE_ANIM_DURATION);
+        int tileAnimationDuration = Settings.System.getIntForUser(resolver,
+                Settings.System.ANIM_TILE_DURATION, 1500,
+                UserHandle.USER_CURRENT);
+        mTileAnimationDuration.setValue(String.valueOf(tileAnimationDuration));
+        updateTileAnimationDurationSummary(tileAnimationDuration);
+        mTileAnimationDuration.setOnPreferenceChangeListener(this);
 	}
 	
     @Override
@@ -165,6 +187,19 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
                 numRows, UserHandle.USER_CURRENT);
         updateNumRowsSummary(numRows);
         return true;
+	} else if (preference == mTileAnimationStyle) {
+            int tileAnimationStyle = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_STYLE,
+                    tileAnimationStyle, UserHandle.USER_CURRENT);
+            updateTileAnimationStyleSummary(tileAnimationStyle);
+            updateAnimTileDuration(tileAnimationStyle);
+            return true;
+        } else if (preference == mTileAnimationDuration) {
+            int tileAnimationDuration = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.ANIM_TILE_DURATION,
+                    tileAnimationDuration, UserHandle.USER_CURRENT);
+            updateTileAnimationDurationSummary(tileAnimationDuration);
+            return true;
 	}
 		return false;
 	}
@@ -243,6 +278,28 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
             return Math.max(1, val);
         } catch (Exception e) {
             return 3;
+        }
+    }
+	
+    private void updateTileAnimationStyleSummary(int tileAnimationStyle) {
+        String prefix = (String) mTileAnimationStyle.getEntries()[mTileAnimationStyle.findIndexOfValue(String
+                .valueOf(tileAnimationStyle))];
+        mTileAnimationStyle.setSummary(getResources().getString(R.string.qs_set_animation_style, prefix));
+    }
+
+    private void updateTileAnimationDurationSummary(int tileAnimationDuration) {
+        String prefix = (String) mTileAnimationDuration.getEntries()[mTileAnimationDuration.findIndexOfValue(String
+                .valueOf(tileAnimationDuration))];
+        mTileAnimationDuration.setSummary(getResources().getString(R.string.qs_set_animation_duration, prefix));
+    }
+
+    private void updateAnimTileDuration(int tileAnimationStyle) {
+        if (mTileAnimationDuration != null) {
+            if (tileAnimationStyle == 0) {
+                mTileAnimationDuration.setSelectable(false);
+            } else {
+                mTileAnimationDuration.setSelectable(true);
+            }
         }
     }
 }

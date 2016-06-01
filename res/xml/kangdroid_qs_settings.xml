@@ -72,6 +72,20 @@
 		android:key="kdp_advanced_qs"
 		android:title="@string/kdp_advanced_qs_title">
 		
+       <ListPreference
+            android:key="qs_tile_animation_style"
+            android:title="@string/qs_tile_animation_style_title"
+            android:entries="@array/qs_tile_animation_style_entries"
+            android:entryValues="@array/qs_tile_animation_style_values"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="qs_tile_animation_duration"
+            android:title="@string/qs_tile_animation_duration_title"
+            android:entries="@array/qs_tile_animation_duration_entries"
+            android:entryValues="@array/qs_tile_animation_duration_values"
+            android:persistent="false" />
+		
     <SwitchPreference
         android:key="block_on_secure_keyguard"
         android:title="@string/block_on_secure_keyguard_title"
