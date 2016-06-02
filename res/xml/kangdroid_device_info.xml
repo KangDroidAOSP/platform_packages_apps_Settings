@@ -16,6 +16,10 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	
+	<PreferenceScreen 
+		android:key="rom_logo" 
+		android:layout="@layout/kdp_logo_row" />
+	
 	<PreferenceCategory
 		android:key="kdp_changelog"
 		android:title="@string/kdp_changelog_title">

@@ -3,14 +3,14 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 	
 	<!-- KangDroid Project Default strings -->
-	<string name="kangdroid_other">Other KDP Settings</string>
+	<string name="kangdroid_other">Other Hexa Settings</string>
 	<string name="kangdroid_animation_main">Animation Settings</string>
 	<string name="kangdroid_nav_bar_title">Navigation Settings</string>
 	<string name="kangdroid_lockscreen_settings">Lockscreen Settings</string>
 	<string name="kdp_clock_date_settings_title">Clock &amp; Date Settings</string>
 	<string name="kdp_status_clock_title">Clock Customization</string>
 	<string name="kdp_date_customization_title">Date Customization</string>
-	<string name="kdp_clock_category_title">KDP Clock Customization</string>
+	<string name="kdp_clock_category_title">Hexa Clock Customization</string>
 	<string name="kdp_battery_customization_title">Battery Customization</string>
 	<string name="kdp_main_status_title">Main StatusBar Customization</string>
 	<string name="notification_drawer_title">Notification Drawer</string>
@@ -22,19 +22,19 @@
 	<string name="kdp_aokp_system_category_title">AOKP System Animation Settings</string>
 	<string name="kdp_lock_weather_main_title">Main Lockscreen Weather Settings</string>
 	<string name="kdp_lockscreen_ability">Lockscreen Blur Settings</string>
-	<string name="kdp_lockscreen_shortcuts_title">KDP Combined Lockscreen Shortcut Settings</string>
-	<string name="kdp_main_lockscreen_really">Main KDP Custom Lockscreen Settings</string>
+	<string name="kdp_lockscreen_shortcuts_title">Hexa Combined Lockscreen Shortcut Settings</string>
+	<string name="kdp_main_lockscreen_really">Main Hexa Custom Lockscreen Settings</string>
 	<string name="aosp_defaults_recents_kdp_title">AOSP Recents Customization</string>
 	<string name="kdp_slim_recents_title">Slim Recents Settings</string>
 	<string name="kdp_aosp_recents_default_title">AOSP Other Recents Customization</string>
 	<string name="kdp_slim_recents_title">Slim Recents</string>
-	<string name="kdp_category_status_bar_title">KDP StatusBar Customization</string>
-	<string name="kdp_category_notification_drawer_title">KDP Notification Drawer Customization</string>
-	<string name="kdp_category_recents_title">KDP Recents Customization</string>
-	<string name="kdp_category_animation_title">KDP Animation Customization</string>
-	<string name="kdp_category_nav_bar_title">KDP Navigation Customization</string>
-	<string name="kdp_category_lockscreen">KDP Lockscreen Customization</string>
-	<string name="kdp_category_other_settings_title">KDP Other Customization</string>
+	<string name="kdp_category_status_bar_title">Hexa StatusBar Customization</string>
+	<string name="kdp_category_notification_drawer_title">Hexa Notification Drawer Customization</string>
+	<string name="kdp_category_recents_title">Hexa Recents Customization</string>
+	<string name="kdp_category_animation_title">Hexa Animation Customization</string>
+	<string name="kdp_category_nav_bar_title">Hexa Navigation Customization</string>
+	<string name="kdp_category_lockscreen">Hexa Lockscreen Customization</string>
+	<string name="kdp_category_other_settings_title">Hexa Other Customization</string>
 	<string name="gesture_anywhere_category_kdp_title">Gesture Anywhere</string>
 	<string name="kdp_app_bar_title">App Bar Settings</string>
 	<string name="kangdroid_main_settings">Customization</string>
@@ -42,20 +42,20 @@
 	<string name="kdp_misc_nav_bar_title">Other Navigation Customization</string>
 	<string name="kdp_qs_settings_color">Custom QS Colors</string>
 	<string name="kdp_sounds_disable_title">Disabling Sounds</string>
-	<string name="kdp_misc_sounds">Other KDP Sound Customization</string>
+	<string name="kdp_misc_sounds">Other Hexa Sound Customization</string>
 	<string name="kdp_pulldown_entry">QS Pulldown Settings</string>
 	<string name="cancel">Cancel</string>
-	<string name="kdp_device_info_title">KangDroid-Project Info</string>
-	<string name="kdp_device_info_summary">See information of KangDroid-Project</string>
+	<string name="kdp_device_info_title">Hexa OS Info</string>
+	<string name="kdp_device_info_summary">See information of Hexa OS</string>
 	<string name="kdp_cyanogenmod_title">CyanogenMod Information</string>
-	<string name="kdp_kangdroid_title">KangDroid-Project Information</string>
+	<string name="kdp_kangdroid_title">Hexa OS Information</string>
 	<string name="kdp_device_hardware_info_title">Device Hardware Information</string>
 	<string name="kdp_qs_customization_title">QS Customization</string>
 	<string name="kdp_qs_settings_title">Advanced QS Customization</string>
 	<string name="kdp_qs_lines_title">QS Line Settings</string>
 	<string name="kdp_advanced_qs_title">Other QS Customization</string>
 	<string name="kdp_header_for_time_yeah_title">Time Contextual Header Settings</string>
-	<string name="kdp_changelog_title">KDP ChangeLog</string>
+	<string name="kdp_changelog_title">Hexa OS ChangeLog</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
@@ -88,8 +88,8 @@
 	<!-- Customization - Recents Settings -->
 	<string name="kangdroid_recents_settings_title">Recents</string>
 
-   <!-- About phone screen, KDP version -->
-   <string name="kdp_version_title">KDP ROM Version</string>
+   <!-- About phone screen, Hexa version -->
+   <string name="kdp_version_title">Hexa OS ROM Version</string>
    <!-- Do NOT translate this -->
    <string name="kdp_version_default">Stable - 1</string>
    
@@ -1062,7 +1062,7 @@
     <string name="ok_string">Ok</string>
 	
     <!-- Sound settings -->
-    <string name="advanced_sound_title">Advanced KDP Sound Settingss</string>
+    <string name="advanced_sound_title">Advanced Hexa Sound Settingss</string>
     <string name="sound_title">Sound</string>
 
     <!-- Camera sound switch -->
