@@ -51,6 +51,37 @@
                 android:key="notification_volume"
                 android:icon="@*android:drawable/ic_audio_ring_notif"
                 android:title="@string/notification_volume_option_title"/>
+    
+    <ListPreference
+        android:key="volume_dialog_stroke"
+        android:title="@string/volume_dialog_stroke_title"
+        android:dialogTitle="@string/volume_dialog_stroke_title"
+        android:entries="@array/volume_dialog_stroke_entries"
+        android:entryValues="@array/volume_dialog_stroke_values"
+        android:defaultValue="1" />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="volume_dialog_stroke_color"
+        android:title="@string/volume_dialog_stroke_color_title"
+        android:defaultValue="0xffffffff" />
+
+    <com.android.settings.temasek.SeekBarPreferenceCham
+        android:key="volume_dialog_stroke_thickness"
+        android:title="@string/volume_dialog_stroke_thickness_title"
+        android:max="25"
+        settings:min="1"
+        settings:unitsLeft=""
+        settings:unitsRight="px"
+        android:persistent="false" />
+
+    <com.android.settings.temasek.SeekBarPreferenceCham
+        android:key="volume_dialog_corner_radius"
+        android:title="@string/volume_dialog_corner_radius_title"
+        android:max="50"
+        settings:min="0"
+        settings:unitsLeft=""
+        settings:unitsRight="px"
+        android:persistent="false" />
 
 		<com.android.settings.temasek.SeekBarPreferenceCham
 				android:key="transparent_volume_dialog"
