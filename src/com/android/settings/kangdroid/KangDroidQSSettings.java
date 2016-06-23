@@ -175,7 +175,7 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
             mQSStroke =
                     (ListPreference) findPreference(PREF_QS_STROKE);
             int qSStroke = Settings.System.getIntForUser(mResolver,
-                            Settings.System.QS_STROKE, 1,
+                            Settings.System.QS_STROKE, 0,
                             UserHandle.USER_CURRENT);
             mQSStroke.setValue(String.valueOf(qSStroke));
             mQSStroke.setSummary(mQSStroke.getEntry());
