@@ -56,6 +56,7 @@
 	<string name="kdp_advanced_qs_title">Other QS Customization</string>
 	<string name="kdp_header_for_time_yeah_title">Time Contextual Header Settings</string>
 	<string name="kdp_changelog_title">Hexa OS ChangeLog</string>
+	<string name="qs_animation_title_kdp">Qs Animation</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
