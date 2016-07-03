@@ -41,6 +41,7 @@ import android.os.Message;
 import android.os.UserManager;
 import android.os.UserHandle;
 import android.os.Vibrator;
+import android.preference.SlimSeekBarPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -106,6 +107,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String PREF_VOLUME_DIALOG_CORNER_RADIUS = "volume_dialog_corner_radius";
     private static final String PREF_VOLUME_DIALOG_STROKE_DASH_WIDTH = "volume_dialog_dash_width";
     private static final String PREF_VOLUME_DIALOG_STROKE_DASH_GAP = "volume_dialog_dash_gap";
+	private static final String KEY_VOLUME_DIALOG_TIMEOUT = "volume_dialog_timeout";
 	
 	static final int DEFAULT_VOLUME_DIALOG_STROKE_COLOR = 0xFF80CBC4;
 
@@ -164,6 +166,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private SeekBarPreferenceCham mVolumeDialogCornerRadius;
     private SeekBarPreferenceCham mVolumeDialogDashWidth;
     private SeekBarPreferenceCham mVolumeDialogDashGap;
+	private SlimSeekBarPreference mVolumeDialogTimeout;
 
     @Override
     protected int getMetricsCategory() {
@@ -284,6 +287,15 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                      Settings.System.VOLUME_DIALOG_STROKE_DASH_GAP, 10);
              mVolumeDialogDashGap.setValue(volumeDialogDashGap / 1);
              mVolumeDialogDashGap.setOnPreferenceChangeListener(this);
+
+        // Volume dialog timeout seekbar
+        mVolumeDialogTimeout = (SlimSeekBarPreference) findPreference(KEY_VOLUME_DIALOG_TIMEOUT);
+        mVolumeDialogTimeout.setDefault(3000);
+        mVolumeDialogTimeout.isMilliseconds(true);
+        mVolumeDialogTimeout.setInterval(1);
+        mVolumeDialogTimeout.minimumValue(100);
+        mVolumeDialogTimeout.multiplyValue(100);
+        mVolumeDialogTimeout.setOnPreferenceChangeListener(this);
 			
 		VolumeDialogSettingsDisabler(volumeDialogStroke);
         initRingtones(sounds);
@@ -319,6 +331,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 pref.setEnabled(!isRestricted);
             }
         }
+		updateState();
     }
 
     @Override
@@ -376,7 +389,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                  Settings.System.putInt(mResolver,
                          Settings.System.VOLUME_DIALOG_STROKE_DASH_GAP, val * 1);
                  return true;
-			}
+        } else if (preference == mVolumeDialogTimeout) {
+            int volumeDialogTimeout = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.VOLUME_DIALOG_TIMEOUT, volumeDialogTimeout);
+			return true;
+		}
 		return false;
 	}
 	
@@ -398,6 +416,17 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                 mVolumeDialogDashGap.setEnabled(true);
             }
         }
+		
+    private void updateState() {
+        final Activity activity = getActivity();
+
+        if (mVolumeDialogTimeout != null) {
+            final int volumeDialogTimeout = Settings.System.getInt(getContentResolver(),
+                    Settings.System.VOLUME_DIALOG_TIMEOUT, 3000);
+            // minimum 100 is 1 interval of the 100 multiplier
+            mVolumeDialogTimeout.setInitValue((volumeDialogTimeout / 100) - 1);
+        }
+    }
     // === Volumes ===
 
     private VolumeSeekBarPreference initVolumePreference(String key, int stream, int muteIcon) {

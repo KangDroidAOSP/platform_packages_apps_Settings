@@ -110,6 +110,10 @@
 				settings:unitsRight=""
 				android:persistent="false" />
 
+        <SlimSeekBarPreference
+                android:key="volume_dialog_timeout"
+                android:title="@string/volume_dialog_timeout_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

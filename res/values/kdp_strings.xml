@@ -1302,6 +1302,9 @@
      <string name="volume_dialog_corner_radius_title">Volume dialog corner radius</string>
      <string name="volume_dialog_dash_width_title">Volume dialog stroke dash width</string>
      <string name="volume_dialog_dash_gap_title">Volume dialog stroke dash gap</string>
+	 
+     <!-- Volume dialog timeout -->
+     <string name="volume_dialog_timeout_title">Volume dialog timeout</string>
 
      <!-- QS stroke settings -->
 	 <string name="kdp_qs_strokes_title">Stroke Settings</string>
