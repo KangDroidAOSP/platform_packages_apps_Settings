@@ -76,7 +76,6 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
     private ListPreference mImeActions;
     private ListPreference mButtonAnim;
     private static final String NAVBAR_COLOR = "navbar_button_color";
-    private static final int MENU_RESET = Menu.FIRST;
 	
     private ColorPickerPreference mNavbuttoncolor;
   
@@ -414,25 +413,7 @@ public class SmartbarSettings extends SettingsPreferenceFragment implements
     protected int getMetricsCategory() {
         return MetricsLogger.DONT_TRACK_ME_BRO;
     }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.add(0, MENU_RESET, 0, R.string.reset)
-                .setIcon(R.drawable.ic_settings_reset)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MENU_RESET:
-                resetToDefault();
-                return true;
-            default:
-                return super.onContextItemSelected(item);
-        }
-    }
-
+	
     private void resetToDefault() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
         alertDialog.setTitle(R.string.header_colors_reset_title);
