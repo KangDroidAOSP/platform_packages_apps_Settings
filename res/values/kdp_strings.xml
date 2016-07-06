@@ -40,7 +40,6 @@
 	<string name="kangdroid_main_settings">Customization</string>
 	<string name="kdp_category_main_nav_bar_title">Main Navigation Customization</string>
 	<string name="kdp_misc_nav_bar_title">Other Navigation Customization</string>
-	<string name="kdp_qs_settings_color">Custom QS Colors</string>
 	<string name="kdp_sounds_disable_title">Disabling Sounds</string>
 	<string name="kdp_misc_sounds">Other Hexa Sound Customization</string>
 	<string name="kdp_pulldown_entry">QS Pulldown Settings</string>
