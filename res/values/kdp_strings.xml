@@ -40,7 +40,6 @@
 	<string name="kangdroid_main_settings">Customization</string>
 	<string name="kdp_category_main_nav_bar_title">Main Navigation Customization</string>
 	<string name="kdp_misc_nav_bar_title">Other Navigation Customization</string>
-	<string name="kdp_qs_settings_color">Custom QS Colors</string>
 	<string name="kdp_sounds_disable_title">Disabling Sounds</string>
 	<string name="kdp_misc_sounds">Other Hexa Sound Customization</string>
 	<string name="kdp_pulldown_entry">QS Pulldown Settings</string>
@@ -56,7 +55,8 @@
 	<string name="kdp_advanced_qs_title">Other QS Customization</string>
 	<string name="kdp_header_for_time_yeah_title">Time Contextual Header Settings</string>
 	<string name="kdp_changelog_title">Hexa OS ChangeLog</string>
-	<string name="qs_animation_title_kdp">Qs Animation</string>
+	<string name="qs_animation_title_kdp">QS Animation</string>
+	<string name="kdp_qs_settings_transparency">QS Transparency</string>
 
     <!-- General strings -->
     <string name="attention">Attention</string>
