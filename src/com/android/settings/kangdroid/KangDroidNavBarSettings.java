@@ -161,6 +161,59 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
 		updateNavBarSettings();
     }
 	
+	
+    private void updateNavBarSettings() {
+         boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
+                 Settings.System.NAVIGATION_BAR_SHOW,
+                 TemasekUtils.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
+         mEnableNavigationBar.setChecked(enableNavigationBar);
+
+         if (mDimNavButtons != null) {
+             mDimNavButtons.setChecked(Settings.System.getInt(getContentResolver(),
+                     Settings.System.DIM_NAV_BUTTONS, 0) == 1);
+         }
+
+         if (mDimNavButtonsTouchAnywhere != null) {
+             mDimNavButtonsTouchAnywhere.setChecked(Settings.System.getInt(getContentResolver(),
+                     Settings.System.DIM_NAV_BUTTONS_TOUCH_ANYWHERE, 0) == 1);
+         }
+
+         if (mDimNavButtonsTimeout != null) {
+             final int dimTimeout = Settings.System.getInt(getContentResolver(),
+                     Settings.System.DIM_NAV_BUTTONS_TIMEOUT, 3000);
+             // minimum 100 is 1 interval of the 100 multiplier
+             mDimNavButtonsTimeout.setInitValue((dimTimeout / 100) - 1);
+         }
+
+         if (mDimNavButtonsAlpha != null) {
+             int alphaScale = Settings.System.getInt(getContentResolver(),
+                     Settings.System.DIM_NAV_BUTTONS_ALPHA, 50);
+             mDimNavButtonsAlpha.setInitValue(alphaScale);
+         }
+
+         if (mDimNavButtonsAnimate != null) {
+             mDimNavButtonsAnimate.setChecked(Settings.System.getInt(getContentResolver(),
+                     Settings.System.DIM_NAV_BUTTONS_ANIMATE, 0) == 1);
+         }
+
+         if (mDimNavButtonsAnimateDuration != null) {
+             final int animateDuration = Settings.System.getInt(getContentResolver(),
+                     Settings.System.DIM_NAV_BUTTONS_ANIMATE_DURATION, 2000);
+             // minimum 100 is 1 interval of the 100 multiplier
+             mDimNavButtonsAnimateDuration.setInitValue((animateDuration / 100) - 1);
+         }
+
+         updateNavbarPreferences(enableNavigationBar);
+     }
+
+     private void updateNavbarPreferences(boolean show) {
+         mDimNavButtons.setEnabled(show);
+         mDimNavButtonsTimeout.setEnabled(show);
+         mDimNavButtonsAlpha.setEnabled(show);
+         mDimNavButtonsAnimate.setEnabled(show);
+         mDimNavButtonsAnimateDuration.setEnabled(show);
+     }
+	
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
 		if (preference == mNavbarButtonTint) {
             String hex = ColorPickerPreference.convertToARGB(
@@ -191,14 +244,16 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
                     CMSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY, putString);
             return true;
         } else if (preference == mDimNavButtons) {
+			boolean enabled = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS,
-                    ((Boolean) newValue) ? 1 : 0);
+                     enabled ? 1:0);
             return true;
         } else if (preference == mDimNavButtonsTouchAnywhere) {
+			boolean enabled = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS_TOUCH_ANYWHERE,
-                    ((Boolean) newValue) ? 1 : 0);
+                    enabled ? 1:0);
             return true;
         } else if (preference == mDimNavButtonsTimeout) {
             Settings.System.putInt(getActivity().getContentResolver(),
@@ -291,56 +346,4 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
         list.setEntryValues(values);
         return list;
     }
-	
-    private void updateNavBarSettings() {
-         boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-                 Settings.System.NAVIGATION_BAR_SHOW,
-                 TemasekUtils.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
-         mEnableNavigationBar.setChecked(enableNavigationBar);
-
-         if (mDimNavButtons != null) {
-             mDimNavButtons.setChecked(Settings.System.getInt(getContentResolver(),
-                     Settings.System.DIM_NAV_BUTTONS, 0) == 1);
-         }
-
-         if (mDimNavButtonsTouchAnywhere != null) {
-             mDimNavButtonsTouchAnywhere.setChecked(Settings.System.getInt(getContentResolver(),
-                     Settings.System.DIM_NAV_BUTTONS_TOUCH_ANYWHERE, 0) == 1);
-         }
-
-         if (mDimNavButtonsTimeout != null) {
-             final int dimTimeout = Settings.System.getInt(getContentResolver(),
-                     Settings.System.DIM_NAV_BUTTONS_TIMEOUT, 3000);
-             // minimum 100 is 1 interval of the 100 multiplier
-             mDimNavButtonsTimeout.setInitValue((dimTimeout / 100) - 1);
-         }
-
-         if (mDimNavButtonsAlpha != null) {
-             int alphaScale = Settings.System.getInt(getContentResolver(),
-                     Settings.System.DIM_NAV_BUTTONS_ALPHA, 50);
-             mDimNavButtonsAlpha.setInitValue(alphaScale);
-         }
-
-         if (mDimNavButtonsAnimate != null) {
-             mDimNavButtonsAnimate.setChecked(Settings.System.getInt(getContentResolver(),
-                     Settings.System.DIM_NAV_BUTTONS_ANIMATE, 0) == 1);
-         }
-
-         if (mDimNavButtonsAnimateDuration != null) {
-             final int animateDuration = Settings.System.getInt(getContentResolver(),
-                     Settings.System.DIM_NAV_BUTTONS_ANIMATE_DURATION, 2000);
-             // minimum 100 is 1 interval of the 100 multiplier
-             mDimNavButtonsAnimateDuration.setInitValue((animateDuration / 100) - 1);
-         }
-
-         updateNavbarPreferences(enableNavigationBar);
-     }
-
-     private void updateNavbarPreferences(boolean show) {
-         mDimNavButtons.setEnabled(show);
-         mDimNavButtonsTimeout.setEnabled(show);
-         mDimNavButtonsAlpha.setEnabled(show);
-         mDimNavButtonsAnimate.setEnabled(show);
-         mDimNavButtonsAnimateDuration.setEnabled(show);
-     }
 }
