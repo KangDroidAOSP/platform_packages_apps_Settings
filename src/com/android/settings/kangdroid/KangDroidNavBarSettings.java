@@ -191,14 +191,16 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
                     CMSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY, putString);
             return true;
         } else if (preference == mDimNavButtons) {
+			boolean enabled = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS,
-                    ((Boolean) newValue) ? 1 : 0);
+                     enabled ? 1:0);
             return true;
         } else if (preference == mDimNavButtonsTouchAnywhere) {
+			boolean enabled = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.DIM_NAV_BUTTONS_TOUCH_ANYWHERE,
-                    ((Boolean) newValue) ? 1 : 0);
+                    enabled ? 1:0);
             return true;
         } else if (preference == mDimNavButtonsTimeout) {
             Settings.System.putInt(getActivity().getContentResolver(),
