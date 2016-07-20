@@ -65,14 +65,10 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 public class NotificationDrawerSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
-    private static final String PREF_QS_TRANSPARENT_SHADE = "qs_transparent_shade";
-	private static final String PREF_QS_TRANSPARENT_HEADER = "qs_transparent_header";
 	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
 	
 	private SwitchPreference mEnableTaskManager;
     private ListPreference mCustomHeaderDefault;
-    private SeekBarPreference mQSShadeAlpha;
-	private SeekBarPreference mQSHeaderAlpha;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -88,21 +84,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
 		
-        // QS shade alpha
-        mQSShadeAlpha = (SeekBarPreference) findPreference(PREF_QS_TRANSPARENT_SHADE);
-        int qSShadeAlpha = Settings.System.getInt(resolver,
-                Settings.System.QS_TRANSPARENT_SHADE, 255);
-        mQSShadeAlpha.setValue(qSShadeAlpha / 1);
-        mQSShadeAlpha.setOnPreferenceChangeListener(this);
-		
-        // QS header alpha
-        mQSHeaderAlpha =
-               (SeekBarPreference) findPreference(PREF_QS_TRANSPARENT_HEADER);
-        int qSHeaderAlpha = Settings.System.getInt(resolver,
-                Settings.System.QS_TRANSPARENT_HEADER, 255);
-        mQSHeaderAlpha.setValue(qSHeaderAlpha / 1);
-        mQSHeaderAlpha.setOnPreferenceChangeListener(this);
-		
 		// Excute updateCustomHeaderforKDP for updating Custom header - Time contextual header settings
 		updateCustomHeaderforKDP();
 		
@@ -113,7 +94,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
         mCustomHeaderDefault.setOnPreferenceChangeListener(this);
         int customHeaderDefault = Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0);
+                .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 1);
         mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
         mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntry());
 	}
@@ -133,16 +114,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
             Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeaderDefault);
         mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
         updateCustomHeaderforKDP();
-        return true;
-    } else if (preference == mQSShadeAlpha) {
-        int alpha = (Integer) newValue;
-        Settings.System.putInt(resolver,
-                Settings.System.QS_TRANSPARENT_SHADE, alpha * 1);
-        return true;
-    } else if (preference == mQSHeaderAlpha) {
-        int alpha = (Integer) newValue;
-        Settings.System.putInt(resolver,
-                Settings.System.QS_TRANSPARENT_HEADER, alpha * 1);
         return true;
 	}
         return false;

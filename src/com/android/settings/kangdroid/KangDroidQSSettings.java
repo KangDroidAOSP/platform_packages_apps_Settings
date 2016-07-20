@@ -69,6 +69,8 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
     private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
     private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
 	private static final String PREF_TILE_ANIM_INTERPOLATOR = "qs_tile_animation_interpolator";
+    private static final String PREF_QS_TRANSPARENT_SHADE = "qs_transparent_shade";
+	private static final String PREF_QS_TRANSPARENT_HEADER = "qs_transparent_header";
 	
     private SwitchPreference mBlockOnSecureKeyguard;
 	private ListPreference mQuickPulldown;
@@ -78,6 +80,8 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
     private ListPreference mTileAnimationStyle;
     private ListPreference mTileAnimationDuration;
 	private ListPreference mTileAnimationInterpolator;
+    private SeekBarPreference mQSShadeAlpha;
+	private SeekBarPreference mQSHeaderAlpha;
 	
     private static final int MY_USER_ID = UserHandle.myUserId();
 	
@@ -159,6 +163,21 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
         mTileAnimationInterpolator.setValue(String.valueOf(tileAnimationInterpolator));
         updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
         mTileAnimationInterpolator.setOnPreferenceChangeListener(this);
+		
+        // QS shade alpha
+        mQSShadeAlpha = (SeekBarPreference) findPreference(PREF_QS_TRANSPARENT_SHADE);
+        int qSShadeAlpha = Settings.System.getInt(resolver,
+                Settings.System.QS_TRANSPARENT_SHADE, 255);
+        mQSShadeAlpha.setValue(qSShadeAlpha / 1);
+        mQSShadeAlpha.setOnPreferenceChangeListener(this);
+		
+        // QS header alpha
+        mQSHeaderAlpha =
+               (SeekBarPreference) findPreference(PREF_QS_TRANSPARENT_HEADER);
+        int qSHeaderAlpha = Settings.System.getInt(resolver,
+                Settings.System.QS_TRANSPARENT_HEADER, 255);
+        mQSHeaderAlpha.setValue(qSHeaderAlpha / 1);
+        mQSHeaderAlpha.setOnPreferenceChangeListener(this);
 	}
 	
     @Override
@@ -216,6 +235,16 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
                     tileAnimationInterpolator, UserHandle.USER_CURRENT);
             updateTileAnimationInterpolatorSummary(tileAnimationInterpolator);
             return true;
+	    } else if (preference == mQSShadeAlpha) {
+	        int alpha = (Integer) newValue;
+	        Settings.System.putInt(resolver,
+	                Settings.System.QS_TRANSPARENT_SHADE, alpha * 1);
+	        return true;
+	    } else if (preference == mQSHeaderAlpha) {
+	        int alpha = (Integer) newValue;
+	        Settings.System.putInt(resolver,
+	                Settings.System.QS_TRANSPARENT_HEADER, alpha * 1);
+	        return true;
 	}
 		return false;
 	}
