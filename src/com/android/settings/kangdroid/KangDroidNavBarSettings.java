@@ -158,7 +158,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
         mDimNavButtonsAnimateDuration.multiplyValue(100);
         mDimNavButtonsAnimateDuration.setOnPreferenceChangeListener(this);
 		
-		updateNavBarSettings();
+		//updateNavBarSettings();
     }
 	
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
