@@ -50,6 +50,16 @@
                 android:key="notification_volume"
                 android:icon="@*android:drawable/ic_audio_ring_notif"
                 android:title="@string/notification_volume_option_title"/>
+
+		<com.android.settings.temasek.SeekBarPreferenceCham
+				android:key="transparent_volume_dialog"
+				android:title="@string/volume_dialog_transparency"
+				android:max="255"
+				settings:min="0"
+				settings:unitsLeft=""
+				settings:unitsRight=""
+				android:persistent="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

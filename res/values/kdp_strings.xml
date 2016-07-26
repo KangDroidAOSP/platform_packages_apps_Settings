@@ -1257,5 +1257,8 @@
     <string name="qs_set_animation_style">%1$s</string>
     <string name="qs_set_animation_duration">%1$s</string>
     <string name="qs_set_animation_interpolator">%1$s</string>
+	
+	<!-- Volume dialog transparency -->
+   <string name="volume_dialog_transparency">Volume dialog transparency</string>
 
 </resources>

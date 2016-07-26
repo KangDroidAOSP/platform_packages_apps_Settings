@@ -64,6 +64,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.temasek.SeekBarPreferenceCham;
 import cyanogenmod.hardware.CMHardwareManager;
 import cyanogenmod.providers.CMSettings;
 
@@ -94,6 +95,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_VIBRATE_ON_TOUCH = "vibrate_on_touch";
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_VOLUME_LINK_NOTIFICATION = "volume_link_notification";
+	private static final String PREF_TRANSPARENT_VOLUME_DIALOG = "transparent_volume_dialog";
 
     private static final String[] RESTRICTED_KEYS = {
         KEY_MEDIA_VOLUME,
@@ -128,6 +130,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private AudioManager mAudioManager;
     private VolumeSeekBarPreference mRingPreference;
     private VolumeSeekBarPreference mNotificationPreference;
+	private SeekBarPreferenceCham mVolumeDialogAlpha;	
 
     private TwoStatePreference mIncreasingRing;
     private IncreasingRingVolumePreference mIncreasingRingVolume;
@@ -185,6 +188,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         if (!hardware.isSupported(CMHardwareManager.FEATURE_VIBRATOR)) {
             vibrate.removePreference(vibrate.findPreference(KEY_VIBRATION_INTENSITY));
         }
+		
+		// Volume dialog alpha
+            mVolumeDialogAlpha =
+                    (SeekBarPreferenceCham) findPreference(PREF_TRANSPARENT_VOLUME_DIALOG);
+            int volumeDialogAlpha = Settings.System.getInt(mResolver,
+                    Settings.System.TRANSPARENT_VOLUME_DIALOG, 255);
+            mVolumeDialogAlpha.setValue(volumeDialogAlpha / 1);
+            mVolumeDialogAlpha.setOnPreferenceChangeListener(this);
 
         initRingtones(sounds);
         initIncreasingRing(sounds);
@@ -236,6 +247,19 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+	
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        boolean value;
+        String hex;
+        int intHex;
+		if (preference == mVolumeDialogAlpha) {
+                int alpha = (Integer) newValue;
+                Settings.System.putInt(mResolver,
+                        Settings.System.TRANSPARENT_VOLUME_DIALOG, alpha * 1);
+                return true;
+			}
+			return false;
+	}
 
     // === Volumes ===
 
