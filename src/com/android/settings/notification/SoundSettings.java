@@ -157,6 +157,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         mPM = mContext.getPackageManager();
         mUserManager = UserManager.get(getContext());
         mVoiceCapable = Utils.isVoiceCapable(mContext);
+		ContentResolver mResolver = getActivity().getContentResolver();
 
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
@@ -195,8 +196,19 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             int volumeDialogAlpha = Settings.System.getInt(mResolver,
                     Settings.System.TRANSPARENT_VOLUME_DIALOG, 255);
             mVolumeDialogAlpha.setValue(volumeDialogAlpha / 1);
-            mVolumeDialogAlpha.setOnPreferenceChangeListener(this);
-
+            mVolumeDialogAlpha.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+	            @Override
+	            public boolean onPreferenceChange(Preference preference, Object newValue) {
+					int alpha = (Integer) newValue;
+					ContentResolver mResolver = getActivity().getContentResolver();
+			        boolean value;
+			        String hex;
+			        int intHex;
+	                final boolean val = (Boolean) newValue;
+	                return Settings.System.putInt(mResolver,
+		                        Settings.System.TRANSPARENT_VOLUME_DIALOG, alpha * 1);
+	            }
+            });
         initRingtones(sounds);
         initIncreasingRing(sounds);
         initVibrateWhenRinging(vibrate);
@@ -247,19 +259,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
-	
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        boolean value;
-        String hex;
-        int intHex;
-		if (preference == mVolumeDialogAlpha) {
-                int alpha = (Integer) newValue;
-                Settings.System.putInt(mResolver,
-                        Settings.System.TRANSPARENT_VOLUME_DIALOG, alpha * 1);
-                return true;
-			}
-			return false;
-	}
 
     // === Volumes ===
 

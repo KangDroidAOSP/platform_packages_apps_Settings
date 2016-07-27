@@ -31,7 +31,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SwitchPreference;
-import com.android.settings.rr.SeekBarPreference;
+import com.android.settings.kangdroid.SeekBarPreference;
 import android.provider.Settings;
 import com.android.settings.util.Helpers;
 import org.cyanogenmod.internal.util.CmLockPatternUtils;
@@ -154,7 +154,7 @@ public class QsColors extends SettingsPreferenceFragment  implements Preference.
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION_DRAWER_SETTINGS;
+        return MetricsLogger.APPLICATION;
     }
 
     @Override
