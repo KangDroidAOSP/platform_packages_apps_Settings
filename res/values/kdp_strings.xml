@@ -1312,6 +1312,8 @@
     <string name="battery_icon_color">Icon (While Charging Only)</string>
     <string name="battery_text_color">Text</string>
     <string name="statusbar_color_switch_summary">Enable/Disable Custom Icon Colors</string>
+	<string name="header_colors_reset_title">Reset Header Color</string>
+	<string name="header_colors_reset_message">Reset Header Color Back to Default</string>
 	
 	<!-- NavBar Recents clear button -->
     <string name="navbar_recents_switch">Navbar Alternate Recents</string>

@@ -289,7 +289,7 @@ public class StatusBarColors extends SettingsPreferenceFragment implements OnPre
                              getOwner().refreshSettings();
                          }
                      })
-                     .setPositiveButton(R.string.dlg_reset_rr,
+                     .setPositiveButton(R.string.dlg_reset_temasek,
                          new DialogInterface.OnClickListener() {
                          public void onClick(DialogInterface dialog, int which) {
                              Settings.System.putInt(getOwner().mResolver,

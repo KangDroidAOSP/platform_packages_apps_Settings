@@ -157,6 +157,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         mPM = mContext.getPackageManager();
         mUserManager = UserManager.get(getContext());
         mVoiceCapable = Utils.isVoiceCapable(mContext);
+		ContentResolver mResolver = getActivity().getContentResolver();
 
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
@@ -248,7 +249,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 	
+	@Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+		ContentResolver mResolver = getActivity().getContentResolver();
         boolean value;
         String hex;
         int intHex;

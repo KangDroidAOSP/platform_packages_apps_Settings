@@ -154,7 +154,7 @@ public class QsColors extends SettingsPreferenceFragment  implements Preference.
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION_DRAWER_SETTINGS;
+        return MetricsLogger.APPLICATION;
     }
 
     @Override

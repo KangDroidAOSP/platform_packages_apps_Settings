@@ -15,7 +15,6 @@
 -->
 
 <PreferenceScreen
-    android:title="@string/lockscreen_colors"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
