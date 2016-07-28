@@ -53,10 +53,8 @@
 	<string name="kdp_qs_settings_title">Advanced QS Customization</string>
 	<string name="kdp_qs_lines_title">QS Line Settings</string>
 	<string name="kdp_advanced_qs_title">Other QS Customization</string>
-	<string name="kdp_header_for_time_yeah_title">Time Contextual Header Settings</string>
 	<string name="kdp_changelog_title">Hexa OS ChangeLog</string>
 	<string name="qs_animation_title_kdp">QS Animation</string>
-	<string name="kdp_qs_settings_transparency">QS Transparency</string>
 	<string name="qs_transparent_header">QS Transparent Header</string>
 	<string name="qs_transparent_shade">QS Transparent shade</string>
 	<string name="kangdroid_qs_vib">QS Vibration Settings</string>
@@ -268,15 +266,6 @@
     <!-- Ability to disable hardware keys via nav bar settings -->
     <string name="hw_keys_title">Hardware keys</string>
     <string name="hw_keys_summary">Enable hardware keys</string>
-
-    <!-- Time-context headers in notification header -->
-    <string name="contextual_title">Contextual headers</string>
-    <string name="status_bar_custom_header_title">Custom header image</string>
-    <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
-    <string name="status_bar_custom_header_default_title">Select your images</string>
-    <string name="custom_header_image_0">Default</string>
-    <string name="custom_header_image_1">Modern</string>
-    <string name="custom_header_image_2">Poly HD</string>
 
     <!-- Network traffic -->
     <string name="network_traffic_title">Network traffic</string>

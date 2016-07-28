@@ -62,13 +62,11 @@ import org.cyanogenmod.internal.util.CmLockPatternUtils;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class NotificationDrawerSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+public class NotificationDrawerSettings extends SettingsPreferenceFragment {
 
-    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
 	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
 	
 	private SwitchPreference mEnableTaskManager;
-    private ListPreference mCustomHeaderDefault;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -84,39 +82,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
 		
-		// Excute updateCustomHeaderforKDP for updating Custom header - Time contextual header settings
-		updateCustomHeaderforKDP();
-		
     }
-	
-	public void updateCustomHeaderforKDP() {
-        // Status bar custom header default
-        mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
-        mCustomHeaderDefault.setOnPreferenceChangeListener(this);
-        int customHeaderDefault = Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 1);
-        mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
-        mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntry());
-	}
 
     @Override
     protected int getMetricsCategory() {
         return MetricsLogger.APPLICATION;
-    }
-	
-	@Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-		ContentResolver resolver = getActivity().getContentResolver();
-	if (preference == mCustomHeaderDefault) {
-        int customHeaderDefault = Integer.valueOf((String) newValue);
-        int index = mCustomHeaderDefault.findIndexOfValue((String) newValue);
-        Settings.System.putInt(getActivity().getContentResolver(), 
-            Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeaderDefault);
-        mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
-        updateCustomHeaderforKDP();
-        return true;
-	}
-        return false;
     }
 	
     @Override
