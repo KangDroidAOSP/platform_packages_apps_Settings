@@ -102,6 +102,8 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 		final CmLockPatternUtils lockPatternUtils = new CmLockPatternUtils(getActivity());
+	   	int intColor;
+	    String hexColor;
 		
         addPreferencesFromResource(R.xml.kangdroid_qs_settings);
 		
@@ -178,7 +180,7 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
             // QS stroke
             mQSStroke =
                     (ListPreference) findPreference(PREF_QS_STROKE);
-            int qSStroke = Settings.System.getIntForUser(mResolver,
+            int qSStroke = Settings.System.getIntForUser(resolver,
                             Settings.System.QS_STROKE, 0,
                             UserHandle.USER_CURRENT);
             mQSStroke.setValue(String.valueOf(qSStroke));
@@ -188,7 +190,7 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
             // QS stroke color
             mQSStrokeColor =
                     (ColorPickerPreference) findPreference(PREF_QS_STROKE_COLOR);
-            intColor = Settings.System.getInt(mResolver,
+            intColor = Settings.System.getInt(resolver,
                     Settings.System.QS_STROKE_COLOR, DEFAULT_QS_STROKE_COLOR);
             hexColor = String.format("#%08x", (0xFF80CBC4 & intColor));
             mQSStrokeColor.setSummary(hexColor);
@@ -198,7 +200,7 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
             // QS stroke thickness
             mQSStrokeThickness =
                     (SeekBarPreferenceCham) findPreference(PREF_QS_STROKE_THICKNESS);
-            int qSStrokeThickness = Settings.System.getInt(mResolver,
+            int qSStrokeThickness = Settings.System.getInt(resolver,
                     Settings.System.QS_STROKE_THICKNESS, 4);
             mQSStrokeThickness.setValue(qSStrokeThickness / 1);
             mQSStrokeThickness.setOnPreferenceChangeListener(this);
@@ -206,7 +208,7 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
             // QS corner radius
             mQSCornerRadius =
                     (SeekBarPreferenceCham) findPreference(PREF_QS_CORNER_RADIUS);
-            int qSCornerRadius = Settings.System.getInt(mResolver,
+            int qSCornerRadius = Settings.System.getInt(resolver,
                     Settings.System.QS_CORNER_RADIUS, 0);
             mQSCornerRadius.setValue(qSCornerRadius / 1);
             mQSCornerRadius.setOnPreferenceChangeListener(this);
@@ -214,7 +216,7 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
              // QS dash width
              mQSDashWidth =
                      (SeekBarPreferenceCham) findPreference(PREF_QS_STROKE_DASH_WIDTH);
-             int qSDialogDashWidth = Settings.System.getInt(mResolver,
+             int qSDialogDashWidth = Settings.System.getInt(resolver,
                      Settings.System.QS_STROKE_DASH_WIDTH, 0);
              if (qSDialogDashWidth != 0) {
                  mQSDashWidth.setValue(qSDialogDashWidth / 1);
@@ -226,7 +228,7 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
              // QS dash gap
              mQSDashGap =
                      (SeekBarPreferenceCham) findPreference(PREF_QS_STROKE_DASH_GAP);
-             int qSDialogDashGap = Settings.System.getInt(mResolver,
+             int qSDialogDashGap = Settings.System.getInt(resolver,
                      Settings.System.QS_STROKE_DASH_GAP, 10);
              mQSDashGap.setValue(qSDialogDashGap / 1);
              mQSDashGap.setOnPreferenceChangeListener(this);
@@ -242,6 +244,8 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 		ContentResolver resolver = getActivity().getContentResolver();
+		String hex;
+		int intHex;
 		if (preference == mBlockOnSecureKeyguard) {
         Settings.Secure.putInt(resolver,
                 Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
@@ -292,7 +296,7 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
         }  else if (preference == mQSStroke) {
                 int qSStroke = Integer.parseInt((String) newValue);
                 int index = mQSStroke.findIndexOfValue((String) newValue);
-                Settings.System.putIntForUser(mResolver, Settings.System.
+                Settings.System.putIntForUser(resolver, Settings.System.
                         QS_STROKE, qSStroke, UserHandle.USER_CURRENT);
                 mQSStroke.setSummary(mQSStroke.getEntries()[index]);
                 QSSettingsDisabler(qSStroke);
@@ -302,27 +306,27 @@ public class KangDroidQSSettings extends SettingsPreferenceFragment implements O
                         Integer.valueOf(String.valueOf(newValue)));
                 preference.setSummary(hex);
                 intHex = ColorPickerPreference.convertToColorInt(hex);
-                Settings.System.putInt(mResolver,
+                Settings.System.putInt(resolver,
                         Settings.System.QS_STROKE_COLOR, intHex);
                 return true;
         } else if (preference == mQSStrokeThickness) {
                 int val = (Integer) newValue;
-                Settings.System.putInt(mResolver,
+                Settings.System.putInt(resolver,
                         Settings.System.QS_STROKE_THICKNESS, val * 1);
                 return true;
         }  else if (preference == mQSCornerRadius) {
                 int val = (Integer) newValue;
-                Settings.System.putInt(mResolver,
+                Settings.System.putInt(resolver,
                         Settings.System.QS_CORNER_RADIUS, val * 1);
                 return true;
         } else if (preference == mQSDashWidth) {
                  int val = (Integer) newValue;
-                 Settings.System.putInt(mResolver,
+                 Settings.System.putInt(resolver,
                          Settings.System.QS_STROKE_DASH_WIDTH, val * 1);
                  return true;
         } else if (preference == mQSDashGap) {
                  int val = (Integer) newValue;
-                 Settings.System.putInt(mResolver,
+                 Settings.System.putInt(resolver,
                          Settings.System.QS_STROKE_DASH_GAP, val * 1);
                  return true;    
 	}
