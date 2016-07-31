@@ -219,19 +219,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             int volumeDialogAlpha = Settings.System.getInt(mResolver,
                     Settings.System.TRANSPARENT_VOLUME_DIALOG, 255);
             mVolumeDialogAlpha.setValue(volumeDialogAlpha / 1);
-            mVolumeDialogAlpha.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-	            @Override
-	            public boolean onPreferenceChange(Preference preference, Object newValue) {
-					int alpha = (Integer) newValue;
-					ContentResolver mResolver = getActivity().getContentResolver();
-			        boolean value;
-			        String hex;
-			        int intHex;
-	                final boolean val = (Boolean) newValue;
-	                return Settings.System.putInt(mResolver,
-		                        Settings.System.TRANSPARENT_VOLUME_DIALOG, alpha * 1);
-	            }
-            });
+            mVolumeDialogAlpha.setOnPreferenceChangeListener(this);
             // Volume dialog stroke
             mVolumeDialogStroke =
                     (ListPreference) findPreference(PREF_VOLUME_DIALOG_STROKE);
@@ -394,6 +382,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             Settings.System.putInt(getContentResolver(),
                     Settings.System.VOLUME_DIALOG_TIMEOUT, volumeDialogTimeout);
 			return true;
+		}  else if (preference == mVolumeDialogAlpha) {
+                int alpha = (Integer) newValue;
+                Settings.System.putInt(mResolver,
+                        Settings.System.TRANSPARENT_VOLUME_DIALOG, alpha * 1);
+                return true;
 		}
 		return false;
 	}
