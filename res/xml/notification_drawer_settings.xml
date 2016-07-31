@@ -31,23 +31,27 @@
 	</PreferenceCategory>
 	
 	<PreferenceCategory
+		andorid:key="kdp_task_manager"
+		android:title="@string/kdp_task_manager_title" />
+		
+	    <SwitchPreference
+	        android:key="enable_task_manager"
+	        android:title="@string/enable_task_manager_title"
+	        android:summary="@string/enable_task_manager_summary" />
+		
+	    <ListPreference
+	        android:key="qs_task_animation"
+	        android:title="@string/expansion_view_animation_title"
+	        android:dialogTitle="@string/expansion_view_animation_dialog_title"
+	        android:entries="@array/expansion_view_animation_entries"
+	        android:entryValues="@array/expansion_view_animation_values"
+	        android:summary="@string/expansion_view_animation_summary"
+	        android:persistent="false"
+			android:defaultValue="8" />
+	
+	<PreferenceCategory
 		android:key="kdp_notification_main"
 		android:title="@string/kdp_notification_main_title">
-		
-    <SwitchPreference
-        android:key="enable_task_manager"
-        android:title="@string/enable_task_manager_title"
-        android:summary="@string/enable_task_manager_summary" />
-		
-    <ListPreference
-        android:key="qs_task_animation"
-        android:title="@string/expansion_view_animation_title"
-        android:dialogTitle="@string/expansion_view_animation_dialog_title"
-        android:entries="@array/expansion_view_animation_entries"
-        android:entryValues="@array/expansion_view_animation_values"
-        android:summary="@string/expansion_view_animation_summary"
-        android:persistent="false"
-		android:defaultValue="8" />
 	
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"
