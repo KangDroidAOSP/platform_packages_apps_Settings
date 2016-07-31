@@ -46,7 +46,8 @@
         android:entries="@array/expansion_view_animation_entries"
         android:entryValues="@array/expansion_view_animation_values"
         android:summary="@string/expansion_view_animation_summary"
-        android:persistent="false" />
+        android:persistent="false"
+		android:defaultValue="7" />
 	
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="force_expanded_notifications"

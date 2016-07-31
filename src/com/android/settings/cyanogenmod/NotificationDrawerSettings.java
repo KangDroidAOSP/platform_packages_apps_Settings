@@ -86,7 +86,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 		
         mAnimation = (ListPreference) findPreference(QS_TASK_ANIMATION);
         mAnimation.setValue(String.valueOf(Settings.System.getInt(
-                getContentResolver(), Settings.System.QS_TASK_ANIMATION, 0)));
+                getContentResolver(), Settings.System.QS_TASK_ANIMATION, 7)));
         mAnimation.setSummary(mAnimation.getEntry());
         mAnimation.setOnPreferenceChangeListener(this);
 		
