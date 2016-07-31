@@ -1293,6 +1293,7 @@
     <string name="navbar_recents_switch_summary">Enable / Disable Custom Recents Button in Recents View. This Button Will Clear all Tasks on LongPressing</string>	
 	
      <!-- Volume dialog stroke settings -->
+	 <string name="kdp_volume_dialog_title">Volume Dialog Customizations</string>
      <string name="volume_dialog_stroke_title">Volume dialog stroke</string>
      <string name="volume_dialog_stroke_disabled">Disabled</string>
      <string name="volume_dialog_stroke_accent">Accent color</string>
@@ -1324,6 +1325,7 @@
      <string name="qs_dash_gap_title">QS stroke dash gap</string>
 	 
 	 <!-- Task Animation -->
+	 <string name="kdp_task_manager_title">Task Manager Customizations</string>
      <string name="expansion_view_animation_title">Task Manager Animation</string>
      <string name="expansion_view_animation_summary">Change the enter/exit animation of the panel change</string>
      <string name="expansion_view_animation_dialog_title">Select your animation</string>

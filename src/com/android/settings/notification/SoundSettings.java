@@ -19,6 +19,7 @@ package com.android.settings.notification;
 
 import android.app.NotificationManager;
 import android.app.admin.DevicePolicyManager;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -41,6 +42,7 @@ import android.os.Message;
 import android.os.UserManager;
 import android.os.UserHandle;
 import android.os.Vibrator;
+import android.preference.ListPreference;
 import android.preference.SlimSeekBarPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -181,6 +183,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         mUserManager = UserManager.get(getContext());
         mVoiceCapable = Utils.isVoiceCapable(mContext);
 		ContentResolver mResolver = getActivity().getContentResolver();
+	   	int intColor;
+	    String hexColor;
 
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
@@ -341,6 +345,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 		ContentResolver mResolver = getActivity().getContentResolver();
+		String hex;
+		int intHex;
 		if (preference == mVolumeDialogStroke) {
                 int volumeDialogStroke = Integer.parseInt((String) newValue);
                 int index = mVolumeDialogStroke.findIndexOfValue((String) newValue);
