@@ -62,11 +62,13 @@ import org.cyanogenmod.internal.util.CmLockPatternUtils;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
-public class NotificationDrawerSettings extends SettingsPreferenceFragment {
+public class NotificationDrawerSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
 	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
+	private static final String QS_TASK_ANIMATION = "qs_task_animation";
 	
 	private SwitchPreference mEnableTaskManager;
+	private ListPreference mAnimation;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -81,6 +83,12 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment {
         mEnableTaskManager = (SwitchPreference) findPreference(PREF_ENABLE_TASK_MANAGER);
         mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
+		
+        mAnimation = (ListPreference) findPreference(QS_TASK_ANIMATION);
+        mAnimation.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.QS_TASK_ANIMATION, 0)));
+        mAnimation.setSummary(mAnimation.getEntry());
+        mAnimation.setOnPreferenceChangeListener(this);
 		
     }
 
@@ -98,4 +106,18 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment {
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+	
+	@Override
+	public boolean onPreferenceChange(Preference preference, Object newValue) {
+		ContentResolver resolver = getActivity().getContentResolver();
+		Resources res = getResources();
+		if (preference == mAnimation) {
+            Settings.System.putInt(getContentResolver(), Settings.System.QS_TASK_ANIMATION,
+                    Integer.valueOf((String) newValue));
+            mAnimation.setValue(String.valueOf(newValue));
+            mAnimation.setSummary(mAnimation.getEntry());
+            return true;
+		}
+		return false;
+	}	
 }
