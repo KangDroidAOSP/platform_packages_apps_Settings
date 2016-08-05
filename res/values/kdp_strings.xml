@@ -1521,5 +1521,7 @@
 	
     <string name="halo_color_title">Halo color</string>
     <string name="halo_color_summary">Defines what color the Halo bubble is</string>
+    <string name="rr_halo_enable_title">Enable Halo</string>
+    <string name="rr_halo_enable_summary">Enable Halo Button in extended statusbar</string>
 
 </resources>
