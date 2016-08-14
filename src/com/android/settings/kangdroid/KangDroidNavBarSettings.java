@@ -67,12 +67,10 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
 	private static final String TAG = "KDPNavBar";
 				
 	private static final String NAVIGATION_BAR_TINT = "navigation_bar_tint";
-	private static final String KEY_ENABLE_NAVIGATION_BAR = "enable_nav_bar";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_NAVIGATION_RECENTS_LONG_PRESS = "navigation_recents_long_press";
 	
 	private ColorPickerPreference mNavbarButtonTint;
-	private SwitchPreference mEnableNavigationBar;
     private SwitchPreference mNavigationBarLeftPref;
     private ListPreference mNavigationRecentsLongPressAction;
 
@@ -93,14 +91,6 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
         // Navigation bar keys switch
         mEnableNavigationBar = (SwitchPreference) findPreference(KEY_ENABLE_NAVIGATION_BAR);
 		
-        // Internal bool to check if the device have a navbar by default or not!
-        boolean hasNavBarByDefault = getResources().getBoolean(
-                com.android.internal.R.bool.config_showNavigationBar);
-        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1;
-        mEnableNavigationBar.setChecked(enableNavigationBar);
-        mEnableNavigationBar.setOnPreferenceChangeListener(this);
-		
         // Navigation bar left
         mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
 //        if (mNavigationBarLeftPref != null) {
@@ -110,16 +100,6 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
         // Navigation bar recents long press activity needs custom setup
         mNavigationRecentsLongPressAction =
                 initRecentsLongPressAction(KEY_NAVIGATION_RECENTS_LONG_PRESS);
-		
-		updateNavBarSettings();
-    }
-	
-	
-    private void updateNavBarSettings() {
-         boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-                 Settings.System.NAVIGATION_BAR_SHOW,
-                 TemasekUtils.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
-         mEnableNavigationBar.setChecked(enableNavigationBar);
      }
 
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -130,12 +110,6 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_TINT, intHex);
-            return true;
-		} else if (preference == mEnableNavigationBar) {
-            mEnableNavigationBar.setEnabled(true);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_SHOW,
-                        ((Boolean) newValue) ? 1 : 0);
             return true;
         } else if (preference == mNavigationRecentsLongPressAction) {
             // RecentsLongPressAction is handled differently because it intentionally uses

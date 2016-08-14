@@ -20,18 +20,6 @@
 		<PreferenceCategory
 			android:key="kdp_category_main_nav_bar"
 			android:title="@string/kdp_category_main_nav_bar_title">
-		
-        <SwitchPreference
-            android:key="enable_nav_bar"
-            android:title="@string/navbar_enable_bar_title"
-            android:summary="@string/navbar_enable_bar_summary"
-            android:defaultValue="false" />
-			
-        <PreferenceScreen
-            android:key="navbar_dimensions"
-            android:fragment="com.android.settings.temasek.NavBarDimensions"
-            android:title="@string/navbar_style_dimen_title"
-            android:dependency="enable_nav_bar" />
 			
         <PreferenceScreen
             android:key="navigation_bar"
