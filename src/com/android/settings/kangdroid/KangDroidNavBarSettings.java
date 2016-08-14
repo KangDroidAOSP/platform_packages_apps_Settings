@@ -88,9 +88,6 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
         mNavbarButtonTint.setSummary(hexColor);
         mNavbarButtonTint.setNewPreviewColor(intColor);
 		
-        // Navigation bar keys switch
-        mEnableNavigationBar = (SwitchPreference) findPreference(KEY_ENABLE_NAVIGATION_BAR);
-		
         // Navigation bar left
         mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
 //        if (mNavigationBarLeftPref != null) {
