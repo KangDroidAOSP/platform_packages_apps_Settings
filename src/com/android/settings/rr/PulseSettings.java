@@ -50,7 +50,7 @@ import android.provider.SearchIndexableResource;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
-import com.android.settings.rr.SeekBarPreference;
+import com.android.settings.kangdroid.SeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,7 +170,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
         mSolidSpeed =
                     (SeekBarPreference) findPreference(SOLID_LAVAMP_SPEED);
         int speed = Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.LAVAMP_SOLID_SPEED, 10000);
+                    Settings.Secure.PULSE_LAVALAMP_SOLID_SPEED, 10000);
         mSolidSpeed.setValue(speed / 1);
         mSolidSpeed.setOnPreferenceChangeListener(this);
 
@@ -246,7 +246,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
 	} else if (preference == mSolidSpeed) {
                 int val = (Integer) newValue;
                 Settings.Secure.putInt(mResolver,
-                        Settings.Secure.LAVAMP_SOLID_SPEED, val * 1);
+                        Settings.Secure.PULSE_LAVALAMP_SOLID_SPEED, val * 1);
                 return true;
         } else if (preference == mFadingSpeed) {
                 int val = (Integer) newValue;
@@ -333,7 +333,7 @@ public class PulseSettings extends SettingsPreferenceFragment implements
             } else if (preference == mSolidFudge) {
                 mString = Settings.Secure.PULSE_SOLID_FUDGE_FACTOR;
             } else if (preference == mSolidSpeed) {
-                mString = Settings.Secure.LAVAMP_SOLID_SPEED;
+                mString = Settings.Secure.PULSE_LAVALAMP_SOLID_SPEED;
             } else if (preference == mFadingSpeed) {
                 mString = Settings.Secure.FLING_PULSE_LAVALAMP_SPEED;
             }

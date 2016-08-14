@@ -76,8 +76,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
             implements Preference.OnPreferenceChangeListener  {
 				
 	private static final String TAG = "KDPNavBar";
-				
-	private static final String NAVIGATION_BAR_TINT = "navigation_bar_tint";
+
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_NAVIGATION_RECENTS_LONG_PRESS = "navigation_recents_long_press";
 	private static final String NAVBAR_VISIBILITY = "navbar_visibility";
@@ -86,8 +85,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
     private static final String KEY_FLING_NAVBAR_SETTINGS = "fling_settings";
     private static final String KEY_SMARTBAR_SETTINGS = "smartbar_settings";
     private static final String KEY_NAVIGATION_BAR_SIZE = "navigation_bar_size";
-	
-	private ColorPickerPreference mNavbarButtonTint;
+
     private SwitchPreference mNavigationBarLeftPref;
     private ListPreference mNavigationRecentsLongPressAction;
     private SwitchPreference mNavbarVisibility;
@@ -105,15 +103,6 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
 		
 		ContentResolver resolver = getActivity().getContentResolver();
 		PreferenceScreen prefSet = getPreferenceScreen();
-		
-        // Navigation bar button color
-        mNavbarButtonTint = (ColorPickerPreference) findPreference(NAVIGATION_BAR_TINT);
-        mNavbarButtonTint.setOnPreferenceChangeListener(this);
-        int intColor = Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.NAVIGATION_BAR_TINT, 0xffffffff);
-        String hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mNavbarButtonTint.setSummary(hexColor);
-        mNavbarButtonTint.setNewPreviewColor(intColor);
 		
         // Navigation bar left
         mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
@@ -147,15 +136,7 @@ public class KangDroidNavBarSettings extends SettingsPreferenceFragment
      }
 
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
-		if (preference == mNavbarButtonTint) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            preference.setSummary(hex);
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_TINT, intHex);
-            return true;
-        } else if (preference == mNavigationRecentsLongPressAction) {
+		if (preference == mNavigationRecentsLongPressAction) {
             // RecentsLongPressAction is handled differently because it intentionally uses
             // Settings.System
             String putString = (String) newValue;
