@@ -40,6 +40,7 @@
   <string name="root_access_all">Apps und ADB</string>
   <!-- Preference link for root appops -->
   <string name="root_appops_title">Root-Zugriffe verwalten</string>
+  <string name="root_appops_summary">Anzeigen und Kontrollieren der Root-Regeln</string>
   <!-- NFC PreferenceCategory title -->
   <string name="nfc_title_category">NFC</string>
   <!-- About phone screen, CyanogenMod version -->
@@ -345,7 +346,7 @@
   <string name="app_ops_summaries_toast_window">Pop-ups anzeigen</string>
   <string name="app_ops_summaries_project_media">Medien projizieren</string>
   <string name="app_ops_summaries_activate_vpn">VPN aktivieren</string>
-  <string name="app_ops_summaries_write_wallpaper">Hintergrundbild schreiben</string>
+  <string name="app_ops_summaries_write_wallpaper">Hintergrund schreiben</string>
   <string name="app_ops_summaries_assist_structure">Strukturassistent</string>
   <string name="app_ops_summaries_assist_screenshot">Screenshotassistent</string>
   <string name="app_ops_summaries_read_phone_state">Telefonstatus lesen</string>
@@ -415,7 +416,7 @@
   <string name="app_ops_labels_toast_window">Pop-ups anzeigen</string>
   <string name="app_ops_labels_project_media">Medien projizieren</string>
   <string name="app_ops_labels_activate_vpn">VPN aktivieren</string>
-  <string name="app_ops_labels_write_wallpaper">Hintergrundbild schreiben</string>
+  <string name="app_ops_labels_write_wallpaper">Hintergrund schreiben</string>
   <string name="app_ops_labels_assist_structure">Strukturassistent</string>
   <string name="app_ops_labels_assist_screenshot">Screenshotassistent</string>
   <string name="app_ops_labels_read_phone_state">Telefonstatus lesen</string>
@@ -689,8 +690,8 @@
   <string name="status_bar_notif_count_summary">Anzahl der ungelesenen Benachrichtigungen in der Statusleiste anzeigen</string>
   <string name="status_bar_quick_qs_pulldown_title">Schnelles Öffnen</string>
   <string name="status_bar_quick_qs_pulldown_summary">Herunterziehen der Benachrichtigungsleiste am %1$s Rand öffnet die Schnelleinstellungen</string>
-  <string name="status_bar_quick_qs_pulldown_summary_left">linken</string>
-  <string name="status_bar_quick_qs_pulldown_summary_right">rechten</string>
+  <string name="status_bar_quick_qs_pulldown_summary_left">Links</string>
+  <string name="status_bar_quick_qs_pulldown_summary_right">Rechts</string>
   <string name="status_bar_quick_qs_pulldown_off">Aus</string>
   <string name="status_bar_quick_qs_pulldown_left">Links</string>
   <string name="status_bar_quick_qs_pulldown_right">Rechts</string>
@@ -1060,7 +1061,7 @@
   <string name="lockscreen_wallpaper_title">Hintergrundbild</string>
   <string name="not_available_with_app">Nicht verfügbar für %1$s</string>
   <!-- Format string for fingerprint location message -->
-  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Suchen Sie den Fingerabdrucksensor auf der <xliff:g id="sensor_location">%1$s</xliff:g> des Gerätes.</string>
+  <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Suchen Sie den Fingerabdrucksensor auf der <xliff:g id="sensor_location">%1$s</xliff:g> des Geräts.</string>
   <!-- Fingerprint sensor locations -->
   <string name="security_settings_fingerprint_sensor_location_back">Front</string>
   <string name="security_settings_fingerprint_sensor_location_front">Rückseite</string>
