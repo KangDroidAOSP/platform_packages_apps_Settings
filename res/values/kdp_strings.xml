@@ -95,7 +95,7 @@
    <!-- About phone screen, Hexa version -->
    <string name="kdp_version_title">Hexa OS ROM Version</string>
    <!-- Do NOT translate this -->
-   <string name="kdp_version_default">Alpha - 2</string>
+   <string name="kdp_version_default">Alpha - 3</string>
    
    <!-- Changelog -->
    <string name="changelog_temasek_title">Changelog</string>
