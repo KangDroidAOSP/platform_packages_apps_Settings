@@ -35,7 +35,7 @@
             android:summary="@string/blurred_status_bar_expanded_enabled_pref_summary"
             android:defaultValue="false" />
 
-        <com.android.settings.rr.SeekBarPreference
+        <com.android.settings.kangdroid.SeekBarPreference
             android:key="statusbar_blur_scale"
             android:title="@string/blurred_scale"
             android:summary="@string/blurred_scale_summary"
@@ -44,7 +44,7 @@
             android:dependency="blurred_status_bar_expanded_enabled_pref"
             android:defaultValue="10" />
 
-        <com.android.settings.rr.SeekBarPreference
+        <com.android.settings.kangdroid.SeekBarPreference
             android:key="statusbar_blur_radius"
             android:title="@string/blurred_radius"
             android:summary="@string/blurred_radius_summary"
@@ -64,7 +64,7 @@
             android:summary="@string/translucent_notifications_pref_summary"
             android:defaultValue="false" />
 
-        <com.android.settings.rr.SeekBarPreference
+        <com.android.settings.kangdroid.SeekBarPreference
             android:key="notifications_transluency"
             android:title="@string/transluency_level_universal"
             android:max="100"
@@ -83,7 +83,7 @@
             android:summary="@string/translucent_header_pref_summary"
             android:defaultValue="false" />
 
-        <com.android.settings.rr.SeekBarPreference
+        <com.android.settings.kangdroid.SeekBarPreference
             android:key="header_transluency"
             android:title="@string/transluency_level_universal"
             android:max="100"
@@ -102,13 +102,26 @@
             android:summary="@string/translucent_quick_settings_pref_summary"
             android:defaultValue="false" />
 
-        <com.android.settings.rr.SeekBarPreference
+        <com.android.settings.kangdroid.SeekBarPreference
             android:key="quick_settings_transluency"
             android:title="@string/transluency_level_universal"
             android:max="100"
             settings:min="0"
             android:dependency="translucent_quick_settings_pref"
             android:defaultValue="60" />
+    </PreferenceCategory>
+	
+    <PreferenceCategory
+        android:key="blur_recents_cat"
+        android:title="@string/blur_recents_cat"
+	android:dependency="blurred_status_bar_expanded_enabled_pref" >
+
+      <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+         android:key="blurred_recent_app_enabled_pref"
+         android:title="@string/blurred_recent_app_enabled_pref"
+         android:summary="@string/blurred_recent_app_enabled_pref_summary"
+         android:defaultValue="false"
+         android:dependency="blurred_status_bar_expanded_enabled_pref" />
     </PreferenceCategory>
 </PreferenceScreen>
 
