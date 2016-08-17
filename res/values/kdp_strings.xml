@@ -1523,5 +1523,9 @@
     <string name="halo_color_summary">Defines what color the Halo bubble is</string>
     <string name="rr_halo_enable_title">Enable Halo</string>
     <string name="rr_halo_enable_summary">Enable Halo Button in extended statusbar</string>
+	
+	<!-- Remove/Add Root options -->
+	<string name="remove_root_file">Remove SU File</string>
+	<string name="add_back_root_file">Add back SU File</string>
 
 </resources>
