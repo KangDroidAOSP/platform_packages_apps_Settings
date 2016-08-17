@@ -302,6 +302,20 @@ public class Helpers {
         CMDProcessor.startSuCommand("pkill -TERM -f com.android.systemui");
     }
 
+    public static void moveSUBinarytoETC() {
+		CMDProcessor.startSuCommand("mount -o remount,rw /system");
+        CMDProcessor.startSuCommand("mv /system/bin/su /system/etc/su");
+		CMDProcessor.startSuCommand("mv /system/xbin/su /system/etc/suxb");
+		CMDProcessor.startSuCommand("mount -o remount,ro /system");
+    }
+	
+    public static void returnSUBinarytoSystem() {
+		CMDProcessor.startSuCommand("mount -o remount,rw /system");
+        CMDProcessor.startSuCommand("mv /system/etc/su /system/bin/su");
+		CMDProcessor.startSuCommand("mv /system/etc/suxb /system/xbin/su");
+		CMDProcessor.startSuCommand("mount -o remount,ro /system");
+    }
+
     public static void setSystemProp(String prop, String val) {
         CMDProcessor.startSuCommand("setprop " + prop + " " + val);
     }

@@ -120,6 +120,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String ENABLE_TERMINAL = "enable_terminal";
     private static final String KEEP_SCREEN_ON_MODES = "keep_screen_on_modes";
     private static final String RESTART_SYSTEMUI = "restart_systemui";
+	private static final String REMOVE_SU_FILE = "remove_root_file";
+	private static final String ADD_BACK_SU_FILE "add_back_root_file";
     private static final String BT_HCI_SNOOP_LOG = "bt_hci_snoop_log";
     private static final String ENABLE_OEM_UNLOCK = "oem_unlock_enable";
     private static final String HDCP_CHECKING_KEY = "hdcp_checking";
@@ -240,6 +242,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private Preference mClearAdbKeys;
     private SwitchPreference mEnableTerminal;
     private Preference mRestartSystemUI;
+	private Preference mRemoveSUFile;
+	private Preference mAddSUFile;
     private Preference mBugreport;
     private SwitchPreference mBugreportInPower;
     private ListPreference mKeepScreenOn;
@@ -382,6 +386,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
 
         mRestartSystemUI = findPreference(RESTART_SYSTEMUI);
+		mRemoveSUFile = findPreference(REMOVE_SU_FILE);
+		mAddSUFile = findPreference(ADD_BACK_SU_FILE);
+		
 
         mBugreport = findPreference(BUGREPORT);
         mBugreportInPower = findAndInitSwitchPref(BUGREPORT_IN_POWER_KEY);
@@ -2046,6 +2053,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                         CMSettings.Secure.ADB_PORT, -1);
                 updateAdbOverNetwork();
             }
+        } else if (preference == mRemoveSUFile) {
+            Helpers.moveSUBinarytoETC(); 
+        } else if (preference == mAddSUFile) {
+            Helpers.returnSUBinarytoSystem(); 
         } else if (preference == mRestartSystemUI) {
             Helpers.restartSystemUI(); 
         } else if (preference == mClearAdbKeys) {

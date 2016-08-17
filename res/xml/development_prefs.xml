@@ -84,6 +84,12 @@
         android:title="@string/root_access"
 		android:persistent="false" />
 		
+    <Preference android:key="remove_root_file"
+        android:title="@string/remove_root_file" />
+
+    <Preference android:key="add_back_root_file"
+        android:title="@string/add_back_root_file" />
+		
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="disable_fc_notifications"
         android:title="@string/disable_fc_notifications_title"
