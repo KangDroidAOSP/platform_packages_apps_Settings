@@ -17,7 +17,7 @@
  * ActionHandler framework
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid;
 
 import com.android.internal.utils.du.Config.ActionConfig;
 import com.android.settings.R;

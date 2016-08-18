@@ -1963,7 +1963,7 @@
 	        </activity>
 
 	       <!-- System action picker -->
-	        <activity android:name="com.android.settings.rr.ActionPickerDialogActivity"
+	        <activity android:name="com.android.settings.kangdroid.others.ActionPickerDialogActivity"
 	                android:theme="@style/Theme.SettingsDialog"
 	                android:label="@string/choose_action_title"
 	                android:excludeFromRecents="true">

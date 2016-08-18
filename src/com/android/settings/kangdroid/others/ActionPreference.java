@@ -18,7 +18,7 @@
  * key is identical to the target ConfigMap tag in ActionConstants 
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid;
 
 import java.util.Map;
 
