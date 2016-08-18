@@ -121,7 +121,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String KEEP_SCREEN_ON_MODES = "keep_screen_on_modes";
     private static final String RESTART_SYSTEMUI = "restart_systemui";
 	private static final String REMOVE_SU_FILE = "remove_root_file";
-	private static final String ADD_BACK_SU_FILE "add_back_root_file";
+	private static final String ADD_BACK_SU_FILE = "add_back_root_file";
     private static final String BT_HCI_SNOOP_LOG = "bt_hci_snoop_log";
     private static final String ENABLE_OEM_UNLOCK = "oem_unlock_enable";
     private static final String HDCP_CHECKING_KEY = "hdcp_checking";
