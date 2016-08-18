@@ -16,7 +16,7 @@
  * Adapter for displaying custom actions in a list
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid.others;
 
 import java.util.ArrayList;
 import java.util.List;

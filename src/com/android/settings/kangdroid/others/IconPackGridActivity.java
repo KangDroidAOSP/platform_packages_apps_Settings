@@ -16,7 +16,7 @@
  * GridView displaying all the available icons in a Icon pack.
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid.others;
 
 import java.io.InputStream;
 import java.lang.ref.WeakReference;

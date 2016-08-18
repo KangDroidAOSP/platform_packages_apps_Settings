@@ -1,4 +1,4 @@
-package com.android.settings.rr;
+package com.android.settings.kangdroid.others;
 
 import android.app.Activity;
 import android.content.Intent;

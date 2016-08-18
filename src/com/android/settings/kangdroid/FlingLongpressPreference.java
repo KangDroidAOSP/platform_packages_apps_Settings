@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid;
 
 import com.android.settings.R;
 

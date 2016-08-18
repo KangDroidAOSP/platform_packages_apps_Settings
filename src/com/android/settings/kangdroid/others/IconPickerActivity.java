@@ -16,7 +16,7 @@
  * Display installed icons packs that we are able to parse and get an icon from
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid.others;
 
 import java.io.InputStream;
 import java.util.ArrayList;

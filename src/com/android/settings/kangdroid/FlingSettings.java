@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid;
 
 import java.util.ArrayList;
 
@@ -25,8 +25,8 @@ import com.android.internal.utils.du.ActionConstants;
 import com.android.internal.utils.du.ActionHandler;
 import com.android.internal.utils.du.Config.ButtonConfig;
 import com.android.settings.R;
-import com.android.settings.rr.ActionPreference;
-import com.android.settings.rr.IconPickHelper;
+import com.android.settings.kangdroid.others.ActionPreference;
+import com.android.settings.kangdroid.others.IconPickHelper;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;

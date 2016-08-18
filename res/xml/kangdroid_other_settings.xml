@@ -21,8 +21,8 @@
      <PreferenceScreen
                 android:key="kdp_blur_settings"
                 android:title="@string/kdp_blur_settings"
-                android:fragment="com.android.settings.rr.BlurPersonalizations" />
-		
+                android:fragment="com.android.settings.kangdroid.KangDroidBlurPersonalizations" />
+
 	<PreferenceCategory
 		android:key="gesture_anywhere_category_kdp"
 		android:title="@string/gesture_anywhere_category_kdp_title">

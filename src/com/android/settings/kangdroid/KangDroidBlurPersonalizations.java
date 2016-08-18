@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -47,7 +47,7 @@ import java.util.Map;
 import cyanogenmod.providers.CMSettings;
 import com.android.settings.kangdroid.SeekBarPreference;
 
-public class BlurPersonalizations extends SettingsPreferenceFragment
+public class KangDroidBlurPersonalizations extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
     //Switch Preferences
@@ -67,7 +67,7 @@ public class BlurPersonalizations extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.rr_blur_cat);
+        addPreferencesFromResource(R.xml.kdp_blur_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
 
         ContentResolver resolver = getActivity().getContentResolver();

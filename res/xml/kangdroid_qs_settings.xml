@@ -66,7 +66,7 @@
             android:id="@+id/qs_colors"
             android:title="@string/quick_settings_colors"
   	        android:summary="@string/qs_colors_summary"	
-            android:fragment="com.android.settings.rr.QsColors" />
+            android:fragment="com.android.settings.kangdroid.KangDroidQSColors" />
 	</PreferenceCategory>
 	
 	<PreferenceCategory
@@ -104,7 +104,7 @@
     <PreferenceScreen
             android:id="@+id/qs_vib_customizations"
             android:title="@string/quick_settings_vibrate"
-            android:fragment="com.android.settings.rr.QsVibrate" />
+            android:fragment="com.android.settings.kangdroid.KangDroidQSVibrateSettings" />
 			
 	</PreferenceCategory>
 	

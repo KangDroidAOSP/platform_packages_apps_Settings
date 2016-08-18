@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,14 +35,14 @@ import java.util.ArrayList;
 
 import com.android.internal.logging.MetricsLogger;
 
-public class QsVibrate extends SettingsPreferenceFragment {
+public class KangDroidQSVibrateSettings extends SettingsPreferenceFragment {
 	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.rr_qs_vibrate);
+        addPreferencesFromResource(R.xml.kangdroid_qs_vibrate);
     }
 
     protected int getMetricsCategory()

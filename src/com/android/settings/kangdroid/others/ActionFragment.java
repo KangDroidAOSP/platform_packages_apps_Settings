@@ -17,7 +17,7 @@
  * class that holds target widget state
  */
 
-package com.android.settings.rr;
+package com.android.settings.kangdroid.others;
 
 import java.util.ArrayList;
 
@@ -29,8 +29,8 @@ import com.android.internal.utils.du.Config.ActionConfig;
 import com.android.internal.utils.du.Config.ButtonConfig;
 
 import com.android.settings.rr.ShortcutPickHelper;
-import com.android.settings.rr.ActionPreference;
-import com.android.settings.rr.CustomActionListAdapter;
+import com.android.settings.kangdroid.others.ActionPreference;
+import com.android.settings.kangdroid.others.CustomActionListAdapter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

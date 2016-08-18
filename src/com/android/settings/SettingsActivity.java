@@ -140,8 +140,8 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
-import com.android.settings.rr.FlingSettings;
-import com.android.settings.rr.SmartbarSettings;
+import com.android.settings.kangdroid.FlingSettings;
+import com.android.settings.kangdroid.SmartbarSettings;
 
 import cyanogenmod.app.CMContextConstants;
 import org.xmlpull.v1.XmlPullParser;
