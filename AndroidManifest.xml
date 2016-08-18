@@ -1963,7 +1963,7 @@
 	        </activity>
 
 	       <!-- System action picker -->
-	        <activity android:name="com.android.settings.rr.ActionPickerDialogActivity"
+	        <activity android:name="com.android.settings.kangdroid.others.ActionPickerDialogActivity"
 	                android:theme="@style/Theme.SettingsDialog"
 	                android:label="@string/choose_action_title"
 	                android:excludeFromRecents="true">
@@ -1973,7 +1973,7 @@
 	        </activity>
 
 	       <!-- Icon pack picker -->
-	        <activity android:name="com.android.settings.rr.IconPickerActivity"
+	        <activity android:name="com.android.settings.kangdroid.others.IconPickerActivity"
 	                android:theme="@style/Theme.SettingsDialog"
 	                android:label="@string/icon_pack_picker_dialog_title"
 	                android:excludeFromRecents="true">
@@ -1983,7 +1983,7 @@
 	        </activity>
 
 	       <!-- Icon pack grid -->
-	        <activity android:name="com.android.settings.rr.IconPackGridActivity"
+	        <activity android:name="com.android.settings.kangdroid.others.IconPackGridActivity"
 	                android:excludeFromRecents="true">
 	            <intent-filter>
 	                <action android:name="android.intent.action.MAIN" />
@@ -2677,7 +2677,7 @@
         </activity>
 		
        <!-- Icon picker proxy for gallery -->
-        <activity android:name="com.android.settings.rr.IconPickerGallery"
+        <activity android:name="com.android.settings.kangdroid.others.IconPickerGallery"
             android:theme="@style/Theme.SettingsDialog"
             android:label="@string/icon_pack_picker_dialog_title"
             android:excludeFromRecents="true">
