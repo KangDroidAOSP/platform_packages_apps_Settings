@@ -139,10 +139,12 @@
      </PreferenceScreen>
 		
      <PreferenceScreen
-         android:key="cm_lockscreen_shortcuts"
-         android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
-         android:title="@string/cm_lockscreen_shortcuts_title"
-         android:summary="@string/cm_lockscreen_shortcuts_summary" />
+         android:key="lockscreen_shortcuts_settings"
+         android:title="@string/lockscreen_targets_message" >
+         <intent
+             android:targetPackage="com.android.systemui"
+             android:targetClass="com.android.systemui.cm.LockscreenShortcutsActivity" />
+     </PreferenceScreen>
 		 
 	 </PreferenceCategory>
 	
